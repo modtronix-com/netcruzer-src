@@ -1,0 +1,52 @@
+/** @defgroup proj_webserver_webpages_default Default Webpages
+@ingroup proj_webserver_webpages
+
+The Webserver has a HTML Server that is used to display web pages written in HTML and JavaScript. The default web pages at delivery
+are located in the ".../src/projects/webserver/WebPages/Default" folder of the @ref devtools_nz_download. The ".../src/projects/webserver/WebPages"
+folder also contains some other sample web pages that can be uploaded to the SBC board.
+
+@section proj_webserver_webpages_screenshots Screenshots
+The following are screenshots of the web pages on the @ref sbc66_sbc66ec
+
+@image HTML web_p1.gif
+<br>
+
+@image HTML web_p2.gif
+<br>
+
+@image HTML web_p3.gif
+<br>
+
+@image HTML web_p4.gif
+<br>
+
+@image HTML web_p5.gif
+<br>
+
+@image HTML web_p6.gif
+<br>
+
+@image HTML web_p7.gif
+<br>
+
+@image HTML web_p8.gif
+<br>
+
+@image HTML web_p9.gif
+<br>
+
+The "Network Configuration" page requires a username and password. The default Username and Password is "admin" and "microchip"
+@image HTML web_p10.gif
+<br>
+
+@image HTML web_p11.gif
+<br>
+
+@section proj_webserver_webpages_upload Upload Firmware and Web Pages
+This page is used to upload new firmware, or web pages.
+@image HTML web_p12.gif
+<br>
+
+
+*/
+

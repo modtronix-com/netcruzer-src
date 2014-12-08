@@ -1,0 +1,21 @@
+/** @page proj_webserver_page_configuration Configuration
+@section proj_webserver_page_configuration_introduction Introduction
+Configuration is divided into two sections.
+<ul>
+<li>Configuring the application during compilation. This consists of options and defines that 
+are set in the source code, and will determine the firmware that is created. This
+configuration can only be done at compilation, and not at run time when the application is running.
+<li>Configuring the application during runtime. These settings are changed via the web based
+configuration pages at run time.
+</li>
+</ul>
+
+@section proj_webserver_page_configuration_application Application Configuration
+The application configuration is stored in the PIC microcontroller's internal
+EEPROM in the first 256 bytes of data.
+For details, see the @ref proj_webserver_appconf "Application Configuration" module of this document.
+
+@section proj_webserver_page_configuration_project Project Configuration
+The project configuration is done in the projdefs.h file. It contains a list of defines
+that configure the project at compilation.
+*/

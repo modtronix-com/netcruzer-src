@@ -1,0 +1,27 @@
+/** @page proj_webserver_license License
+ *
+ * Software License Agreement
+ *
+ * The software supplied herewith by Modtronix Engineering consists of code written
+ * and owned by Modtronix, and some owned by Microchip Technology Incorporated (the Company).
+ * The @ref devtools_mal (MAL) is used in this project, and is located in the
+ * "../src/microchip" folder of the @ref devtools_nz_download. The Microchip license applies
+ * to the MAL code, and is given in the "License" section of @ref devtools_mal.
+ * The remaining code (everything not located in ".../src/microchip" folder) is owned by
+ * Modtronix Engineering, and is protected under applicable copyright laws. The software supplied
+ * herewith is intended and supplied to you, the Company customer, for use solely and
+ * exclusively on Microchip PICmicro Microcontroller based products manufactured
+ * by Modtronix Engineering. The code may be modified and can be used free of charge
+ * for non commercial and commercial applications. All rights are reserved. Any use
+ * in violation of the foregoing restrictions may subject the user to criminal
+ * sanctions under applicable laws, as well as to civil liability for the breach
+ * of the terms and conditions of this license.
+ *
+ * THIS SOFTWARE IS PROVIDED IN AN 'AS IS' CONDITION. NO WARRANTIES, WHETHER EXPRESS,
+ * IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE
+ * COMPANY SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
+ * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *
+ */
+

@@ -1,0 +1,59 @@
+/** @mainpage Introduction
+
+<div class="hideElement">
+@section proj_webserver_intro Introduction
+</div>
+
+This documentation is for the <i>@appname</i> project. To <b>return to the main Netcruzer documentation page</b> @ref main_intro "Click Here".
+It is not a users guide for boards that run the <i>@appname</i>, but contains information on using, configuring and building the <i>@appname</i> project.
+The @ref devtools_nz_download contains all source code, documentation, related applications and scrips required to build
+and modify this project. This project is located in the ".../src/projects/webserver" folder of the download.
+
+This <i>@appname</i> uses the TCP/IP and USB stack from the @ref devtools_mal. It is currently the main firmware for the Netcruzer
+<a href="http://netcruzer.com/sbc66ec.html">SBC66EC</a> and <a href="http://netcruzer.com/sbc66ecl.html">SBC66ECL</a> Single Board Computers.
+It provides a 10/100 Mbit/sec Ethernet, and a USB HID port. It has a @ref proj_webserver_webpages_default "web interface" for monitoring, controlling and configuring the board.
+The USB port is mostly used for debugging, and sending commands and requesting information. The TCP/IP stack supports the following protocols:
+- ARP, IP, ICMP, UDP, TCP, DHCP, SNMP, HTTP, FTP, TFTP
+- Socket support for TCP and UDP
+- Secure Sockets Layer (SSL)
+- NetBIOS Name Service
+- DNS Domain Name System
+- Ethernet Device Discovery
+
+The documentation will be updated as the project matures to contain more information and examples. Browse the menu on the left for additional
+documentation.
+
+<!--
+For details on the TCP/IP stack, and implemented protocols, see
+<a href="group__mod__tcpip.html">TCP/IP stack</a> The <a href="files.html">File List</a> section
+contains a list and API reference of all <a target="_blank" href="http://www.modtronix.com/products/@boardname_lc#apps">source files</a>
+making up the <i>@appname</i> project.
+For details on the SBC66EC, see <a target="_blank" href="http://www.netcruzer.com/sbc6tec">SBC66EC product page</a>.
+-->
+
+<!--
+@section proj_webserver_mainpage_commands Commands, Tags and Events
+
+
+@section proj_webserver_mainpage_webserver Web Server and Web Pages
+
+
+@section proj_webserver_mainpage_firmware Updating The Firmware
+
+@section proj_webserver_mainpage_api API Reference
+The <a href="files.html">File List</a> section of this documentation contains a API reference of the <i>@appname</i> project source code. The
+entire source code can be downloaded on the @boardname product page............
+-->
+
+
+<!-- The following code causes the mxsecbarnn.gif images to be copied to the output folder -->
+<div class="hideElement">
+@image HTML mxsecbar18.gif
+@image HTML mxsecbar20.gif
+@image HTML mxsecbar22.gif
+@image HTML jmp_f_320.jpg
+@image HTML jmp_park_320.jpg
+</div>
+
+*/
+

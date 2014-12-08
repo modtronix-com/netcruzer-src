@@ -1,0 +1,128 @@
+<project name="UploadWeb" default="default" basedir=".">
+
+    <property file="build.properties" />
+
+	<!-- Following 2 taskdef's required for ant-contrib -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath><pathelement location="${lib.ant-contrib.jar}"/></classpath>
+	</taskdef>	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath><pathelement location="${lib.ant-contrib.jar}"/></classpath>
+	</taskdef>
+
+    <!-- set global properties for this build - ARE DEFINED IN build.properties -->
+    <!-- <property name="dest.server" value="http://mchpboard/mpfsupload"/> -->
+    
+    <property name="webpage.name" value="Basic"/>
+    
+  
+    <!-- what files to include and exclude from the prj/pic projects dir -->
+    <patternset id="webSourceFiles" >
+        <include name="**/*.htm" />
+        <include name="**/*.xml" />
+        <include name="**/*.js" />
+        <include name="**/*.inc" />
+    </patternset>
+
+    
+    <!-- Init -->
+    <target name="init">
+    </target>
+  
+    <!-- Default Task -->
+    <target name="default" depends="init">
+        <antcall target="CreateWebpages" />
+        <antcall target="UploadWebpages" />
+        <antcall target="DisplayMessage" />
+    </target>
+
+    <!-- Compile only Task -->
+    <target name="compile" depends="init">
+        <antcall target="CreateWebpages" />
+    </target>
+  
+    <!-- ==================================================================================== -->
+    <!-- ================================= Create Webpages ================================== -->
+    <target name="CreateWebpages">
+        <!-- Delete output webpage image if it exists -->
+        <delete file="${basedir}\${webpage.name}.bin"/>
+        
+        <!-- Run WebpageGen, and created webpage image -->
+        <java jar="${dir.webpagegen}/WebpageGenMPFS.jar" fork="true">
+            <arg value="/mpfs2"/>
+            <arg value="/z"/>
+            <arg value="&quot;*.htm&quot;"/>
+            <arg value="${basedir}\${webpage.name}"/>
+            <arg value="${basedir}"/>
+            <arg value="${webpage.name}.bin"/>
+        </java>
+       
+        <sleep milliseconds="10"/>
+       
+        <!-- Test if ${webpage.name}.bin was created by WebpageGenMPFS -->
+        <fail message="Webpage Image file was NOT created, ERROR !!!!!!!!!!!!!!!!!!!!!!!">
+            <condition>
+                <not>
+                    <resourceexists>
+                        <file file="${basedir}\${webpage.name}.bin"/>
+                    </resourceexists>
+                </not>
+            </condition>
+        </fail>
+
+        <copy file="HTTPPrint.h" tofile="..\HTTPPrint.h"/>
+
+        <echo message=" "/>
+        <echo message=" "/>
+    </target>
+
+    <!-- ==================================================================================== -->
+    <!-- ================================= Upload Webpages ================================== -->
+    <target name="UploadWebpages">
+        
+        <!-- Upload webpage image to web server -->
+        <exec executable="${dir.wget}/wget.exe" dir="${basedir}" output="wgetOutput.txt">
+            <!-- <arg value="- -no-verbose"/> -->
+            <arg value="--verbose"/>
+            <arg value="--auth-no-challenge"/>
+            <arg value="--output-document=wgetHttpResponse.txt"/>
+            <arg value="--http-user=${mpfsupload.admin}"/>
+            <arg value="--http-password=${mpfsupload.password}"/>
+            <arg value="--post-file=${basedir}\${webpage.name}.bin"/>
+            <arg value="http://${host.name}/mpfsupload"/>
+        </exec>
+
+        <!--
+        <fail message="${line.separator}${line.separator}${line.separator}Webpage Image file was NOT successfully uploaded to http://${host.name}/mpfsupload">
+            <condition>
+                <resourcecontains resource="wgetHttpResponse.txt" substring="Successful" casesensitive="false"/>
+            </condition>
+        </fail>
+        -->
+    </target>
+    
+    <!-- ===================================================================================================== -->
+    <!-- ========== Display Success or Error message, depending on contents of wgetHttpResponse.txt ========== -->
+    <target name="DisplayMessage" depends="upload-successful,upload-fail"/>
+
+    <target name="upload-successful" depends="check-if-upload-success" if="cond-is-true">
+        <echo message="
+        ${line.separator}===============================================
+        ${line.separator}======== Upload Successful - SUCCESSFUL =======
+        ${line.separator}==============================================="/>
+    </target>
+    
+    <target name="upload-fail" depends="check-if-upload-success" unless="cond-is-true">
+        <echo message="
+        ${line.separator}===============================================
+        ${line.separator}========= Upload FAILED - ERROR !!!! ==========
+        ${line.separator}==============================================="/>
+    </target>
+
+    <target name="check-if-upload-success">
+        <condition property="cond-is-true">
+            <resourcecontains resource="${basedir}/wgetHttpResponse.txt" substring="MPFS Update Successful" casesensitive="false"/>
+        </condition>
+    </target>
+    
+</project>

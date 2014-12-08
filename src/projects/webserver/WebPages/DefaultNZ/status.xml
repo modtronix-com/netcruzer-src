@@ -1,0 +1,16 @@
+<response>
+<led0>~#xled0~</led0>
+<led1>~#xled1~</led1>
+<led2>~#xled2~</led2>
+<led3>~#xled3~</led3>
+<led4>~#xled4~</led4>
+<led5>~#xled5~</led5>
+<led6>~#xled6~</led6>
+<led7>~#xled7~</led7>
+<led8>~#xled8~</led8>
+<btn1>~#xbtn1~</btn1>
+<btn2>~#xbtn2~</btn2>
+<btn3>~#xbtn3~</btn3>
+<btn4>~#xbtn4~</btn4>
+<pot1>~#xpot1~</pot1>
+</response>

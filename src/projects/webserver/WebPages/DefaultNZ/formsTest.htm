@@ -1,0 +1,172 @@
+<!-- !!!!!!!!!!!!!!!!!! -inc:header.inc- !!!!!!!!!!!!!!!!!!-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<base href="." target="_self" />
+<title>Microchip TCP/IP Stack Demo App</title>
+<link href="mchp.css" rel="stylesheet" type="text/css" />
+<script src="mchp.js" type="text/javascript"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="shadow-one"><div id="shadow-two"><div id="shadow-three"><div id="shadow-four">
+<div id="page">
+
+<div style="padding:0 0 5px 5px"><img src="/mchp.gif" alt="Microchip" /></div>
+
+<div id="title"><div class="right">TCP/IP Stack Demo Application</div><span id="hello">&nbsp;</span></div>
+
+<div id="menu">
+<a href="/index.htm">Overview</a>
+<a href="/dynvars.htm">Dynamic Variables</a>
+<a href="/ajax.htm">AJAX and jQuery</a>
+<a href="/forms.htm">Form Processing</a>
+<a href="/formtest.htm">Form Test</a>
+<a href="/auth.htm">Authentication</a>
+<a href="/cookies.htm">Cookies</a>
+<a href="/uploadfile.htm">File Uploads</a>
+<a href="/email">Send E-mail</a>
+<a href="/dyndns">Dynamic DNS</a>
+<a href="/protect/config.htm">Network Configuration</a>
+<a href="/snmp/snmpconfig.htm">SNMP Configuration</a>
+<a href="/upload.htm">Upload Firmware and Web Pages</a>
+</div>
+<!-- !!!!!!!!!!!!!!!!!! END !!!!!!!!!!!!!!!!!!-->
+
+<div id="content">
+
+<h1>Commands and Form Processing</h1>
+<p>Your application will likely need to accept data from the user. This is done by using commands.
+Commands are used to control, configure and monitor the target board. All commands follow the syntax of name=value.
+The following commands are available:
+<ul>
+  <li><b>Pre-Defined Commands:</b> There are many pre-defined commands, <a target="_blank" href="http://www.netcruzer.com/project-webserver-cmd">as
+	listed here</a>.</li>
+	<li><b>User Commands:</b> Adding additional user commands is very easy, and is done by implementing the <b>processCmd() callback function</b> in code.
+	See the processCmd() function in the main.c file of the Webserver source code(contained in
+	the <a target="_blank" href="http://www.netcruzer.com/nzdownload"> Netcruzer Download</a>) for examples.</li>
+</ul>
+Commands can be sent to the target board via the following methods (note last two methods are NOT implemented yet!):
+<ul>
+  <li><b>Web pages and HTTP:</b> Command are sent, and data requested via the HTTP GET and POST commands. Various HTML elements,
+	like button, check boxes, radio buttons and more can be used!</li>
+  <li><b>USB:</b> Commands are sent, and data requested via USB HID messages. The free Netcruzer USB Terminal app can be used.
+	For details, see <a target="_blank" href="http://www.netcruzer.com/usbterminal">netcruzer.com/usbterminal</a>. Full source code for the Netcruzer USB
+	Terminal is also available, and can be modified if required.</li>
+  <li style="color: #AAA"><b>UDP or TCP:</b> Commands are sent, and data requested via the Network - Not available yet, in future version!</li>
+  <li style="color: #AAA"><b>Serial ports:</b> This enables commands via different protocols, like RS-232, RS-485, TTL Serial port and
+	others. - Not available yet, in future version!</li>
+</ul>
+For example, to set port 32 (old port name Y2), the following methods can be used:
+<ul>
+  <li>Send the following HTTP GET command from a web page: http://10.1.0.1/?o32=1</li>
+  <li>Add a button to a web page that uses HTTP POST to send the following command: o32=1</li>
+  <li style="color: #AAA">Send the following UDP message to the UDP Command Port: o32=1 - Not available yet, in future version!</li>
+</ul>
+In this example the name part of the command is "o32", and the value part is "1".
+</p>
+
+<h2>HTTP GET using Forms on a web page</h2>
+<p>Forms in a web page provide a way for sending commands. Forms can be submitted in one of two methods, (<i>GET</i> or
+<i>POST</i>). The <b>GET</b> method appends the data to the end of the URI. You'll see this data following the question
+mark (?) in your browser's address bar. By default, this data is limited to around 250 bytes.</p>
+<p>As an example, the following button will set port Port 6(X6) of the target board. It sends the "ox6=1" command. This 
+<form name="s7" action="forms.htm" method="GET">
+<input type="hidden" name="ox6" value="1">
+<input type="submit" value="Set Port 6(X6)">
+</form>
+<!-- Alternative method, <button> might not be supported in all browsers
+<form method="GET" action="forms.htm">
+<button name="ox6" value="1">Set Port 6(X6)</button>
+</form>
+-->
+</p>
+<p>To process custom commands, the processCmd() callback function has to be implemented. See the "User Commands" section above for details.
+As an example, this GET form controls LED 1 to 4 on the DB66DEV1 demo board:</p>
+<form method="get" action="forms.htm">
+<div class="examplebox">
+<b>1:</b> <select name="xled1"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>2:</b> <select name="xled2"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>3:</b> <select name="xled3"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>4:</b> <select name="xled4"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<br /><input type="submit" value="Submit" style="margin-top:5px;">
+</div>
+</form>
+<p>A command is sent (appended to address after '?' character) for each LED. The commands are xled1, xled2, xled3 and xled4.
+This is the 'name' part of the command. The 'value' part will be 1 or 0. These commands are processed in the processCmd()
+callback function. For example, the following code will process the "xled2" command:
+  <div  class="codebox">
+if (memcmp(&name[0], "xled2, 5)==0) {
+    //Received "xled2=0" command
+    if(value[0]=='0')
+        //.... Turn LED off
+    //Received "xled2=1" command
+    else if(value[0]=='1')
+        //.... Turn LED on
+}
+  </div>
+</p>
+<p>As described above, the processCmd() callback is used to process received commands. This is the new, simple method
+used in the Netcruzer Webserver. In addition, the following method can be used to process commands received via HTTP GET.
+This is the old and more complicated method described in the Microchip TCP/IP Stack documentation.
+Data sent via GET is automatically decoded, and stored in the array <code>curHTTP.data</code>. Your application will
+handle the data in the <code>HTTPExecuteGet</code> callback. The functions <code>HTTPGetArg</code> and
+<code>HTTPGetROMArg</code> provide an easy method to retrieve submitted values for processing.</p>
+
+<h2>HTTP POST using Forms on a web page</h2>
+<p>Forms in a web page provide a way for sending commands. Forms can be submitted in one of two methods, (<i>GET</i> or
+<i>POST</i>). The <b>POST</b> method submits the data after the request headers are 
+sent.  This allows the data to be virtually unlimited in length, as long as your 
+application can process it in chunks.  However, your application must manage 
+the receipt of data, so it is generally more complicated.</p>
+
+<p>As an example, this POST form sets the text shown on the LCD display:</p>
+
+<form method="post" action="forms.htm">
+<div class="examplebox">
+<b>LCD:</b> <input type="text" name="lcd" maxlength="32"> &nbsp; <input type="submit" value="Save">
+</div>
+</form>
+
+<h3>Sending command in the background via JavaScript</h3>
+<p>Sending commands via Forms as described above causes the web page to reload. To send command without a page
+  reload, the .</p>
+<p>As an example, the following button will set port Port 6(X6) of the target board. It sends the "ox6=1" command.<br>
+<button onclick="cmdSend('ox6=1')">Send ox6=1 Command</button>
+<button onclick="cmdSend(['ox6',0])" style="margin-left: 20px;">Send ox6=0 Command</button>
+
+<div  class="codebox">
+  &lt;button onclick="cmdSend('ox6=0')"&gt;Send ox6=0 Command&lt;/button&gt;
+  &lt;button onclick="cmdSend('ox6=1')"&gt;Send ox6=1 Command&lt;/button&gt;
+</div>
+
+</div>
+
+<script type="text/javascript">
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+  
+var led1 = "~#xled1~";
+var led2 = "~#xled2~";
+var led3 = "~#xled3~";
+var led4 = "~#xled4~";
+//Set value 1 or 0 for led1 to led4 select boxes. Use "xled1" to "xled4" User Tags, they are replaced with 1 or 0 by app.
+$('[name=xled1]').val(led1); //Select option with value = 'xled1' tag
+$('[name=xled2]').val(led2);
+$('[name=xled3]').val(led3);
+$('[name=xled4]').val(led4);
+
+</script>
+<!-- !!!!!!!!!!!!!!!!!! -inc:footer.inc- !!!!!!!!!!!!!!!!!!-->
+<div class="spacer">&nbsp;</div>
+<div id="footer">Copyright &copy; 2010 Microchip Technology, Inc.</div>
+
+</div></div></div></div></div>
+
+</body>
+</html>
+<!-- !!!!!!!!!!!!!!!!!! END !!!!!!!!!!!!!!!!!!-->

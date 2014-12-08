@@ -1,0 +1,129 @@
+~#gf:header.inc~
+<div id="content">
+
+<h2>DHT11 or DHT22 Temperature and Humidity</h2>
+
+<table cellspacing="1" cellpadding="3" class="bBox" width="100%">
+<tbody>
+  <tr><td colspan="2" class="bHdr">Temperature and Humidity (Method 1 - on page refresh)</td></tr>
+  <tr>
+	<td class="bSec">Temperature:</td>
+	<td class="bCtr" width="100%"> &nbsp;<b>~#u00d~.~#u01d~ Degrees C</b></td>
+  </tr>
+  <tr>
+	<td class="bSec" style="white-space: nowrap;">Relative Humidity:  &nbsp;</td>
+	<td class="bCtr"> &nbsp;<b>~#u02d~.~#u03d~ %</b></td>
+  </tr>
+  <!--<tr><td colspan="2" class="bHr"></td></tr>-->
+  <tr><td colspan="2" class="bHdr">Temperature and Humidity (Method 2, updated via AJAX)</td></tr>
+  <tr>
+	<td class="bSec">Temperature:</td>
+	<td class="bCtr" width="100%"> &nbsp;<b><span id="temp1Int">-</span>.<span id="temp1Dec">-</span> Degrees C</b></td>
+  </tr>
+  <tr>
+	<td class="bSec" style="white-space: nowrap;">Relative Humidity:  &nbsp;</td>
+	<td class="bCtr"> &nbsp;<b><span id="hum1Int">-</span>.<span id="hum1Dec">-</span> %</b></td>
+  </tr>
+</tbody></table>
+<p>For this page <b>to work</b>, the SBC66EC board <b>must be programmed</b> with the "DHT Sensor Demo". This is
+part of the "Webserver" project contained in the <a target="_blank" href="http://www.netcruzer.com/nzdownload">
+  Netcruzer Download</a>. To update the firmware with this demo, download the "Netcruzer Download",
+  <a href="http://www.netcruzer.com/nz/doc/building_projects/">build</a> the "DHT Sensor Demo", and
+  <a target="_blank" href="http://www.netcruzer.com/nzdoc-program">update the firmware</a>.</p>
+<p>This page shows how to display the temperature and humidity values obtained from a
+DHT11 or DHT22 sensor connected to any I/O port of the SBC66EC/SBC66ECL board. It uses
+"User Memory" on the SBC66 board to store the temperature and humidity values read by
+the sensor, and then displays these "User Memory" values on the web page using the
+"User Memory Tag". Using this method it is very easy displaying any user data on a web
+page. This page demonstrates two methods how to do this.
+<ul>
+  <li><b>Method 1</b>: This shows the most basic way for displaying the contents of "User Memory"
+	on a web page. The "User Memory Tag" is simply placed on the web page, which is updated with
+	the current value when the page loads. This method only updates the displayed values when the
+	page is refreshed!</li>
+  <li><b>Method 2</b>: This is the preferred method, and uses AJAX to update the displayed values
+	at a configurable refresh rate. See the "Update in background via AJAX" section below for details.</li>
+</ul>
+</p>
+
+<h3>Details</h3>
+<p>The method described above uses "User Memory" and "User Memory Tags". This is done
+as follows:</p>
+<ul>
+  <li>In the SBC66 firmware, store the data you want displayed on the web page in the
+  "User Memory". We choose address 0 and 1 for the temperature Integer and Decimal, and
+  address 2 and 3 for the Humidity Integer and Decimal. The following code in the firmware
+  does this:</br>
+  <div  class="codebox">
+nzGlobals.userRam[0] = tempInt; //Store Temperature Integer part
+nzGlobals.userRam[1] = tempDec; //Store Temperature Decimal part
+nzGlobals.userRam[2] = humInt;  //Store Humidity Integer part
+nzGlobals.userRam[3] = humDec;  //Store Humidity Decimal part
+  </div>
+  </li>
+  <li>In the web page HTML code, use the "User Memory Tag" to display the content of "User Memory"
+	addresses we populated in the firmware. The SBC66 board will replace tags with dynamic data when
+	the page is requested. So, these tags are replaced with the values of the "User Memory" at the
+	given address. For our example this is done as follows:</br>
+  <div  class="codebox">
+&lt;br/&gt;Temperature: ~~#u00d~~.~~#u01d~~ Degrees C
+&lt;br/&gt;Humidity: ~~#u02d~~.~~#u03d~~ Degrees C
+  </div>
+  </li>
+</ul>
+
+<p>For details on the "User Memory" and other tags,
+<a target="_blank" href="http://www.netcruzer.com/project-webserver-tags">click here</a>.
+</p>
+
+<h4>Update in background via AJAX</h4>
+<p>Method 2 uses AJAX to update the Temperature and Humidity in the background. This results in
+flicker free updating of values. See the source code of this page to see how it is done, it is
+very easy! Simply add some JavaScript code to the bottom of the page, and create a XML file with
+the Tags of all dynamic values to be displayed on this page. This is the "sensor.xml" file for
+this example, which contains the following code:
+<div  class="codebox">
+&lt;ourXMLdata&gt;
+  &lt;temp1Int&gt;~~#u00d~~&lt;/temp1Int&gt;
+  &lt;temp1Dec&gt;~~#u01d~~&lt;/temp1Dec&gt;
+  &lt;hum1Int&gt;~~#u02d~~&lt;/hum1Int&gt;
+  &lt;hum1Dec&gt;~~#u03d~~&lt;/hum1Dec&gt;
+&lt;/ourXMLdata&gt;
+
+</div>
+The JavaScript will load this XML file in the background, and use the Tags contained in it to refresh our
+AJAX values!
+The <b>"dataForSensDht()"</b> function in the JavaScript
+section of this file does the updating. It is currently configured to update every 1 second.
+This can be changed by modifying the setTimeout value.</p>
+</div>
+
+<script type="text/javascript">
+//var var1 = 0x~#u42w~;	//For testing only
+dataForSensDht();
+
+//Execute after page loads
+$(document).ready(function() {
+  var msg = "~#gc:name~";
+  if (msg != "NA")
+	$('#hello').html("Welcome, "+msg+"!");
+});
+
+//Function for updating Temperature and Humidity via AJAX
+function dataForSensDht() {
+  //Download sensor.xml in the backgound. Once done, use downloaded values to update
+  //temperature and humidity values on this page.
+  $.get('sensor.xml', function(xmlcontents) 
+  {
+    $('#temp1Int').html($(xmlcontents).find('temp1Int').text());
+    $('#temp1Dec').html($(xmlcontents).find('temp1Dec').text());
+    $('#hum1Int').html($(xmlcontents).find('hum1Int').text());
+    $('#hum1Dec').html($(xmlcontents).find('hum1Dec').text());
+
+	//Stop running auto update if page is not loaded any more
+	if (window.location.pathname.indexOf("sen_dht.htm") != -1) {
+        setTimeout("dataForSensDht()", 1000); //Set delay when AJAX data will be updated again.
+    }
+  });
+}</script>
+~#gf:footer.inc~

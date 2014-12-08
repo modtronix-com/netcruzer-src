@@ -1,0 +1,35 @@
+/** @defgroup proj_webserver_memmap		Memory Map
+
+@section proj_webserver_memmap_xeeprom External EEPROM Memory Map
+The external EEPROM is used to store application configuration data. The XEEMEM_USER_START_ADR and XEEMEM_USER_END_ADR
+defines should be used to get the address range available for user data. For the external EEPROM memory map, @ref proj_webserver_appconf_memmap "click here".
+
+@section proj_webserver_memmap_xflash External Flash
+The external Flash memory is used to store firmware, configuration and data tables.
+The start of the user space is given by the XFLASH_USER_SPACE_ADR define in code.
+User space is followed by the File System, which is located at the address given by the MPFS_RESERVE_BLOCK define.
+
+The user can use the space in external FLASH from XFLASH_USER_SPACE_ADR up till (MPFS_RESERVE_BLOCK - 1).
+To increase user space, increase the MPFS_RESERVE_BLOCK value. It is defined in the TCPIP_BOARDNAME.h file located in the "../Configs" folder.
+For example, for the SBC66EC Revision 2 board, it is defined in the "../Configs/TCPIP_SBC66EC-R2.h" file.
+
+The memory map for the external FLASH is:
+<table>
+<tr>
+<td><b>0x000000-0x085FFF</b><br>(549 KBytes)</td>
+<td>Used for firmware and configuration data.</td>
+</tr>
+<tr>
+<td><b>0x086000-0x086FFF</b><br>(4 KBytes)</td>
+<td>Default <b>User Space</b> that can be used by user application to store non volatile data.</td>
+</tr>
+<tr>
+<td><b>0x087000-0x3FFFFF</b><br>(3,641 KBytes)</td>
+<td>MPFS 2 File System, is used for storing web pages. In code this address range is defined by the MPFS_RESERVE_BLOCK and SPI_FLASH_SIZE defines.</td>
+</tr>
+</tr></table>
+*/
+
+
+
+

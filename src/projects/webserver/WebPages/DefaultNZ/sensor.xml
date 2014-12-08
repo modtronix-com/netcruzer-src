@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ourXMLdata>
+  <!-- DHT temp and humidity uses User Ram 0x00 and 0x02. See http://www.netcruzer.com/project-webserver-tags for info on Tags-->
+  <temp1Int>~#u00d~</temp1Int>
+  <temp1Dec>~#u01d~</temp1Dec>
+  <hum1Int>~#u02d~</hum1Int>
+  <hum1Dec>~#u03d~</hum1Dec>
+</ourXMLdata>

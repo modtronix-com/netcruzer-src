@@ -1,0 +1,14 @@
+Define all modules in this file. This will determine their order.
+/**
+@defgroup proj_webserver_build      Building the Project
+@defgroup proj_webserver_conf       Configuration
+@defgroup proj_webserver_cmdtag     Commands and Tags
+@defgroup proj_webserver_debug      Debugging
+@defgroup proj_webserver_hardware   Hardware
+@defgroup proj_webserver_int  		Interrupts
+@defgroup proj_webserver_memmap     Memory Map
+@defgroup proj_webserver_serport    Serial Data Ports
+@defgroup proj_webserver_update     Updating Firmware
+@defgroup proj_webserver_updateweb  Updating Webpages
+@defgroup proj_webserver_webpages   Webpages
+*/

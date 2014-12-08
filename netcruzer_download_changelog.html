@@ -1,0 +1,241 @@
+<html>
+<head>
+<title>Netcruzer Download Changelog</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head>
+
+<body style="font-family:Verdana, Arial; background-color:#fff; font-size:12px;">
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V2.03 - 2013 September 30</b>
+</div>
+Added support for iMod and Expansion boards, Buf fixes, Documentation.
+<div style="padding: 0px 0px 0px 5px;">
+<!-- =============== Project: netcruzer =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: Netcruzer Library</b>
+<br>Following changes were made to the "src/netcruzer" folder. Contains project independent code.
+</div>
+<ul>
+  <li>Added new asynchronous I2C Port 1 module.</li>
+  <li>Added support for expansion boards PT66ECI, PT66EI-10P, PT66EI-24P and PT66DIN6.</li>
+  <li>Added support for many new iMod modules.</li>
+  <li>Added reset debug reset command to nz_usbBuffered.c, allowing device to be reset from "Netcruzer USB Terminal".</li>
+  <li>Changed system tick to use TMR1, and reserved TMR1, TMR2 combination for future possible 32-bit tick implementation.</li>
+  <li>Added utick functions for getting 16 and 32-bit 1 us and 8 us tick counts.</li>
+  <li>Many other new functions, improvements and bug fixes.</li>
+</ul>
+<!-- =============== Project: projects/webserver - V1.05 =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver - V1.05</b>
+<br>Following changes were made to the "src/projects/webserver" project
+</div>
+<ul>
+    <li>Added Commands, <a href="http://www.netcruzer.com/project-webserver-cmd">click here</a> for details.</li>
+    <li>Added Tags, <a href="http://www.netcruzer.com/project-webserver-tags">click here</a> for details.</li>
+    <li>Many other new functions, improvements and bug fixes.</li>
+    <li>Uses new Netcruzer Library V2.03.</li>
+    <li>Fixed bug in I2C 1 module.</li>
+</ul>
+<!-- =============== Demos =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Demos</b>
+<br>Demo projects located in "src/demo" folder.
+</div>
+<ul>
+    <li>Added new demo projects, for full list see <a href="http://www.netcruzer.com/examples">www.netcruzer.com/examples</a></li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V2.02 - 2013 September 13</b>
+</div>
+Small changes to code, added Demo projects and documentation.
+<div style="padding: 0px 0px 0px 5px;">
+<!-- =============== Project: netcruzer =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: Netcruzer Library</b>
+<br>Following changes were made to the "src/netcruzer" folder. Contains project independent code.
+</div>
+<ul>
+  <li>Added documentation for Standard C libraries (located in "src/netcruzer/codedoc" folder).</li>
+</ul>
+<!-- =============== Demos =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Demos</b>
+<br>Demo projects located in "src/demo" folder.
+</div>
+<ul>
+    <li>Added new demo projects, for full list see <a href="http://www.netcruzer.com/examples">www.netcruzer.com/examples</a></li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V2.01 - 2013 August 16</b>
+</div>
+Huge changes to all projects! Complete rewrite of Netcruzer API (src/netcruzer/lib folder). Tested projects with new MPLAB X V1.85
+IDE, and XC16 V1.11 C Compiler.
+<div style="padding: 0px 0px 0px 5px;">
+<!-- =============== Project: microchip =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: microchip</b>
+<br>Following changes were made to the "src/microchip" folder. Contains Microchip Application Library (MAL) code.
+</div>
+<ul>
+    <li>Updated to latest Microchip Application Library v2013-02-15.</li>
+</ul>
+<!-- =============== Project: netcruzer =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: Netcruzer Library</b>
+<br>Following changes were made to the "src/netcruzer" folder. Contains project independent code.
+</div>
+<ul>
+    <li>Complete rewrite of the Netcruzer Library (formally "modtronix" folder). New code is located in "src/netcruzer/lib" folder.</li>
+	<li>Added support for new SBC66UAL and SBC66ZL boards. Configurations are now included in demo projects for these boards.</li>
+</ul>
+<!-- =============== Project: projects/webserver - V1.04 =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver - V1.04</b>
+<br>Following changes were made to the "src/projects/webserver" project
+</div>
+<ul>
+    <li>Many changes were made to integrate project with the new Netcruzer Library.</li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V1.03 - 2012 August 8</b>
+</div>
+This is a minor release. No new features were added to the Webserver project. All code was ported and
+tested on new XC16 compiler. The Webserver projects were merged into a single MPLAB X project. A new folder,
+"src/demos" was created, with many examples projects for using Netcruzer boards.
+<div style="padding: 0px 0px 0px 5px;">
+<!-- =============== Project: microchip =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: microchip</b>
+<br>Following changes were made to the "microchip" folder. Contains Microchip Application Library (MAL) code.
+</div>
+<ul>
+    <li>Updated to latest Microchip Application Library v2012-07-18.</li>
+</ul>
+<!-- =============== Project: modtronix =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: modtronix</b>
+<br>Following changes were made to the "modtronix" folder. Contains project independant code.
+</div>
+<ul>
+    <li>Updated files in "modtronix/board" to contain more board related information used by project.</li>
+    <li>Made many changes to library files contained in "modtronix/board", "modtronix/dev" and "modtronix/sys" folders. Changes were mainly
+	for adding library support for Analog/Digital Converter, Serial Buffers, System Tick, I2C, PWM, and LCD2S.</li>
+	<li>Created new folder "src/demos", containing many MPLAB X example projects for using "src/modtronix" libraries.</li>
+</ul>
+<!-- =============== Project: projects/webserver - V1.04 =============== -->
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver - V1.03</b>
+<br>Following changes were made to the "projects/webserver" project
+</div>
+<ul>
+    <li>Removed lots of code from the "./Configs/HWP_Xxx" files and placed it in the board files located in the "modtronix/board" folder.</li>
+    <li>Updated Webserver MPLAB X project to use configurations for different hardware. There is now just one MPLAB X project, with multiple
+		configurations.</li>
+    <li>Made some changes in appConfig.h and appConfig.c file required for new XC16 compiler.</li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V1.02 - 2012 July 12</b>
+</div>
+<div style="padding: 0px 0px 0px 5px;">
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver - V1.02</b>
+<br>Following changes were made to the "projects/webserver" project
+</div>
+<ul>
+    <li>Renamed all BRD_xxx defines to include board revision. For example, BRD_SBC66EC to BRD_SBC66EC_R1 and BRD_SBC66EC_R2.</li>
+    <li>Changed name of files in ./Configs folder to include revision number</li>
+    <li>Changed various other parts of code to support revision of board</li>
+</ul>
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/usb_hid_boot - V1.02</b>
+<br>Following changes were made to the "projects/usb_hid_boot" project
+</div>
+<ul>
+    <li>Renamed all BRD_xxx defines to include board revision. For example, BRD_SBC66EC to BRD_SBC66EC_R1 and BRD_SBC66EC_R2.</li>
+    <li>Changed name of files in ./Configs folder to include revision number</li>
+    <li>Changed various other parts of code to support revision of board</li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V1.01 - 2012 July 5</b>
+</div>
+<div style="padding: 0px 0px 0px 5px;">
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver - V1.01</b>
+<br>Following changes were made to the "projects/webserver" project
+</div>
+<ul>
+    <li>Changed line 2096 in HTTP2.c, as suggested on <a href="http://www.netcruzer.com/forum/index.php?topic=493.msg4736#msg4736">this page</a></li>
+    <li>Improved speed and optimized bufCircular and buffCircular modules</li>
+    <li>Added Packet and Streaming support bufCircular and buffCircular modules</li>
+    <li>Added Type information to bufCircular and buffCircular modules</li>
+    <li>Added code to cmd.h and cmd.c for receiving commands via circular buffers</li>
+    <li>Added code to cmd.h and cmd.c for receiving LCD commands</li>
+</ul>
+</div><br><br><br>
+
+
+
+<div style="background-color:#d8d8e0; border: 1px solid black; padding: 7px 20px; font-size:125%;">
+<b>Netcruzer Download V1.00 Beta - 2012 March 19</b>
+</div>
+<div style="padding: 0px 0px 0px 5px;">
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Netcruzer Shared Code</b>
+<br>Large parts of the Netcruzer Library consists of code from the "Microchip Application Library" (MAL).
+Some modifications have been made to the MAL. New Netcruzer specific code is located in the "modtronix"
+folder, and project folders.
+</div>
+<ul>
+    <li>Added support for Winbond Flash chips used in Netcruzer boards</li>
+    <li>Added secure Firmware upgrade functionality. When firmware is upgraded, new firmware is copied to the
+        external Flash chip. On next power up, the firmware of the SBC is updated with this new firmware.</li>
+    <li>Added code for upgrading firmware via the Web interface.</li>
+    <li>Added bootloader for upgrading firmware via USB application. To do this, jumper must be set to "F" when
+        applying power to board.</li>
+    <li>Added circular buffer (Serial Ports) code, can be used for sending and receiving serial data to/from serial
+        peripherals of the SBC. Lots of future code will use this function</li>
+    <li>Added secure mechanizm for storing and updating application configuration data in the extern EEPROM.
+        A duplicate copy is made of all data modified, ensuring that a power fail during modifications will
+        not cause configuration data to get currupted.</li>
+    <li>Modified HTTP and other code to support webpage uploading via the wget utility</li>
+</ul>
+<br><div style="background-color:#eee; border: 1px dashed black; padding: 1px 20px; font-size:110%;">
+<b>Project: projects/webserver </b>
+<br>Following changes were made to the "projects/webserver" project
+</div>
+<ul>
+    <li>Placed all webpages in "WebPages" folder. Each webpage has it's own folder in this folder</li>
+    <li>Added "Netbeans" folder in "WebPages" folder, with netbeans projects for each webpage</li>
+    <li>Created Ant scrips for selected webpages. These scripts can be used to compile and upload webpage</li>
+    <li>Uploading of web pages in Ant scrips uses wget utility</li>
+</ul>
+</div>
+
+
+
+</body>
+</html>
+

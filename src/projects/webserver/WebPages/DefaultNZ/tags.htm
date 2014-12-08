@@ -1,0 +1,38 @@
+~#gf:header.inc~
+<div id="content">
+
+<h1>Tags</h1>
+
+<p>Tags...</p>
+
+<div class="examplebox">
+<table align="center">
+<tr><td><b>Name:</b></td><td>~#gc:name~</td></tr>
+</table>
+</div>
+
+<p>There are numerous uses for tags....</p>
+
+<div class="examplebox">
+<table align="center">
+<tr><td><b>First Name:</b></td><td><input id="ckyName" type="text" name="name" size="20" maxlength="16" /></td></tr>
+<tr><td></td><td><input type="button" value="Set Cookie" onclick="setCookie('ckyName')"></input></td></tr>
+</table>
+</div>
+
+
+<script type="text/javascript">
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+
+/** Set given cookies*/
+function setCookie(c1) {
+  var arr = {};
+  arr[$("#"+c1).attr("name")] = $("#"+c1).val();
+   
+  //POST updated varChan to server
+  $.get( "nzcks.htm",arr);
+}
+</script>
+~#gf:footer.inc~

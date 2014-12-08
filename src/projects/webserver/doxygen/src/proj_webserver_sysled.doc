@@ -1,0 +1,37 @@
+/** @defgroup proj_webserver_sysled System LED
+@ingroup proj_webserver_hardware
+
+The system LED on the board indicates the state of the board, and the USB port.
+The flash pattern has a period of 1.6 seconds.
+
+<br>
+<h2>Normal mode, USB unplugged</h2>
+When the board is running normally, and the USB port is not plugged in, the LED
+will have one long flash, and one short flash every 1.6 seconds.
+<table border="0">
+<tr><td width="680px" align="center">1.6 Seconds (times below in ms)</td></tr>
+</table>
+<table><tr style="text-align:center; font-family: Arial; font-size:10px; font-weight:bold;">
+  <td bgcolor="gray" width="200px">500 Off</td>
+  <td bgcolor="red" width="200px">600 On</td>
+  <td bgcolor="gray" width="200px">500 Off</td>
+  <td bgcolor="red" width="40px">100 On</td>
+</tr></table>
+
+<br>
+<h2>Normal mode, USB plugged in</h2>
+When the board is running normally, and the USB port is plugged in and initialized, the LED
+will have one long flash, and two short flashes every 1.6 seconds.
+<table border="0">
+<tr><td width="640px" align="center">1.6 Seconds (times below in ms)</td></tr>
+</table>
+<table><tr style="text-align:center; font-family: Arial; font-size:10px; font-weight:bold;">
+  <td bgcolor="gray" width="160px">400 Off</td>
+  <td bgcolor="red" width="200px">500 On</td>
+  <td bgcolor="gray" width="160px">400 Off</td>
+  <td bgcolor="red" width="40px">100 On</td>
+  <td bgcolor="gray" width="40px">100 Off</td>
+  <td bgcolor="red" width="40px">100 On</td>
+</tr></table>
+*/
+

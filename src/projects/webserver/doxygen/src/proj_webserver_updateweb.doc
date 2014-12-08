@@ -1,0 +1,103 @@
+/** @defgroup proj_webserver_updateweb Updating Webpages
+@ingroup proj_webserver_webpages
+
+Web pages are written with standard HTML, and can contain JavaScript and other client side scripts. The default web pages at delivery
+are located in the ".../src/projects/webserver/WebPages/Default" folder of the @ref devtools_nz_download.
+To upload web pages to the SBC board, they are first compiled into a single "MPFS Image" file, and this file is then uploaded to the SBC board.
+There are a couple of ways to do this.
+
+
+@section proj_webserver_updateweb_browser Using a Browser
+<p>To upload the web pages with a browser, they must fist be compiled to a single MPFS Image file.
+See @ref proj_webserver_updateweb_mpfsimg section below for details on doing this. The MPFS Image
+file can be uploaded in one of the following ways:
+- In a web browser, enter the following address:
+  <br>http://mchpboard/mpfsupload<br>
+  Where "mchpboard" is the target board's NetBIOS or IP address (default is mchpboard). A web page will now
+  appear in the browser asking for the MPFS Image file. Browse to file, and upload it.
+  This method also works for target boards that have no web page loaded on them, and is a fail save method to
+  upload web pages regardless if the target contains valid web pages or not.
+- Enter the target board's address (default is http://mchpboard) in a web browser, and select "Upload Firmware
+  and Webpages" from menu on left. The page @ref proj_webserver_webpages_upload "shown here" will load. In
+  the section with the "Upload Web Pages" button browse to desired MPFS Image file, and upload it. After
+  refreshing your browser, it should now contain the new web pages.
+  
+If asked for the username and password, use the default which is admin and microchip.</p>
+
+
+
+@section proj_webserver_updateweb_mpfs Using the Modtronix Webpage Generator App
+@htmlonly
+<div class="floatDivR">
+    <img src="devtool_webpagegen.gif"/>
+    <div style="margin:5px;">&nbsp;Picture 1. Modtronix Webpage Generator</div>
+</div>
+@endhtmlonly
+<p>The @ref devtools_webpagegen application is used to create the MPFS Image and upload it to the target board. It can either be run directly, or
+by one of the script files, as described in the @ref proj_webserver_updateweb_script section below.
+The @ref devtools_webpagegen application is located in the "Webpage Generator" folder of the @ref devtools_nz_download. Double click
+the WebpageGenMPFS.jar file to start the application(requires @ref devtools_java). It can also be downloaded from our site, links
+are @ref devtools_webpagegen "located here".</p>
+<p>The main dialog consists of 4 sections. To compile and upload the default web pages, do the following:
+- <b>Source Settings:</b> Check the "Webpage Directory" check box, and browse to the ".../src/projects/webserver/WebPages/Default"
+		folder on your computer. This is a folder in the @ref devtools_nz_download you should have downloaded and unzipped.
+- <b>Processing Options:</b> Check the "BIN Image" check box. This instructs the application to generate a MPFS Image file.
+- <b>Output Files:</b> Browse to the Project Directory, which is the ".../src/projects/webserver" folder for this project. Give
+		it a name in the "Image Name" box. The folder name has been used for all Netcruzer web pages, which will be "Default" for these web pages.
+- <b>Upload Settings:</b> Click the "Settings" button in this section, and enter details of the target board. It is pre-configured
+		with the default settings for the SBC66EC board. The username and password is admin and microchip.
+</p>
+Once all details are entered, ensure your target board is connected to the network, and click on the "Generate and Upload" button.
+This will generate the MPFS Image file as specified in "Output Files" section of the app (Default.bin for this example), and
+upload it to the specified target board.
+@htmlonly
+<div class="clear"></div>
+@endhtmlonly
+
+
+
+@section proj_webserver_updateweb_script Using Scripts
+A couple of @ref devtools_ant and bat script files are provided in the ".../src/projects/webserver/WebPages"
+folder to help with creating and uploading web pages. The "Xxxx" part in the file names below represents the folder name containing the
+web pages, for example "Default" for the default web pages.
+
+- The "BuildXxxx.bat" scripts will create a MPFS Image for the given web page folder. For example, the "BuildDefault.bat"
+        script will create the "Default.img" MPFS Image file for the web page files contained in the "Default" folder.
+- The "BuildAndUploadXxxx.bat" scripts will create a MPFS Image for the given web page folder, and upload it to the target board.
+        The naming convention is the same as for the "BuildXxxx.bat" scripts described above.
+        The host address, username and password used to upload the MPFS Image file are given in the "dowebXxx.xml" and "build.properties"
+        @ref devtools_ant Script files.
+
+The scripts listed above use the "dowebXxx.xml" @ref devtools_ant Script files located in the same folder. For example,
+for the Default web pages located in the ".../src/projects/webserver/WebPages/Default" folder,
+the "BuildDefault.bat" and "BuildAndUploadDefault.bat" files use the "dowebDefault.xml" @ref devtools_ant Script file.
+
+
+
+
+@section proj_webserver_updateweb_mpfsimg Creating a MPFS Image
+As described above, the directory containing the web pages must be compiled into a single MPFS Image
+file before it can be uploaded to a target board. The methods described above create the MPFS Image
+file, and upload them to the target in a single step. Some times it is desirable to only create the MPFS
+Image file, for example to send it to customers so they can update their web pages. This can be done
+via the following methods:
+<h3>Using the Modtronix Webpage Generator App</h3>
+Follow instructions as given in @ref proj_webserver_updateweb_mpfs section above. In the <b>Upload Settings</b>
+section of the application, uncheck the check box. The "Generate and Upload" button will now change to "Generate",
+and will only create a MPFS Image file when clicked.
+<h3>Using Scripts</h3>
+The "BuildXxxx.bat" script files in the ".../src/projects/webserver/WebPages" folder will create MPFS Image files
+for different projects. For example, the "BuildDefault.bat" file will create the "Default.img" file for the
+".../src/projects/webserver/WebPages/Default" web page folder. These scripts use the "dowebXxx.xml" @ref devtools_ant
+Scripts located in the same folder.
+
+
+
+<!-- The following code causes the pictures listed below to be copied to the output folder -->
+<div class="hideElement">
+@image HTML devtool_webpagegen.gif
+</div>
+
+
+*/
+

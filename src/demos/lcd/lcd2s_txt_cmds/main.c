@@ -1,0 +1,134 @@
+/**
+ * @example lcd2s_txt_cmds/main.c
+ *
+ * <h2>===== Description =====</h2>
+ * This demo shows how to write text and commands to a LCD2S serial LCD display using the lcd2c.h and nz_lcd2s.c driver.
+ * It also flashes the system LED. To add LCD2S support to a project, the following must be done:
+ * - Add nz_lcd2s.c to the project, this is the main LCD2S driver file.
+ * - The following additional files are required by lcd2s.c, and must be added to the project:
+ *   nz_circularBufferPwr2.c, nz_helpers.c, nz_netcruzer.c and nz_serI2C.c
+ * - Add "HAS_SERPORT_I2C1" to projdefs.h file.
+ * - In code, initialize LCD2S. Ensure to delay 300ms from power up. For example:
+ *      delay_ms(300);
+ *      lcdInit();
+ * - In projdefs.h, do any LCD2S, I2C or other configuration required. This is done by copying the
+ *   configuration section from the *.h files to projdefs.h. Nothing required, defaults will work!
+ * - All done! Can now use lcd2c.h driver functions! For example, to write to LCD2S:
+ *      lcdDisplayString(0, "\fHello\nWorld, Again!");
+ *
+ * <h2>===== Required Hardware =====</h2>
+ * This project can be run on any of our <a href="http://netcruzer.com/products-sbc66-main/">SBC66 Netcruzer boards</a>. For prototyping, we recommend
+ * combining this board with a <a href="http://netcruzer.com/products-sbc66-prototype/">Prototyping Board</a>, like the PT66ECI for example. This
+ * low cost prototyping board makes all the I/O ports of the SBC66 board available via marked labels on the PCB. It also provides a reset and
+ * firmware button that simplifies prototyping.
+ *
+ * <h2>===== Building Project =====</h2>
+ * This project is located in the "src/demos/lcd/lcd2s_txt_cmds" folder of the <a target="_blank" href="http://netcruzer.com/nzdownload/">Netcruzer
+ * Download</a>. To compile for Netcruzer Board, open this project in MPLAB X, and select the "Project Configuration" for desired board. For
+ * example "SBC66ECL_R2" for the <a href="http://netcruzer.com/sbc66ecl.html">SBC66ECL</a> Revision 2 board.
+ * For details <a target="_blank" href="http://netcruzer.com/nz/doc/building_projects/">click here</a>
+ *
+ * <h2>===== Programming Board =====</h2>
+ * After compiling (build), the board can be programmed via the <a target="_blank" href="http://netcruzer.com/nz/doc/update_firmware_usb">
+ * USB Bootloader</a> or a <a target="_blank" href="http://netcruzer.com/nz/doc/update_firmware_prog">PIC Programmer</a>. USB Programming is
+ * simplified when using the SBC board together with a <a target="_blank" href="http://netcruzer.com/nz/doc/update_firmware_usb_pt66">Prototype Board</a>.
+ *
+ * <h2>===== File History =====</h2>
+ * 2012-08-08, David H. (DH):
+ *    - Initial version
+ *********************************************************************/
+#define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
+
+////////// Includes /////////////////////////////
+#include "HardwareProfile.h"            //Required for all Netcruzer projects
+#include "nz_serI2C.h"
+#include "nz_lcd2s.h"
+
+
+////////// Function Prototypes /////////////////////////////
+
+/**
+ * Main program entry point.
+ */
+int main(void)
+{
+    WORD tmrFlashLed = 0;  //16-bit, 1ms Timer. Used for flashing System LED
+    
+    //Default initialization. All ports inputs. All analog features disabled. Tick 1ms.
+    nzSysInitDefault();
+
+    DIR_SYSLED = 0; //Set System LED port as outputs. Setting DIR_xxx to 1 set's port to input, and 0 as output
+
+    //Initialize LCD2S display. To customize initialization, add defines from lcs2s.h (in header) to projdefs.h file.
+    //For details, see @ref lcd2s_conf
+    delay_ms(300);          //Give LCD2S time to initialize itself
+    lcdInit();
+
+
+    //Write Parsed String to LCD. See "Write Parsed String" command in LCD2S documentation (http://netcruzer.com/doc?lcd2s)
+    //for details. The '\f' character causes "clear screen and position cusor at home position".
+    lcdDisplayString(0, "\fHello\nWorld!");
+
+    lcdPutCmd(0, LCD2S_CMD_BACKLIGHT_OFF);      //Backlight off
+
+    delay_ms(1000);                             //Delay 1 second
+
+    lcdSetBacklight(0, 10);                     //Set backlight to 10 = very low light
+    lcdPutCmd(0, LCD2S_CMD_BACKLIGHT_ON);       //Turn Backlight on
+    lcdSetBacklight(0, 100);                    //Set backlight to 100 = about 40% (range is 0 - 255)
+
+    delay_ms(500);                              //Delay half a second
+
+    lcdSetCursorPosition(0, 2, 8);              //Set cursor behind the "World!" text on row 2 = column 8
+    lcdDisplayString(0, "Boo");                 //Write "Boo"
+
+    while(1)
+    {
+        nzSysTaskDefault();             //Main netcruzer task, call in main loop.
+        
+        //Flash system LED every 500ms
+        if (tick16TestTmr(tmrFlashLed)) {
+            tick16UpdateTmrMS(tmrFlashLed, 500); //Update timer to expire in 500ms again
+            LAT_SYSLED = !LAT_SYSLED;       //Toggle System LED
+
+            //LED is currently on
+            if (LAT_SYSLED) {
+                //Position cursor after "Boo", and put a '!' character
+                lcdSetCursorPosition(0, 2, 11);
+                lcdDisplayChar(0, '!');
+            }
+            //LED is currently off
+            else {
+                //Position cursor after "Boo", and put a blank character. This will delete the '!' character
+                lcdSetCursorPosition(0, 2, 11);
+                lcdDisplayChar(0, ' ');
+            }
+        }
+    }//end while
+
+    return 0;
+}//end main
+
+/** This function can be called to set a new startup screen for the LCD2S. The LCD2S will remember it for future power-ups*/
+void setStartupScreen(void) {
+    lcdSetStartupScreen(0, 1, "This is a very  ");  //For a 2x16 line LCD, ensure is 16 characters long - add to spaces to end!
+    lcdSetStartupScreen(0, 2, "cool LCD Display");
+}
+
+/** This function can be called to create a custom character. See LCD2S documentation for details. */
+void setCustomCharacter(void) {
+    //Create BYTE array with 10 bytes.
+    BYTE buf[] = {
+        LCD2S_CMD_DEFINE_CUSTOM_CHAR,   //First byte must be command
+        0,                              //Second byte is address of custom char to follow, a value from 0 to 7
+        0x55,                           //1st byte of custom character
+        0x55,                           //2nd byte of custom character
+        0x55,                           //3rd byte of custom character
+        0x55,                           //4th byte of custom character
+        0x55,                           //5th byte of custom character
+        0x55,                           //6th byte of custom character
+        0x55,                           //7th byte of custom character
+        0x55                            //8th byte of custom character
+    };
+    lcdDefineCustomChar(0, buf);
+}

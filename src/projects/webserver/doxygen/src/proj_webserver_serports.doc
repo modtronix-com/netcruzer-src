@@ -1,0 +1,8 @@
+/** @addtogroup proj_webserver_serport
+Serial Data Ports (SDP) is a term used in the Netcruzer Library for many different modules that use data serially. All serial communication
+ports, like the UARTs, I2C port, SPI Port, UDP Port, TCP Ports... are referred to as "Serial Data Port". There are also a couple of General
+purpose "Serial Data Port" that can be used in user applications. All "Serial Data Port" use @ref info_cirbuf "Circular Buffers" for
+transferring data.
+For details, see @ref info_serport section in main "Netcruzer Library API" documentation.
+*/
+

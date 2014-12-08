@@ -1,0 +1,7 @@
+/** @defgroup proj_webserver_ethernet Ethernet
+@ingroup proj_webserver_hardware
+
+The <i>@appname</i> has a 10/100 Mbit/sec Ethernet port, with Power Over Ethernet pins. The
+TCP/IP stack from the @ref devtools_mal is used.
+*/
+

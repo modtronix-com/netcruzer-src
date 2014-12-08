@@ -1,0 +1,8 @@
+<project name="ComileAndUploadWeb" default="default" basedir=".">
+
+    <!-- Default Task -->
+    <target name="default">
+        <ant dir="../../.." antfile="dowebDefault.xml" target="default" inheritAll="false"/>
+    </target>
+
+</project>

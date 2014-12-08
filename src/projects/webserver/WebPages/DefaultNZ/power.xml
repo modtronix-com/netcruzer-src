@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ourXMLdata>
+  <!-- See http://www.netcruzer.com/project-webserver-tags for info on Tags-->
+  <!-- Volage 1 to 12 uses User Memory Tag 0x00,0x02,...0x16 -->
+  <pwrV1>~#u00w~</pwrV1>
+  <pwrV2>~#u02w~</pwrV2>
+  <pwrV3>~#u04w~</pwrV3>
+  <pwrV4>~#u06w~</pwrV4>
+  <pwrV5>~#u08w~</pwrV5>
+  <pwrV6>~#u0Aw~</pwrV6>
+  <pwrV7>~#u0Cw~</pwrV7>
+  <pwrV8>~#u0Ew~</pwrV8>
+  <pwrV9>~#u10w~</pwrV9>
+  <pwrV10>~#u12w~</pwrV10>
+  <pwrV11>~#u14w~</pwrV11>
+  <pwrV12>~#u16w~</pwrV12>
+  <!-- Current 1 to 12 uses User Memory Tag 0x20,0x02,...0x36 -->
+  <pwrA1>~#u20w~</pwrA1>
+  <pwrA2>~#u22w~</pwrA2>
+  <pwrA3>~#u24w~</pwrA3>
+  <pwrA4>~#u26w~</pwrA4>
+  <pwrA5>~#u28w~</pwrA5>
+  <pwrA6>~#u2Aw~</pwrA6>
+  <pwrA7>~#u2Cw~</pwrA7>
+  <pwrA8>~#u2Ew~</pwrA8>
+  <pwrA9>~#u30w~</pwrA9>
+  <pwrA10>~#u32w~</pwrA10>
+  <pwrA11>~#u34w~</pwrA11>
+  <pwrA12>~#u36w~</pwrA12>
+  <!-- Temepetarure uses User Memory Tag 0x40-0x41 -->
+  <pwrTemp>~#u40w~</pwrTemp>
+  <!-- Channel enable registers, User Memory Tag 0x42=ch1-6, 0x43=ch7-12 -->
+  <pwrEn>~#u42w~</pwrEn>
+  
+</ourXMLdata>

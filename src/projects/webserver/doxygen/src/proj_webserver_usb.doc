@@ -1,0 +1,12 @@
+/** @defgroup proj_webserver_usb USB
+@ingroup proj_webserver_hardware
+
+The <i>@appname</i> has a USB port, implemented as a USB HID (Human Interface Device) Class device. All popular current operating systems
+include drivers for USB HID devices. This means no drivers have to be installed, the board is simply plugged into the host computer, and will work.
+The USB stack from the @ref devtools_mal is used.
+Currently the USB port is used for the following:
+- For @ref info_update_usb "Updating Firmware" via the USB Bootloader. The code for this is implemented by the @ref info_proj_usbboot "USB Bootloader" project.
+- For debugging and communicating with the firmware via the @ref devtools_nzUsbTerminal. This code is implemented by this project.
+
+*/
+

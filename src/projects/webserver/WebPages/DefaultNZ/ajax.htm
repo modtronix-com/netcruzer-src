@@ -1,0 +1,29 @@
+~#gf:header.inc~
+<div id="content">
+
+<h1>AJAX using jQuery</h1>
+<p>Currently AJAX is implemented on the <a href="/index.htm">Overview</a> page
+by using Microchip's custom JavaScript code. This will eventually be replaced by
+using the very popular jQuery JavaScript library. The jQuery library has been included
+with these web pages. The main.js JavaScript file contains new JavaScript code.</p>
+
+
+<p>The following table uses AJAX and jQuery to update the value of the system LED
+and Analog Input 1.</p>
+<table>
+	<tr>
+		<td>System LED: <span id="sysLed" /></td>
+	</tr>
+	<tr>
+		<td>Analog Input 1: <span id="AN0" /></td>
+	</tr>
+</table>
+</div>
+
+<script type="text/javascript">
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+dataForAjaxHtm();
+</script>
+~#gf:footer.inc~

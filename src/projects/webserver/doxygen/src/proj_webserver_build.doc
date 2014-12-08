@@ -1,0 +1,13 @@
+/** @defgroup proj_webserver_build Building the Project
+
+The @ref sbc66_sbc66ec and @ref sbc66_sbc66ecl are programmed with the Webserver Firmware at delivery.
+All source code for this project is available for free, and can be downloaded via the @ref devtools_nz_download.
+It is located in the "src/projects/webserver" folder of the download, along with @ref devtools_mplabx project files
+for editing and building the source code.
+
+For information on using @ref devtools_mplabx to build the project, and update the firmware, see @ref info_build
+and @ref info_update.
+
+For pre build binary versions of the latest firmware, <a target="_blank" href="http://www.netcruzer.com/nz/firmware.php">click here</a>.
+*/
+

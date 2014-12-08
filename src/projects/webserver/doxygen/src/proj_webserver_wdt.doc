@@ -1,0 +1,18 @@
+/** @defgroup proj_webserver_wdt Watchdog Timer
+
+The @ref sbc66_sbc66ec and @ref sbc66_sbc66ecl have the watchdog timer configured for 8 seconds (32 second on older hardware) by default.
+This means that the watchdog timer has to be cleared (using ClrWdt() command) at least every 8 seconds, or else a system reset will
+occur. This is done by the system in the nz_netcruzer.c file. Various flags are set in different places in code, and a check is done in 
+nz_netcruzer.c to see if all these flags are getting set. If not, the watchdog timer is not cleared, and the system is reset.
+
+To add custom checks to the watchdog timer logic, the following define can be added to the projdefs.h file:
+@code
+#define     NZSYS_WDT_CHECK_MAIN_FLAG           ( 1 )
+@endcode
+
+When defined, it is required that the "nzGlobals.wdtFlags.bits.main" flag be set every 8 seconds to prevent a system reset:
+@code
+nzGlobals.wdtFlags.bits.mainApp = 1;
+@endcode
+*/
+
