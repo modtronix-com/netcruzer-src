@@ -67,6 +67,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../../../../netcruzer/lib</Elem>
+    <Elem>../../../../netcruzer/drivers</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -175,7 +176,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -441,7 +442,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -707,7 +708,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -970,7 +971,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -1233,7 +1234,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

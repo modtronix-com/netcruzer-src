@@ -32,6 +32,8 @@
 #define INCLUDE_NETCRUZER_HEADERS
 #include "HardwareProfile.h"
 
+#if defined(HAS_NZ_PWM)
+
 #include "nz_pwm.h"
 
 
@@ -264,3 +266,5 @@ void pwmSetDutyCycle(BYTE chan, WORD dc) {
         regs_oc_[chan].OCxR = dc;
     }
 }
+
+#endif  //#if defined(HAS_NZ_PWM)

@@ -30,15 +30,14 @@
 #define THIS_IS_NZ_CIRCULAR_BUFFER_PWR2_C
 
 #include "HardwareProfile.h"
+
+#if defined(CIRBUF_USE_CIRCULAR_BUFFER_PWR2)
+
+#include "nz_circularBufferPwr2.h"
 #include "nz_helpers.h"
 #include "nz_helpersCx.h"
 #include "nz_interrupt.h"
 
-#include "nz_circularBuffer.h"
-#if !defined(CIRBUF_USE_CIRCULAR_BUFFER_PWR2)
-    #error "Configured to use wrong Circular Buffer! Ensure only 1 nz_circularBufferXxx.c file is included with project. Also ensure only one CIRBUF_USE_XXX macro is defined (projdefs.h), and it matches circular buffer *.c file included with project!"
-#endif
-#include "nz_circularBufferPwr2.h"
 
 //Add debugging to this file. The DEBUG_CONF_CIRCULAR_BUFFER macro sets debugging to desired level, and is configured in "Debug Configuration" section of projdefs.h file
 #if !defined(DEBUG_CONF_CIRCULAR_BUFFER)
@@ -69,7 +68,7 @@ void cbufInitDefault(CIRBUF* pBuf, BYTE* bufArray, WORD size)
 {
     //Check if size is power of 2 -AND- equal to or larger than 8
     //Report error if not 8,16,32,64,128,512,1024,2048,4096,8192,16384....
-    #if defined(DEBUGGING_ENABLED)
+    #if defined(HAS_NZ_DEBUGGING)
     if ( ((size & ~(size-1))!=size) || (size < 8)) {
         debugErrorFlags.bits.bCirbufSizeError = 1;
         size = 256;     //Set size to default value
@@ -105,7 +104,7 @@ void cbufInit(CIRBUF* pBuf, BYTE* bufArray, WORD size, BYTE typeFormat)
     //Default initialization
     cbufInitDefault(pBuf, bufArray, size);
 
-    #if defined(DEBUGGING_ENABLED)
+    #if defined(HAS_NZ_DEBUGGING)
         //Packets NOT supported
         #if defined(CIRBUF_DISABLE_PACKETS)
         if ( (typeFormat & 0x03) != 0) {
@@ -2682,3 +2681,5 @@ void cbufRemovePacket(CIRBUF* pBuf) {
 }
 
 #endif  //#if !defined(CIRBUF_DISABLE_PACKETS)
+
+#endif  //#if defined(CIRBUF_USE_CIRCULAR_BUFFER_PWR2)

@@ -41,14 +41,16 @@
  *********************************************************************/
 #define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
 
+#if defined(MODBUS_DEMO1)
+
 //Netcruzer include files
 #include "HardwareProfile.h"
+
 #include "main.h"
 #include "mainApp.h"
 #include "nz_serDataPorts.h"
 #include "nz_debounce.h"
 #include "nz_helpers.h"
-#include "nz_ow2482.h"
 #include "cmd.h"
 #include "demos/Modbus.h"       //Include file for modbus demo library
 
@@ -210,7 +212,7 @@ WORD processTag(BYTE* tag, WORD ref, BYTE* dest, BYTE user) {
 }
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.
@@ -233,3 +235,5 @@ void debugService(void) {
     }
 }
 #endif
+
+#endif  //#if defined(MODBUS_DEMO1)

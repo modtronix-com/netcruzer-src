@@ -30,6 +30,9 @@
 #define THIS_IS_NZ_IMOD_C
 
 #include "HardwareProfile.h"
+
+#if defined(HAS_IMOD)
+
 #include "nz_imod.h"
 
 /////////////////////////////////////////////////
@@ -194,5 +197,7 @@ BOOL imod_GetPin5(BYTE port) {
     return 0;
 }
 
+
+#endif  //#if defined(HAS_IMOD)
 
 #endif  //#if defined(IM2BL_ENABLE_MULTI_PORT_FUNCTIONS)

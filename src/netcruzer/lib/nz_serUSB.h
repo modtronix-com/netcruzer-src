@@ -28,8 +28,8 @@
 // -------------- USB Configuration (nz_serUSB.h) -----------------
 // *********************************************************************
 //System will initialize and manage a USB port. We have to add an implementation to project (like nz_serUSB.c)
-#define HAS_SERPORT_USB_HID
-//#define HAS_SERPORT_USB_CDC
+#define NZ_USBHID_ENABLE
+//#define NZ_USBCDC_ENABLE
 
 //If set to 1, the system LED is controlled by the nz_serUSB module
 #define USB_CONTROLS_SYSLED						( 1 )
@@ -122,9 +122,18 @@
 //Defines
 
 //USB "Serial Data Port"
+#if defined(NZ_USBHID_ENABLE) && !defined(HAS_SERPORT_USB_HID)
+    #define HAS_SERPORT_USB_HID
+#endif
+#if defined(NZ_USBCDC_ENABLE) && !defined(HAS_SERPORT_USB_CDC)
+    #define HAS_SERPORT_USB_CDC
+#endif
+#if defined(NZ_USBMIDI_ENABLE) && !defined(HAS_SERPORT_USB_MIDI)
+    #define HAS_SERPORT_USB_MIDI
+#endif
 #if defined(HAS_SERPORT_USB_HID) || defined(HAS_SERPORT_USB_CDC) || defined(HAS_SERPORT_USB_MIDI)
     #if !defined(HAS_A_SERPORT)
-    #define HAS_A_SERPORT
+        #define HAS_A_SERPORT
     #endif
 #endif
 

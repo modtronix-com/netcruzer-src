@@ -3,8 +3,7 @@
  *
  * <h2>===== Description =====</h2>
  * USB demo not using the system to do it all. This means all USB defines, includes and other code
- * must be done in our program, it is not done by the system. The NZSYS_DONT_MANAGE_USB define must be added
- * to the projdefs.h file.
+ * must be done in our program, it is not done by the system.
  * This demo monitors the USB port for any Debug messages.
  * <br>- If "hi" is received, it replies with "Hello"
  * <br>- If "hello" is received, it replies with "G'Day Mate!"

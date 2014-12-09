@@ -25,6 +25,7 @@
 // ------------ Debounce Configuration (from nz_debounce.h) -------------
 // *********************************************************************
 //Define functions for reading each port's value.
+#define NZ_DEBOUNCE_ENABLED
 #define DEBOUNCE_GET_PORT1()    (!PIN_32)
 #define DEBOUNCE_GET_PORT2()    (!PIN_33)
 

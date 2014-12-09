@@ -73,6 +73,7 @@
 #ifndef DB66DEV1_H
 #define DB66DEV1_H
 
+#if defined(XBRD_DB66DEV1)
 
 /////////////////////////////////////////////////
 // Buttons
@@ -223,5 +224,6 @@ BYTE db66dev1_ReadLeds(void);
  */
 void db66dev1_Service();
 
+#endif  //#if defined(XBRD_DB66DEV1)
 
 #endif

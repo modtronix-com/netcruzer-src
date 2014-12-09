@@ -30,9 +30,9 @@
 #define THIS_IS_NZ_DEBOUNCE_C
 
 #include "HardwareProfile.h"
-#include "nz_debounce.h"
 
-#if defined(NZ_DEBOUNCE_ENABLE)
+#if defined(NZ_DEBOUNCE_ENABLED)
+#include "nz_debounce.h"
 
 //Add debugging to this file. The DEBUG_CONF_DEBOUNCE macro sets debugging to desired level, and is configured in "Debug Configuration" section of projdefs.h file
 #if !defined(DEBUG_CONF_DEBOUNCE)
@@ -248,5 +248,5 @@ BYTE portService(BYTE port, BYTE state) {
     return state;
 }
 
-#endif  //#if defined(NZ_DEBOUNCE_ENABLE)
+#endif  //#if defined(NZ_DEBOUNCE_ENABLED)
 

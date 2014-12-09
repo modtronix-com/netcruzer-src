@@ -33,9 +33,9 @@
 // *********************************************************************
 // --------------- Debug Configuration (nz_debug.h) --------------------
 // *********************************************************************
-#define DEBUG_USE_USBHID
-//#define DEBUG_USE_USBCDC
-//#define DEBUG_USE_UART1
+#define NZ_USBHID_DEBUG_ENABLE
+//#define NZ_USBCDC_DEBUG_ENABLE
+//#define NZ_UART1_DEBUG_ENABLE
 
 //Uncomment this line to disable all debugging!
 //#define DEBUG_LEVEL_ALLOFF
@@ -56,7 +56,7 @@
 // *********************************************************************
 // -------------- USB Configuration (nz_serUSB.h) -----------------
 // *********************************************************************
-#define HAS_SERPORT_USB_HID
+#define NZ_USBHID_ENABLE
 
 //If set to 1, the system LED is controlled by the nz_serUSB module
 #define USB_CONTROLS_SYSLED						( 1 )

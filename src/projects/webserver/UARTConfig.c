@@ -52,7 +52,7 @@
 
 #include "TCPIPConfig.h"
 
-#if defined(STACK_USE_UART)
+#if defined(STACK_USE_UART) && defined(NZ_UARTCONFIG_ENABLE)
 
 #include "TCPIP Stack/TCPIP.h"
 #include "mainApp.h"
@@ -356,4 +356,4 @@ static BOOL DownloadMPFS(void)
 }
 #endif    // #if defined(MPFS_USE_EEPROM) && defined(STACK_USE_MPFS2)
 
-#endif //#if defined(STACK_USE_UART)
+#endif //#if defined(STACK_USE_UART) && defined(NZ_UARTCONFIG_ENABLE)

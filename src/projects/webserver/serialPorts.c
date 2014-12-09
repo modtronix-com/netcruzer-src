@@ -51,7 +51,7 @@
 ////////// Variables ////////////////////////////
 extern BYTE serportDummyBuf[BUFFER_DUMMY_SIZE];
 
-#if defined(HAS_SERPORT_DEBUG)
+#if defined(HAS_NZ_DEBUGGING)
     //Create TX and RX buffers
     BYTE bufTxDebug[DEBUG_TXBUF_SIZE];
     BYTE bufRxDebug[DEBUG_RXBUF_SIZE];
@@ -95,7 +95,7 @@ void serDefaultInit(void) {
 
     /////////////////////////////////////////////////
     //Initialize all defined SERPORT pointers in nzGlobals.
-    #if defined(HAS_SERPORT_DEBUG)
+    #if defined(HAS_NZ_DEBUGGING)
         serports.debug.flagVal = (SERPORT_STAT_ENABLED | SERPORT_TYPE_SOFTWARE);
         nzGlobals.serDebug = (SERPORT*)&serports.debug;
     #endif
@@ -291,7 +291,7 @@ void serDefaultInit(void) {
     //Allocate space for all buffers contained in the (enabled) "Serial Data Ports"
     //"Serial Data Ports" that are disabled are assigned to dummy "Serial Data Port" above
     if ((p = (BYTE *)NZ_MALLOC(totalBufSize)) != NULL) {
-        #if defined(DEBUGGING_ENABLED)
+        #if defined(HAS_NZ_DEBUGGING)
         debugErrorFlags.bits.bSerPortMemAllocFail = 0;
         #endif
         ppSerport = (SERPORT**)(&NZ_GLOBALS_SERPORT_FIRST);
@@ -310,7 +310,7 @@ void serDefaultInit(void) {
         } while(ppSerport++ != (SERPORT**)(&NZ_GLOBALS_SERPORT_LAST));
     }
     else {
-        #if defined(DEBUGGING_ENABLED)
+        #if defined(HAS_NZ_DEBUGGING)
         //ERROR - could not allocate enough memory!
         debugErrorFlags.bits.bSerPortMemAllocFail = 1;
         #endif

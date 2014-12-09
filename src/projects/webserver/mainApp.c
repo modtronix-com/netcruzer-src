@@ -474,11 +474,11 @@ void mainAppTask(void) {
 
     if (inTask.bits.MicrochipDemo == FALSE) {
         inTask.bits.MicrochipDemo = TRUE;
-        #if defined(STACK_USE_SMTP_CLIENT)
+        #if defined(STACK_USE_SMTP_CLIENT) && defined(ENABLE_SMTP_DEMO)
         SMTPDemo();
         #endif
 
-        #if defined(STACK_USE_ICMP_CLIENT)
+        #if defined(STACK_USE_ICMP_CLIENT) && defined(ENABLE_PING_DEMO)
         PingDemo();
         #endif
     }

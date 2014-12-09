@@ -31,7 +31,7 @@
 
 #include "HardwareProfile.h"
 
-#if defined(XBRD_PT66ECI_REV1)
+#if defined(XBRD_PT66ECI)
 
 #include "nz_pt66eci.h"
 
@@ -48,4 +48,4 @@ void pt66eci_Init() {
     //TODO
 }
 
-#endif  //#if defined(XBRD_PT66ECI_REV1)
+#endif  //#if defined(XBRD_PT66ECI)

@@ -31,6 +31,10 @@
 
 #define INCLUDE_NETCRUZER_HEADERS
 #include "HardwareProfile.h"
+
+#if defined(THIS_IS_NZ_NETCRUZER_C)     //This file is included from netcruzer.c
+#if !defined(NZSYS_DONT_MANAGE_TICK) && defined(NZSYS_ENABLE_COMPLEX_TICK)
+
 #include "nz_tickCx.h"
 #include "GenericTypeDefs.h"
 #include "nz_interrupt.h"
@@ -445,4 +449,5 @@ WORD tick32Get_8us(void) {
 
 }
 
-
+#endif  //#if !defined(NZSYS_DONT_MANAGE_TICK) && defined(NZSYS_ENABLE_COMPLEX_TICK)
+#endif  //#if defined(THIS_IS_NZ_NETCRUZER_C)

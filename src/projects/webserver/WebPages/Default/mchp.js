@@ -1,6 +1,5 @@
-// Copyright © 2002-2010 Microchip Technology Inc.  All rights reserved.
+// Copyright 2002-2010 Microchip Technology Inc.  All rights reserved.
 // See Microchip TCP/IP Stack documentation for license information.
-
 
 // Determines when a request is considered "timed out"
 var timeOutMS = 5000; //ms
@@ -25,22 +24,22 @@ function newAJAXCommand(url, container, repeat, data)
 	
 	// Create and send the request
 	if(window.XMLHttpRequest) {
-        newAjax.ajaxReq = new XMLHttpRequest();
-        newAjax.ajaxReq.open((data==null)?"GET":"POST", newAjax.url, true);
-        newAjax.ajaxReq.send(data);
-    // If we're using IE6 style (maybe 5.5 compatible too)
-    } else if(window.ActiveXObject) {
-        newAjax.ajaxReq = new ActiveXObject("Microsoft.XMLHTTP");
-        if(newAjax.ajaxReq) {
-            newAjax.ajaxReq.open((data==null)?"GET":"POST", newAjax.url, true);
-            newAjax.ajaxReq.send(data);
-        }
-    }
+		newAjax.ajaxReq = new XMLHttpRequest();
+		newAjax.ajaxReq.open((data==null)?"GET":"POST", newAjax.url, true);
+		newAjax.ajaxReq.send(data);
+	// If we're using IE6 style (maybe 5.5 compatible too)
+	} else if(window.ActiveXObject) {
+		newAjax.ajaxReq = new ActiveXObject("Microsoft.XMLHTTP");
+		if(newAjax.ajaxReq) {
+			newAjax.ajaxReq.open((data==null)?"GET":"POST", newAjax.url, true);
+			newAjax.ajaxReq.send(data);
+		}
+	}
     
-    newAjax.lastCalled = theTimer.getTime();
+	newAjax.lastCalled = theTimer.getTime();
     
-    // Store in our array
-    ajaxList.push(newAjax);
+	// Store in our array
+	ajaxList.push(newAjax);
 }
 
 // Loops over all pending AJAX events to determine if any action is required
@@ -66,8 +65,8 @@ function pollAJAX() {
 				document.getElementById(curAjax.container).innerHTML = curAjax.ajaxReq.responseText;
 			} // (otherwise do nothing for null values)
 			
-	    	curAjax.ajaxReq.abort();
-	    	curAjax.ajaxReq = null;
+			curAjax.ajaxReq.abort();
+			curAjax.ajaxReq = null;
 
 			// If it's a repeatable request, then do so
 			if(curAjax.repeat)
@@ -85,8 +84,8 @@ function pollAJAX() {
 				alert("Command failed.\nConnection to development board was lost.");
 			}
 
-	    	curAjax.ajaxReq.abort();
-	    	curAjax.ajaxReq = null;
+			curAjax.ajaxReq.abort();
+			curAjax.ajaxReq = null;
 			
 			// If it's a repeatable request, then do so
 			if(curAjax.repeat)
@@ -100,7 +99,6 @@ function pollAJAX() {
 	
 	// Call ourselves again in 10ms
 	setTimeout("pollAJAX()",10);
-	
 }
 			
 // Parses the xmlResponse returned by an XMLHTTPRequest object

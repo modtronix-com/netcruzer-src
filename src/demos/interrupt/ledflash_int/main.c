@@ -34,6 +34,10 @@
 // Include Files
 #include "HardwareProfile.h"            //Required for all Netcruzer projects
 
+//Dummy tick_val and tickInit() function
+volatile DWORD_VAL tick_val;
+void tickInit(void) {}
+
 /**
  * Timer 1 Interrupt Service Routine (ISR). This function is executed each time a Timer 1 interrupt
  * occurs.

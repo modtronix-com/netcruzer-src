@@ -103,6 +103,7 @@
 #ifndef PT66DIN6_H
 #define PT66DIN6_H
 
+#if defined(XBRD_PT66DIN6)
 
 // *********************************************************************
 // ------------------------- iMod Port 1 Defines -----------------------
@@ -347,5 +348,7 @@ void pt66din6_Init();
  */
 void pt66din6_Service();
 
+
+#endif  //#if defined(XBRD_PT66DIN6)
 
 #endif

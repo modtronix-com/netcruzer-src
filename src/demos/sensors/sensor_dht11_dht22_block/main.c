@@ -103,9 +103,9 @@ int main(void) {
 
     //DHT22 Initialization. 
     //sensDht_init(IOPORT_ID_NA, 0);    //No power switch
-    sensDht_init(1, 0);         //Power switch = 1 (old port name X1), not inverted
-    sensDht_addSensor(7);      //Initialize port 7 (old port name X7) as a DHT sensor input
-    sensDht_addSensor(8);      //Initialize port 7 (old port name X7) as a DHT sensor input
+    sensDht_init(3000, 1, 0);       //Power switch = 1 (old port name X1), not inverted
+    sensDht_addSensor(7);           //Initialize port 7 (old port name X7) as a DHT sensor input
+    sensDht_addSensor(8);           //Initialize port 7 (old port name X7) as a DHT sensor input
 
     delay_ms(120);              //Wait for DHT22 to settle
 
@@ -171,7 +171,7 @@ int main(void) {
 }
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

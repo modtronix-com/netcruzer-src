@@ -52,7 +52,7 @@
 
 #include "TCPIPConfig.h"
 
-#if defined(STACK_USE_ICMP_CLIENT)
+#if defined(STACK_USE_ICMP_CLIENT) && defined(ENABLE_PING_DEMO)
 
 #include "TCPIP Stack/TCPIP.h"
 #include "mainApp.h"

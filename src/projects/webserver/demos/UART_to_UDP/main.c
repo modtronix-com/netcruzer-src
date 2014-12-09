@@ -39,6 +39,8 @@
  *********************************************************************/
 #define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
 
+#if defined(UART_TO_UDP_DEMO1)
+
 //Netcruzer include files
 #include "HardwareProfile.h"
 #include "main.h"
@@ -411,7 +413,7 @@ WORD processTag(BYTE* tag, WORD ref, BYTE* dest, BYTE user) {
 }
 
 
-#if defined(DEBUGGING_ENABLED) && (HAS_DEMO_DEBUG_HANDLER == 1)
+#if defined(HAS_NZ_DEBUGGING) && (HAS_DEMO_DEBUG_HANDLER == 1)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.
@@ -439,3 +441,5 @@ void demoDebugService(void) {
     }
 }
 #endif
+
+#endif  //#if defined(UART_TO_UDP_DEMO1)

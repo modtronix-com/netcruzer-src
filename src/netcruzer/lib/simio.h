@@ -1,3 +1,5 @@
+#if !defined(NZSYS_DISABLE_STDIO_WRITE)
+
 #ifndef _FD_INVALID
 #define _FD_INVALID (-1)
 #endif
@@ -78,3 +80,5 @@ typedef struct tagSIMIO
 }
     SIMIO, *PSIMIO;
 #endif
+
+#endif  //#if !defined(NZSYS_DISABLE_STDIO_WRITE)

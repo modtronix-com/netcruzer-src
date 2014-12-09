@@ -555,7 +555,7 @@ void serUartTask(UART_INFO* objUART) {
                 return;
             }
 
-            nzGlobals.wdtFlags.bits.serUart = 1;     //Indicate that this module is still alive, and clear WDT
+            nzGlobals.wdtFlags.bits.serUART = 1;     //Indicate that this module is still alive, and clear WDT
 
             //Is there data to transmit
             if (cbufHasData(objUART->pCbufTx)) {

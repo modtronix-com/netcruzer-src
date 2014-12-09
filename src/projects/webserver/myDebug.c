@@ -73,7 +73,7 @@ void demoDebugService(void);
 #endif
 
 
-#if defined(HAS_SERPORT_DEBUG)
+#if defined(HAS_NZ_DEBUGGING)
 
 ////////// Defines //////////////////////////////
 #if !defined(HAS_DEMO_DEBUG_HANDLER)
@@ -627,6 +627,6 @@ void debugPrintIP(void) {
     debugPutByte(AppConfig.MyIPAddr.v[3]);
 }
 
-#endif  //#if defined(HAS_SERPORT_DEBUG)
+#endif  //#if defined(HAS_NZ_DEBUGGING)
 
 

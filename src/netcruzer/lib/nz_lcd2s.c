@@ -33,6 +33,8 @@
 #define INCLUDE_NETCRUZER_HEADERS
 #include "HardwareProfile.h"
 
+#if defined(NZ_LCD2S_ENABLED)
+
 #include "nz_lcd2s.h"
 #include "nz_serI2C.h"
 #include "nz_tick.h"
@@ -869,10 +871,4 @@ INT8 lcdDrawVertBargraph(BYTE lcdNum, BYTE row, BYTE col, BYTE height) {
     return 0;
 }
 
-
-
-
-
-
-
-
+#endif  //#if defined(NZ_LCD2S_ENABLED)

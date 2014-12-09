@@ -29,7 +29,7 @@
 #define    I2C_LISTENERS 4          //[-DEFAULT-]
 
 //---- Enable I2C1 as a "Serial Data Port" ----
-#define HAS_SERPORT_I2C1
+#define NZ_I2C1_ENABLE
 
 //I2C1 Interrupt priority, a value from 0 to 7. 0 will disable interrupt, 7 is highest priority.
 #define    nzINT_PRIORITY_I2C1 3      //[-DEFAULT-]
@@ -50,7 +50,7 @@
 #define I2C1_TIMEOUT 200            //[-DEFAULT-]
 
 //---- Enable I2C2 as a "Serial Data Port" ----
-//#define HAS_SERPORT_I2C2
+//#define NZ_I2C2_ENABLE
 
 //I2C2 Interrupt priority, a value from 0 to 7. 0 will disable interrupt, 7 is highest priority.
 #define    nzINT_PRIORITY_I2C2 4      //[-DEFAULT-]
@@ -70,7 +70,7 @@
  *   to the projdefs.h file.
  * - In this "Configuration" section, enable required I2C ports. For example to enable I2C 1, ensure following is uncommented:
  @code
- #define HAS_SERPORT_I2C1
+ #define NZ_I2C1_ENABLE
  @endcode
  * - In this "Configuration" section, change any default values if required (if default
  *   values should be used, define is not required in projdefs.h).
@@ -471,6 +471,8 @@ The following characters will be added to the buffer<br>
 
 #ifndef NZ_SERI2C_H
 #define NZ_SERI2C_H
+
+#if defined(HAS_SERPORT_I2C)
 
 #include "nz_circularBuffer.h"
 
@@ -1592,4 +1594,5 @@ BYTE i2c1ReadSlaveReg(BYTE adr, BYTE reg, BYTE* buf, BYTE size);
 
 #endif  //#if defined(HAS_SERPORT_I2C1)
 
+#endif  //#if defined(HAS_SERPORT_I2C)
 #endif  //#ifndef NZ_SERI2C_H

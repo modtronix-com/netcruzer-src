@@ -105,7 +105,7 @@ int main(void) {
     }
 }
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

@@ -114,8 +114,9 @@
 #ifndef _NZ_TICK_CX_H_
 #define _NZ_TICK_CX_H_
 
-#include "nz_tick.h"
+#if !defined(NZSYS_DONT_MANAGE_TICK)
 
+#include "nz_tick.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // 16-bit, 256ms tick functions
@@ -202,5 +203,5 @@ BYTE tick8Get_16ms(void);
  */
 #define tick8Get_256ms() (tick_val.v[1])
 
-
+#endif  //#if !defined(NZSYS_DONT_MANAGE_TICK)
 #endif  //end of #define _NZ_TICK_CX_H_

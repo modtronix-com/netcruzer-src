@@ -13,7 +13,7 @@
  * - Add nz_ds2482.c to the project, this is the main DS2482 driver file.
  * - The following additional files are required by nz_ds2482.c, and must be added to the project:
  *   nz_circularBufferPwr2.c, nz_helpers.c, nz_netcruzer.c and nz_serI2C.c
- * - Add "HAS_SERPORT_I2C1" to projdefs.h file (assuming the DS2482 is on I2C 1).
+ * - Add "NZ_I2C1_ENABLE" to projdefs.h file (assuming the DS2482 is on I2C 1).
  * - In code, create a DS2482_INFO structure for each DS2482, and initialize. For example:
  *     DS2482_INFO objDS2482;
  *     ds2482_init(&objDS2482, 1, DS2482_ADDRESS_00); //Initialize using I2C 1, and DS2482 AD0 and AD1 = 0
@@ -231,7 +231,7 @@ void printAll_DS18B20(DS2482_INFO* pObj, BOOL parasitePower) {
 }
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

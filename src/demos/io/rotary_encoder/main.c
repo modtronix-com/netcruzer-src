@@ -42,6 +42,8 @@
 // Includes /////////////////////////////////////
 #include "HardwareProfile.h"    //Required for all Netcruzer projects
 #include "nz_encIncRot.h"       //Rotary Encoder driver
+#include "nz_interrupt.h"
+#include <ports.h>
 
 //Add debugging, and define debugging level. Is a DEBUG_LEVEL_xx define. Set to DEBUG_LEVEL_OFF to disable.
 #define MY_DEBUG_LEVEL   DEBUG_LEVEL_INFO
@@ -84,7 +86,7 @@ int main(void) {
     //Configure the interrupt on change for encoder channel A (Port 8 - old port name X8) only!
     intOnChangeConfig(INT_ENABLE|INT_PRI_4);	//Enable Interrupt on chagne at Int Priority level 4
     intOnChangeClearIF();                       //Clear "interrupt on change" IF (interrupt flag)
-    intOnChangeEnablePort(8);    	//Enable "interrupt on change" for Channel A = Port 8 (old port name X8)
+    intOnChangeEnablePort(8);    	            //Enable "interrupt on change" for Channel A = Port 8 (old port name X8)
 
     //Main loop
     while(1)
@@ -120,7 +122,7 @@ int main(void) {
     }//end while
 }
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

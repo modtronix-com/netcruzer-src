@@ -32,7 +32,6 @@
 #define INCLUDE_NETCRUZER_HEADERS
 #include "HardwareProfile.h"
 #include "nz_netcruzer.h"
-#include "nzos_main.h"
 
 #if !defined(NZSYS_DISABLE_STDIO_WRITE)
 #include "nz_debug.h"
@@ -43,7 +42,9 @@
 #include "nz_debounce.h"
 
 //RTC
+#if defined(HAS_NZ_RTC)
 #include "nz_rtc.h"
+#endif
 
 //I2C includes
 #if (defined(HAS_SERPORT_I2C1) || defined(HAS_SERPORT_I2C2) || defined(HAS_SERPORT_I2C3)) && !defined(NZSYS_NO_SERI2C_H_FILES)
@@ -51,7 +52,7 @@
 #endif
 
 //USB includes
-#ifdef NZSYS_MANAGE_USB
+#if defined(HAS_SERPORT_USB)
     #include "USB\usb.h"
     #if defined(USB_IS_CDC)
         #include "USB\usb_function_cdc.h"
@@ -83,14 +84,7 @@
         #endif
     #endif  //#ifndef NZSYS_DONT_MANAGE_TICK
 
-    #include "nz_board.c"
 #endif  //#ifndef NZSYS_DONT_INCLUDE_C_FILES
-
-#ifdef NZSYS_ENABLE_LCD2S_AND_I2C1
-    #include "nz_i2c1.c"
-    #include "nz_lcd2s.c"
-#endif
-
 
 
 //Defines ///////////////////////////////////////
@@ -144,7 +138,6 @@ GLOBAL_DEFS nzGlobals;
  * - Configures all ports as Digital Inputs
  * - Disables all analog port functions
  * - Initializes tick (default Tick uses Timer 3, and for 1ms).
- * - includes "nz_delay.c"
  * - Initialize the Netcruzer RTOS if enabled
  */
 void nzSysInitDefault(void)
@@ -183,7 +176,7 @@ void nzSysInitDefault(void)
 
 //    //Debugging must be initialized AS SOON AS port used by debugging has been initialized!
 //    //USB HID was just inititialized above. If debugging uses USB HID, call debugInit() now
-//    #if !defined(NZSYS_DEBUG_INIT_CALLED) && defined(NZSYS_MANAGE_DEBUG) && defined(DEBUG_USE_USBHID)
+//    #if !defined(NZSYS_DEBUG_INIT_CALLED) && defined(NZSYS_MANAGE_DEBUG) && defined(HAS_USBHID_DEBUGGING)
 //        #define NZSYS_DEBUG_INIT_CALLED     //Mark debugInit() has already been called
 //        debugInit();
 //    #endif
@@ -215,8 +208,8 @@ void nzSysInitDefault(void)
     //Initialize Tick Library, regardless if NZSYS_DONT_MANAGE_TICK is defined or not.
     //If NZSYS_DONT_MANAGE_TICK is defined, we don't include the c implementation file on top
     tickInit();
-
     tmrNzTask = tick16Get() + tick16ConvertFromMS(600); //Startup delay of 600mS
+    
 
     //Call after Debug, Global and Tick initialization
     #if defined(NZSYS_CALL_INITIALIZE_BOARD)
@@ -231,7 +224,7 @@ void nzSysInitDefault(void)
 
     /////////////////////////////////////////////////
     //USB, and Debug if it uses USB
-//    #ifdef NZSYS_MANAGE_USB
+//    #if defined(HAS_SERPORT_USB)
 //    usbInit();
 //    #endif
 
@@ -249,12 +242,12 @@ void nzSysInitDefault(void)
     #endif
 
     //Initialize RTC module
-    #if (NZ_RTC_ENABLED == 1) && !defined(NZSYS_DONT_MANAGE_RTC)
+    #if defined(HAS_NZ_RTC)
     rtcInit();
     #endif
 
     //Initialize Debounce module
-    #if defined(NZ_DEBOUNCE_ENABLE) && !defined(NZSYS_DONT_MANAGE_DEBOUNCE)
+    #if defined(NZ_DEBOUNCE_ENABLED)
     debounceInit();
     #endif
 
@@ -305,14 +298,14 @@ void nzSysTaskDefault(void)
     #endif
 
     //Enter every NETCRUZER_SYSTEM_TASK_TIME
-     if (tick16TestTmr(tmrNzTask)) {
+    if (tick16TestTmr(tmrNzTask)) {
         tick16UpdateTmrMS(tmrNzTask, NETCRUZER_SYSTEM_TASK_TIME); //Update timer to expire in 1ms (NETCRUZER_SYSTEM_TASK_TIME)
 
         // Every 10ms ///////////////////////////////////
         if(taskCount10ms-- == 0) {
             taskCount10ms=9;
 
-            #if defined(HAS_SERPORT_USB_HID) && defined(NZSYS_MANAGE_USB)
+            #if defined(HAS_SERPORT_USB_HID)
                 #if defined(USB_INTERRUPT)
                 if (USB_BUS_SENSE && (USBGetDeviceState() == DETACHED_STATE)) {
                     if (inTask.bits.USBDeviceAttach == FALSE) {
@@ -326,7 +319,7 @@ void nzSysTaskDefault(void)
 
             // Every 20ms ///////////////////////////////////
             if (taskCount10ms&0x01) {
-                #if defined(NZ_DEBOUNCE_ENABLE) && !defined(NZSYS_DONT_MANAGE_DEBOUNCE)
+                #if defined(NZ_DEBOUNCE_ENABLED)
                     #if (DEBOUNCE_SERVICE_TIME!=20)
                     #error "Debounce service time not supported!"
                     #endif
@@ -363,22 +356,23 @@ void nzSysTaskDefault(void)
         //}
 
         // Every 1ms ////////////////////////////////////
-     }
+    }
 
 
     #if !defined(NZSYS_DONT_MANAGE_SERPORT) && defined(HAS_A_SERPORT)
     serTask();
     #endif
 
-    #ifdef NZSYS_ENABLE_LCD2S_AND_I2C1
-    if (inTask.bits.lcd2sTask == FALSE) {
-        inTask.bits.lcd2sTask = TRUE;
-        lcd2sTask();
-        inTask.bits.lcd2sTask = FALSE;
-    }
-    #endif
+//  !!!!! This is broken, fix !!!!!    
+//    #ifdef NZSYS_ENABLE_LCD2S_AND_I2C1
+//    if (inTask.bits.lcd2sTask == FALSE) {
+//        inTask.bits.lcd2sTask = TRUE;
+//        lcd2sTask();
+//        inTask.bits.lcd2sTask = FALSE;
+//    }
+//    #endif
 
-    #if defined(HAS_SERPORT_USB_HID) && defined(NZSYS_MANAGE_USB)
+    #if defined(HAS_SERPORT_USB_HID)
         #if defined(USB_POLLING)
         // Check bus status and service USB interrupts.
         if (inTask.bits.USBDeviceTasks == FALSE) {
@@ -439,7 +433,7 @@ void mainLoop(void) {
 #if defined(__C30__)
 int __attribute__((__weak__, __section__(".libc")))
 write(int handle, void *buffer, unsigned int len) {
-    #if !defined(NZSYS_DISABLE_STDIO_WRITE_USE_DEBUG) && defined(DEBUGGING_ENABLED)
+    #if !defined(NZSYS_DISABLE_STDIO_WRITE_USE_DEBUG) && defined(HAS_NZ_DEBUGGING)
     int i;
     #endif
 
@@ -447,10 +441,10 @@ write(int handle, void *buffer, unsigned int len) {
         case 0:
         case 1:
         case 2:
-            #if !defined(NZSYS_DISABLE_STDIO_WRITE_USE_DEBUG) && defined(DEBUGGING_ENABLED)
+            #if !defined(NZSYS_DISABLE_STDIO_WRITE_USE_DEBUG) && defined(HAS_NZ_DEBUGGING)
             for (i = len; i; --i) {
                 //If USB is used for Debugging, call usbTask() if TX buffer is full.
-                #if defined(DEBUG_USE_USBHID) || defined(DEBUG_USE_USBCDC)
+                #if defined(HAS_USBHID_DEBUGGING) || defined(HAS_USBCDC_DEBUGGING)
 
                 if(serUSBIsSuspended() != TRUE) {
 					//Wait for 4 bytes to become available

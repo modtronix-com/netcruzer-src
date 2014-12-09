@@ -333,6 +333,49 @@ typedef union
 
 /***********************************************************************************/
 
+ /* fixed width types */
+
+#ifndef int8_t
+typedef signed char int8_t;
+#define int8_t int8_t
+#endif
+
+#ifndef int16_t
+typedef signed int int16_t;
+#define int16_t int16_t
+#endif
+
+#ifndef int32_t
+typedef signed long int int32_t;
+#define int32_t int32_t
+#endif
+
+#ifndef int64_t
+typedef signed long long int int64_t;
+#define int64_t int64_t
+#endif
+
+#ifndef uint8_t
+typedef unsigned char uint8_t;
+#define uint8_t uint8_t
+#endif
+
+#ifndef uint16_t
+typedef unsigned int uint16_t;
+#define uint16_t uint16_t
+#endif
+
+#ifndef uint32_t
+typedef unsigned long int uint32_t;
+#define uint32_t uint32_t
+#endif
+
+#ifndef uint64_t
+typedef unsigned long long int uint64_t;
+#define uint64_t uint64_t
+#endif
+
+
 /* Alternate definitions */
 typedef void                    VOID;
 
@@ -342,6 +385,7 @@ typedef unsigned char           UCHAR8;
 typedef unsigned char           BYTE;                           /* 8-bit unsigned  */
 typedef unsigned short int      WORD;                           /* 16-bit unsigned */
 typedef unsigned long           DWORD;                          /* 32-bit unsigned */
+
 /* MPLAB C Compiler for PIC18 does not support 64-bit integers */
 __EXTENSION
 typedef unsigned long long      QWORD;                          /* 64-bit unsigned */

@@ -1,34 +1,37 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <div id="status">
-	<div id="loading" style="display:none">Error:<br />Connection to demo board was lost.</div>
-	<div id="display">
-		<span style="float:right;font-size:9px;font-weight:normal;padding-top:8px;text-indent:0px">(click to toggle)</span>
-		<p>LEDs:<br /><span class="leds">
-		<a id="led7" onclick="newAJAXCommand('leds.cgi?led=7');">&bull;</a>
-		<a id="led6" onclick="newAJAXCommand('leds.cgi?led=6');">&bull;</a>
-		<a id="led5" onclick="newAJAXCommand('leds.cgi?led=5');">&bull;</a>
-		<a id="led4" onclick="newAJAXCommand('leds.cgi?led=4');">&bull;</a>
-		<a id="led3" onclick="newAJAXCommand('leds.cgi?led=3');">&bull;</a>
-		<a id="led2" onclick="newAJAXCommand('leds.cgi?led=2');">&bull;</a>
-		<a id="led1" onclick="newAJAXCommand('leds.cgi?led=1');">&bull;</a>
-		<a id="led0">&bull;</a>
-		</span></p>
-		<p>Buttons:<br />
-		<span id="btn3">?</span> &nbsp;
-		<span id="btn2">?</span> &nbsp;
-		<span id="btn1">?</span> &nbsp;
-		<span id="btn0">?</span></p>
-		<p>Potentiometer: <span id="pot0" style="font-weight:normal">?</span></p>
-	</div>
+  <div id="loading" style="display:none">Error:<br />Connection to demo board was lost.</div>
+  <div id="display">
+	<span style="float:right;font-size:9px;font-weight:normal;padding-top:8px;text-indent:0px">(click to toggle)</span>
+	<p>LEDs:<br /><span class="leds">
+		<a id="led1" onclick="cmdSend('xled1=2');">&bull;</a>
+		<a id="led2" onclick="cmdSend('xled2=2');">&bull;</a>
+		<a id="led3" onclick="cmdSend('xled3=2');">&bull;</a>
+		<a id="led4" onclick="cmdSend('xled4=2');">&bull;</a>
+		<a id="led5" onclick="cmdSend('xled5=2');">&bull;</a>
+		<a id="led6" onclick="cmdSend('xled6=2');">&bull;</a>
+		<a id="led7" onclick="cmdSend('xled7=2');">&bull;</a>
+		<a id="led8" onclick="cmdSend('xled8=2');">&bull;</a>
+	  </span></p>
+	<p>System LED:<br /><span class="leds">
+		<a id="led0" onclick="cmdSend('xled0=2');">&bull;</a>
+	  </span></p>
+	<p>Buttons:<br />
+	  <span id="btn1">?</span> &nbsp;
+	  <span id="btn2">?</span> &nbsp;
+	  <span id="btn3">?</span> &nbsp;
+	  <span id="btn4">?</span></p>
+	<p>Potentiometer: <span id="pot1" style="font-weight:normal">?</span></p>
+  </div>
 </div>
 
 <h1>Welcome!</h1>
 
 <table style="padding-left: 10px;">
-<tr><td><b>Stack Version:</b></td><td>&nbsp;</td><td>~version~</td></tr>
-<tr><td><b>Build Date:</b></td><td>&nbsp;</td><td>~builddate~</td></tr>
+<tr><td><b>Stack Version:</b></td><td>&nbsp;</td><td>~#gfv~</td></tr>
+<tr><td><b>Build Date:</b></td><td>&nbsp;</td><td>~#gfd~</td></tr>
 </table>
 
 <p>This site demonstrates the power, flexibility, and scalability of an 8, 16, or 32-bit embedded
@@ -90,23 +93,23 @@ function updateStatus(xmlData) {
 	loadstat = 'none';
 
 	// Loop over all the LEDs
-	for(i = 0; i < 8; i++)
+	for(i = 0; i < 9; i++)
 		document.getElementById('led' + i).style.color = (getXMLValue(xmlData, 'led' + i) == '1') ? '#090' : '#ddd';
 
 	// Loop over all the buttons
-	for(i = 0; i < 4; i++)
+	for(i = 1; i < 5; i++)
 		document.getElementById('btn' + i).innerHTML = (getXMLValue(xmlData, 'btn' + i) == 'up') ? '&Lambda;' : 'V';
 
 	// Update the POT value
-	document.getElementById('pot0').innerHTML = getXMLValue(xmlData, 'pot0');
+	document.getElementById('pot1').innerHTML = getXMLValue(xmlData, 'pot1');
 }
 setTimeout("newAJAXCommand('status.xml', updateStatus, true)",500);
 //-->
 </script>
 
 <script type="text/javascript">
-<!--
-document.getElementById('hello').innerHTML = "~hellomsg~";
-//-->
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

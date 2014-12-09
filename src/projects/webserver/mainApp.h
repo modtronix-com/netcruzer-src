@@ -55,7 +55,6 @@
 
 #define BAUD_RATE       (19200)		// bps
 
-void DoUARTConfig(void);
 void SMTPDemo(void);
 void PingDemo(void);
 void SNMPTrapDemo(void);

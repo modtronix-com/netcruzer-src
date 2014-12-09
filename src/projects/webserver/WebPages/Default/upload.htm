@@ -1,4 +1,4 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <h1>Firmware and Web Page Uploads</h1>
@@ -28,8 +28,8 @@
 </div>
 
 <script type="text/javascript">
-<!--
-document.getElementById('hello').innerHTML = "~hellomsg~";
--->
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

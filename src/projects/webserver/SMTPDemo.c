@@ -54,7 +54,7 @@
 
 #include "TCPIPConfig.h"
 
-#if defined(STACK_USE_SMTP_CLIENT)
+#if defined(STACK_USE_SMTP_CLIENT) && defined(ENABLE_SMTP_DEMO)
 
 #include "TCPIP Stack/TCPIP.h"
 #include "mainApp.h"

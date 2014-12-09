@@ -18,22 +18,28 @@
 // ---------- Netcruzer System Configuration (nz_netcruzer.h) ----------
 // *********************************************************************
 //The following are NOT defined by default. Defining them will prevent the system from managing the named resources
-//#define     NZSYS_DONT_MANAGE_DEBOUNCE      //Don't manage nz_debounce init() and task() functions
 //#define     NZSYS_DONT_MANAGE_GLOBALS       //Don't call nzSysGlobalInit() function
 //#define     NZSYS_DONT_MANAGE_MAINLOOP      //Don't create the mainLoop() function
-//#define     NZSYS_DONT_MANAGE_RTC           //Don't manage nz_rtc init() and task() functions
 //#define     NZSYS_DONT_MANAGE_SERPORT       //Don't manage nz_serDataPorts init() and task() functions
 //#define     NZSYS_DONT_MANAGE_TICK          //Don't include nz_tick h & c files AND don't manage it(init, task)
-//#define     NZSYS_DONT_MANAGE_USB           //Don't manage USB
 //#define     NZSYS_DONT_MANAGE_WDT           //Don't manage the Watch Dog Timer
+//#define     NZ_ADC_DISABLE                  //Don't manage ADC - is enabled by default
+//#define     NZ_PWM_DISABLE                  //Don't manage PWM - is enabled by default
+//#define     NZ_RTC_ENABLE                   //Enable RTC - is disabled by default
 
-  //#define    NZSYS_NO_SERI2C_H_FILES         //Don't include nz_serI2C.h in nz_netcruzer.h
+ #define     NZ_APP_CONFIG_XEE_ENABLED      //Enable NZ_APP_CONFIG_XEE
 
- //#define    NZSYS_CALL_INITIALIZE_BOARD     //The initializeBoard() function will be called during Netcruzer initialization
- //#define    NZSYS_CALL_APPCONF_FUNCTIONS    //The cfgInit() and appConfInit() function will be called during Netcruzer initialization
+//#define    NZSYS_NO_SERI2C_H_FILES         //Don't include nz_serI2C.h in nz_netcruzer.h
 
-//System will NOT initialize and manuage Debugging. Is only done if a DEBUG_USE_XXX define is found (DEBUG_USE_USBHID for example)
+//#define    NZSYS_CALL_INITIALIZE_BOARD     //The initializeBoard() function will be called during Netcruzer initialization
+//#define    NZSYS_CALL_APPCONF_FUNCTIONS    //The cfgInit() and appConfInit() function will be called during Netcruzer initialization
+
+//System will NOT initialize and manuage Debugging. Is only done if a DEBUG_USE_XXX define is found (HAS_USBHID_DEBUGGING for example)
 //#define     NZSYS_DONT_MANAGE_DEBUG
+
+//#define     NZSYS_DISABLE_DEFAULT_DEBUG     //Disable the "nz_debugDefault.c" file
+//#define     NZSYS_DISABLE_DEFAULT_SERUSB    //Disable the "nz_serUSB.c" file
+
 
 //Indicates that *.c files should not be included from nz_netcruzer.c. Including *.c files simplifies a MPLAB project, seeing
 //that all *.c files included in nz_netcruzer.c do not have to be added to the MPLAB project.
@@ -86,11 +92,56 @@
 
 /////////////////////////////////////////////////
 //Default Defines before any include file
+#if !defined(NZ_ADC_DISABLE) && !defined(HAS_NZ_ADC)
+    #define HAS_NZ_ADC
+#endif
+#if defined(NZ_RTC_ENABLE) && !defined(HAS_NZ_RTC)
+    #define HAS_NZ_RTC
+#endif
+#if !defined(NZ_PWM_DISABLE) && !defined(HAS_NZ_PWM)
+    #define HAS_NZ_PWM
+#endif
+
+//UART
+#if defined(NZ_UART1_ENABLE) && !defined(HAS_SERPORT_UART1)
+    #define HAS_SERPORT_UART1
+#endif
+#if defined(NZ_UART2_ENABLE) && !defined(HAS_SERPORT_UART2)
+    #define HAS_SERPORT_UART2
+#endif
+#if defined(NZ_UART3_ENABLE) && !defined(HAS_SERPORT_UART3)
+    #define HAS_SERPORT_UART3
+#endif
+#if defined(NZ_UART4_ENABLE) && !defined(HAS_SERPORT_UART4)
+    #define HAS_SERPORT_UART4
+#endif
 #if defined(HAS_SERPORT_UART1) || defined(HAS_SERPORT_UART2) || defined(HAS_SERPORT_UART3) || defined(HAS_SERPORT_UART4)
     #define HAS_SERPORT_UART
 #endif
+
+//I2C
+#if defined(NZ_I2C1_ENABLE) && !defined(HAS_SERPORT_I2C1)
+    #define HAS_SERPORT_I2C1
+#endif
+#if defined(NZ_I2C2_ENABLE) && !defined(HAS_SERPORT_I2C2)
+    #define HAS_SERPORT_I2C2
+#endif
+#if defined(NZ_I2C3_ENABLE) && !defined(HAS_SERPORT_I2C3)
+    #define HAS_SERPORT_I2C3
+#endif
 #if (defined(HAS_SERPORT_I2C1) || defined(HAS_SERPORT_I2C2) || defined(HAS_SERPORT_I2C3))
     #define HAS_SERPORT_I2C
+#endif
+
+//SPI
+#if defined(NZ_SPI1_ENABLE) && !defined(HAS_SERPORT_SPI1)
+    #define HAS_SERPORT_SPI1
+#endif
+#if defined(NZ_SPI2_ENABLE) && !defined(HAS_SERPORT_SPI2)
+    #define HAS_SERPORT_SPI2
+#endif
+#if defined(NZ_SPI3_ENABLE) && !defined(HAS_SERPORT_SPI3)
+    #define HAS_SERPORT_SPI3
 #endif
 #if (defined(HAS_SERPORT_SPI1) || defined(HAS_SERPORT_SPI2) || defined(HAS_SERPORT_SPI3))
     #define HAS_SERPORT_SPI
@@ -110,7 +161,7 @@
 //Netcruzer RTOS includes
 #if (nzosENABLE==1)
 #include "../rtos/nz_rtos.h"
-//#include "../rtos/nzos_main.h"
+#include "../rtos/nzos_main.h"
 #endif
 
 
@@ -181,7 +232,7 @@ typedef struct __attribute__((__packed__)) WDT_FLAGS_
             unsigned int main : 1;
             unsigned int mainApp : 1;
             unsigned int stackTask : 1;
-            unsigned int serUart : 1;
+            unsigned int serUART : 1;
             unsigned int serSPI : 1;
             unsigned int serI2C : 1;
             unsigned int serUDP : 1;
@@ -274,56 +325,72 @@ typedef struct __attribute__((__packed__)) _GLOBAL_DEFS
 //The following defines will be included with all files!
 #if !defined(NZSYS_DONT_MANAGE_TICK)
 #if defined(NZSYS_ENABLE_COMPLEX_TICK)
-#include "nz_tickCx.h"  //In addition to nz_tick.h, also include nz_tickCx.h
+    #include "nz_tickCx.h"  //In addition to nz_tick.h, also include nz_tickCx.h
 #else
-#define NZSYS_ENABLE_TICK
+    #define NZSYS_ENABLE_TICK
 #endif
 #endif  //#ifndef NZSYS_DONT_MANAGE_TICK
 
-//LCD2S
-#ifdef NZSYS_ENABLE_LCD2S_AND_I2C1
-#include "nz_i2c1.h"
-#include "nz_lcd2s.h"
-#endif
+//LCD2S !!!!! This is broken, fix !!!!!
+//#ifdef NZSYS_ENABLE_LCD2S_AND_I2C1
+//#include "nz_i2c1.h"
+//#include "nz_lcd2s.h"
+//#endif
+
 
 //USB "Serial Data Port"
-#if !defined(NZSYS_DONT_MANAGE_USB)
-    #if defined(HAS_SERPORT_USB_HID) || defined(HAS_SERPORT_USB_CDC) || defined(HAS_SERPORT_USB_MIDI)
-    #define NZSYS_MANAGE_USB
-    #if !defined(HAS_SERPORT_USB)
-    #define HAS_SERPORT_USB
+#if defined(NZ_USBHID_ENABLE)
+    #if !defined(HAS_SERPORT_USB_HID)
+        #define HAS_SERPORT_USB_HID
     #endif
-    #endif
-    //The following USB_USE_XXX are required by usb_config.h and usb_descriptors.c
-    #if defined(HAS_SERPORT_USB_HID)
-        #if !defined(USB_IS_HID)
+    #if !defined(USB_IS_HID)
         #define USB_IS_HID
-        #endif
+    #endif    
+#endif
+#if defined(NZ_USBCDC_ENABLE)
+    #if !defined(HAS_SERPORT_USB_CDC)
+        #define HAS_SERPORT_USB_CDC
     #endif
-    #if defined(HAS_SERPORT_USB_CDC)
-        #if !defined(USB_IS_CDC)
+    #if !defined(USB_IS_CDC)
         #define USB_IS_CDC
-        #endif
-    #endif
-    #if defined(HAS_SERPORT_USB_MIDI)
-        #if !defined(USB_IS_MIDI)
-        #define USB_IS_MIDI
-        #endif
     #endif
 #endif
+#if defined(NZ_USBMIDI_ENABLE)
+    #if !defined(HAS_SERPORT_USB_MIDI)
+        #define HAS_SERPORT_USB_MIDI
+    #endif
+    #if !defined(USB_IS_MIDI)
+        #define USB_IS_MIDI
+    #endif
+#endif
+#if defined(HAS_SERPORT_USB_HID) || defined(HAS_SERPORT_USB_CDC) || defined(HAS_SERPORT_USB_MIDI)
+    #if !defined(HAS_A_SERPORT)
+        #define HAS_A_SERPORT
+    #endif
+    #if !defined(HAS_SERPORT_USB)
+        #define HAS_SERPORT_USB
+    #endif
+#endif
+
 
 
 /////////////////////////////////////////////////
 //Debug - Includes required for USB
-//If a known debugger is defined, define DEBUGGING_ENABLED. If a unknown debugger is added by
-//application, then DEBUGGING_ENABLED should be defined by application in projdefs.h!
-#if defined(DEBUG_USE_USBHID) || defined(DEBUG_USE_USBCDC) || defined(DEBUG_USE_UART1)
-    #define DEBUGGING_ENABLED
-    #if !defined(HAS_SERPORT_DEBUG)
-    #define HAS_SERPORT_DEBUG
-    #endif
+//If a known debugger is defined, define HAS_NZ_DEBUGGING. If a unknown debugger is added by
+//application, then HAS_NZ_DEBUGGING should be defined by application in projdefs.h!
+#if defined(NZ_USBHID_DEBUG_ENABLE) && !defined(HAS_USBHID_DEBUGGING)
+    #define HAS_USBHID_DEBUGGING
 #endif
-#if !defined(NZSYS_DONT_MANAGE_DEBUG) && defined(DEBUGGING_ENABLED)
+#if defined(NZ_USBCDC_DEBUG_ENABLE) && !defined(HAS_USBCDC_DEBUGGING)
+    #define HAS_USBCDC_DEBUGGING
+#endif
+#if defined(NZ_UART1_DEBUG_ENABLE) && !defined(HAS_UART1_DEBUGGING)
+    #define HAS_UART1_DEBUGGING
+#endif
+#if defined(NZ_USBHID_DEBUG_ENABLE) || defined(NZ_USBCDC_DEBUG_ENABLE) || defined(NZ_UART1_DEBUG_ENABLE)
+    #define HAS_NZ_DEBUGGING
+#endif
+#if !defined(NZSYS_DONT_MANAGE_DEBUG) && defined(HAS_NZ_DEBUGGING)
     #define NZSYS_MANAGE_DEBUG
 #endif
 

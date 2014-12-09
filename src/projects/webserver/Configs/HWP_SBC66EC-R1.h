@@ -37,6 +37,7 @@
 #ifndef __HWP_SBC66EC_H
 #define __HWP_SBC66EC_H
 
+#if defined(BRD_SBC66EC_R1)
 
 // *********************************************************************
 // ------------------------------- UART --------------------------------
@@ -65,4 +66,5 @@
 #define putcUART(a)             do{while(BusyUART()); WriteUART(a); while(BusyUART()); }while(0)
 #define putrsUART(a)            putrsUART2(a)
 
+#endif  //#if defined(BRD_SBC66EC_R1)
 #endif

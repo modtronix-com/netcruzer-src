@@ -19,14 +19,15 @@
 
 <div id="menu">
 <a href="/index.htm">Overview</a>
-<a href="/dynvars.htm">Dynamic Variables</a>
+<a href="/dynvars.htm">Tags &amp; Dynamic Variables</a>
+<a href="/forms.htm">Commands &amp; Form Processing</a>
 <a href="/ajax.htm">AJAX and jQuery</a>
-<a href="/forms.htm">Form Processing</a>
 <a href="/auth.htm">Authentication</a>
 <a href="/cookies.htm">Cookies</a>
 <a href="/uploadfile.htm">File Uploads</a>
 <a href="/email">Send E-mail</a>
 <a href="/dyndns">Dynamic DNS</a>
+<a href="/sen_dht.htm">DHT11/DHT22 Sensors</a>
 <a href="/protect/config.htm">Network Configuration</a>
 <a href="/snmp/snmpconfig.htm">SNMP Configuration</a>
 <a href="/upload.htm">Upload Firmware and Web Pages</a>

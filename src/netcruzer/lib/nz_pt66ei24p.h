@@ -106,6 +106,8 @@
 #ifndef PT66EI_24P_H
 #define PT66EI_24P_H
 
+#if defined(XBRD_PT66EI24P)
+
 /////////////////////////////////////////////////
 //Global variables
 
@@ -350,5 +352,7 @@ void pt66ei24p_WriteLeds(BYTE value);
 #define imod2_ReadPin7()            (PIN_IMOD2_P7)
 #define imod2_ConfPullupPin7(val)   (PULLUP_IMOD2_P7 = val)
 #define imod2_ConfPulldownPin7(val) (PULLDOWN_IMOD2_P7 = val)
+
+#endif //#if defined(XBRD_PT66EI24P)
 
 #endif  //#ifndef PT66EI_24P_H

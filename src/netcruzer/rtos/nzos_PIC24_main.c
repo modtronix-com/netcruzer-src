@@ -57,7 +57,9 @@ void __attribute__((interrupt, no_auto_psv)) _SI2C1Interrupt(void)
 #error "No RTOS Scheduler defined!"
 #endif
 {
+#if (nzosFIBER_ENABLE==1)
     WORD *ptrA;
+#endif
 
     NZOS_INT_KERNEL_CLEAR_IF();   //Clear interrupt status bit
 

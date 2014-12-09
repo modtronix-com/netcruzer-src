@@ -38,6 +38,8 @@
 #ifndef NZ_CIRCULAR_BUFFER_STD_H
 #define NZ_CIRCULAR_BUFFER_STD_H
 
+#if defined(CIRBUF_USE_CIRCULAR_BUFFER_STD)
+
 #if defined(NZ_CIRCULAR_BUFFER_PWR2_H)
 #error "Can not include both nz_circularBufferPwr2.h AND nz_circularBufferStd.h! Only included the one corresponding to the *.c file used in project!"
 #endif
@@ -318,4 +320,5 @@
  */
 #define cbufIsPacketLarge(pBuf) (pBuf->flagBits.bPacketLarge==TRUE)
 
-#endif
+#endif  //#if defined(CIRBUF_USE_CIRCULAR_BUFFER_STD)
+#endif  //#ifndef NZ_CIRCULAR_BUFFER_STD_H

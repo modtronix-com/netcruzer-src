@@ -286,7 +286,7 @@ void serUSBTask(void) {
                 {
                     //USB HID is used for debugging! Data received with CMDUSB_DEBUG_MESSAGE command is not added
                     //to CIRBUF_RX_USB, but to debug receive buffer!
-                    #if defined(DEBUG_USE_USBHID)
+                    #if defined(HAS_USBHID_DEBUGGING)
                     //Debug message. Add the received debug message to the debug buffer. Is handled by "debug.c".
                     case CMDUSB_DEBUG_MESSAGE:
                         //Debug messages are always NULL terminated strings. This means PacketFromPC.Size = string lenght + 1 (for NULL)
@@ -349,7 +349,7 @@ void serUSBTask(void) {
         {
             WORD sizeData;
 
-            #if defined(DEBUG_USE_USBHID)
+            #if defined(HAS_USBHID_DEBUGGING)
             if (cbufHasData(CIRBUF_TX_DEBUG) && serportUsbFlags.flags.bDeviceInfoCmdSent) {
                 //Set size to maximum bytes that can be sent per HID USB message
                 size = sizeof(PacketToPC.Data);
@@ -396,7 +396,7 @@ void serUSBTask(void) {
 
                 USBInHandle = HIDTxPacket(HID_EP,(BYTE*)&PacketToPC.Contents[0],64);
             }
-            #if defined(DEBUG_USE_USBHID)
+            #if defined(HAS_USBHID_DEBUGGING)
             }
             #endif
         }       //if(!HIDTxHandleBusy(USBInHandle))

@@ -33,11 +33,7 @@
 //This file is included by the Netcruzer system from nz_imod.c, and should not be included in a project.
 //!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!
 
-//Not required if including this file from nz_imod.c. It is already included from nz_imod.c
-#if !defined(THIS_IS_NZ_IMOD_C)
-#include "HardwareProfile.h"
-#include "nz_im4mos.h"
-#endif
+#if defined(THIS_IS_NZ_IMOD_C)     //This file is included from nz_imod.c
 
 /**
  * Initialize the im4MOS iMod module on given iMod port
@@ -134,5 +130,7 @@ void im4mos_Init(BYTE imodPort) {
     }
 }
 
+#endif  //#if defined(THIS_IS_NZ_IMOD_C)     //This file is included from nz_imod.c
 #undef THIS_IS_NZ_IM4MOS_C
+
 

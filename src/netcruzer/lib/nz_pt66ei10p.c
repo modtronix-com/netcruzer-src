@@ -31,7 +31,7 @@
 
 #include "HardwareProfile.h"
 
-#if defined(XBRD_PT66EI_REV1) || defined(XBRD_PT66EI_REV2)
+#if defined(XBRD_PT66EI10P) || defined(XBRD_PT66EI10P)
 
 #include "nz_pt66ei10p.h"
 
@@ -64,4 +64,4 @@ void pt66ei10p_WriteLeds(BYTE value) {
     //TODO
 }
 
-#endif  //#if defined(XBRD_PT66EI_REV1) || defined(XBRD_PT66EI_REV2)
+#endif  //#if defined(XBRD_PT66EI10P) || defined(XBRD_PT66EI10P)

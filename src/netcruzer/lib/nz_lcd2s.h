@@ -13,7 +13,7 @@
  * - Add nz_lcd2s.c to the project, this is the main LCD2S driver file.
  * - The following additional files are required by nz_lcd2s.c, and must be added to the project:
  *   nz_circularBufferPwr2.c, nz_helpers.c, nz_netcruzer.c and nz_serI2C.c
- * - Add "HAS_SERPORT_I2C1" to projdefs.h file.
+ * - Add "NZ_I2C1_ENABLE" to projdefs.h file.
  * - In code, initialize LCD2S. Ensure to delay 300ms from power up. For example:
  *      delay_ms(300);
  *      lcdInit();
@@ -26,7 +26,7 @@
  *
   * ----- Option 1 (Add LCD support via nz_netcruzer.c) -----
  * - Add nz_netcruzer.c to project
- * - Add "#define    NZSYS_ENABLE_LCD2S_AND_I2C1" to projdefs.h
+ * - Add "#define    NZSYS_ENABLE_LCD2S_AND_I2C1" to projdefs.h   !!!!! This is broken, fix !!!!!
  * - In code, call nzSysInitDefault() once at initialization stage
  * - In code, call nzSysTaskDefault() repetitively in main loop
  * - Can now use LCD2S functions to write to LCD and perform other tasks. Some examples:
@@ -42,6 +42,8 @@
  // *********************************************************************
  // ------------ LCD2S Configuration (from nz_lcd2s.h) ---------------------
  // *********************************************************************
+ #define NZ_LCD2S_ENABLED                       //Enable LCD2S module
+
  //Define the I2C address for the LCD display
  #define LCD2S_I2C_ADR                  LCD2S_DEFAULT_I2C_ADR   //[-DEFAULT-]
 
@@ -105,9 +107,10 @@
  * 2007-07-16, David Hosken (DH):
  *    - Created documentation for existing code
  *********************************************************************/
-
 #ifndef _LCD2S_H_
 #define _LCD2S_H_
+
+#if defined(NZ_LCD2S_ENABLED)
 
 /////////////////////////////////////////////////
 //Global defines
@@ -598,8 +601,8 @@ INT8 lcdDrawVertBargraph(BYTE lcdNum, BYTE row, BYTE col, BYTE height);
  */
 #define lcdDefineCustomChar(lcdNum, buf) lcdPutArray(lcdNum, buf, 10)
 
-
-#endif    //_LCD2S_H_
+#endif  //#if defined(NZ_LCD2S_ENABLED)
+#endif  //_LCD2S_H_
 
 
 

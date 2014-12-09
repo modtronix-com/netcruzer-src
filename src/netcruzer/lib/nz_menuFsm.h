@@ -69,9 +69,9 @@
 #define _fsmMenu_H_
 
 typedef struct _FSM {
-    uint8 stateTop;     //Current state
-    uint8 stateSub1;    //State of sub1 Sub Menu, 0 means it is disabled
-    uint8 action;       //Current action -  is a SMT_ACTION_XXX define
+    uint8_t stateTop;   //Current state
+    uint8_t stateSub1;  //State of sub1 Sub Menu, 0 means it is disabled
+    uint8_t action;     //Current action -  is a SMT_ACTION_XXX define
 } FSM;
 
 #define FSM_ACTION_ENTRY   0    //Action to take when entering the state

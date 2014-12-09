@@ -18,7 +18,6 @@
 //#define     NZSYS_DONT_MANAGE_MAINLOOP
 
 
-
 // *********************************************************************
 // ------- Circular Buffer Configuration (nz_circularBuffer.h) ---------
 // *********************************************************************
@@ -27,13 +26,18 @@
 #define     CIRBUF_USE_CIRCULAR_BUFFER_PWR2    //Use nz_circularBufferPwrs
 
 
+// *********************************************************************
+// ------------ DS2482 Configuration (from nz_ds2482.h) -------------
+// *********************************************************************
+#define NZ_OW2482_ENABLED                       //Enable OW2482 module
+
 
 // *********************************************************************
 // --------------- Debug Configuration (nz_debug.h) --------------------
 // *********************************************************************
-#define DEBUG_USE_USBHID
-//#define DEBUG_USE_USBCDC
-//#define DEBUG_USE_UART1
+#define NZ_USBHID_DEBUG_ENABLE
+//#define NZ_USBCDC_DEBUG_ENABLE
+//#define NZ_UART1_DEBUG_ENABLE
 
 //Size of Debug TX buffer, MUST BE power of 2 value! Increase size of this buffer if debug information
 //is getting lost. This can be the case if the application writes debug information to the debug buffer
@@ -79,7 +83,7 @@
  // ------------ I2C 1 Configuration (from nz_serI2C.h) -------------
  // *********************************************************************
 //---- Enable I2C1 Serial Port ----
-#define HAS_SERPORT_I2C1
+#define NZ_I2C1_ENABLE
 
 //Transmit and Receive buffer sizes, for compatibility, ensure it is a power of 2 value! This can be bypassed
 //by using a "non power of 2" CircularBuffer implementation for this project. See nz_CircularBuffer.h for details.
@@ -95,7 +99,7 @@
 // *********************************************************************
 // -------------- USB Configuration (nz_serUSB.h) -----------------
 // *********************************************************************
-#define HAS_SERPORT_USB_HID
+#define NZ_USBHID_ENABLE
 
 //If set to 1, the system LED is controlled by the nz_serUSB module
 #define USB_CONTROLS_SYSLED         0

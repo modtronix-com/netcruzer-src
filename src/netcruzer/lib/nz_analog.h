@@ -15,8 +15,10 @@
  * contain desired configuration! For details, see @ref info_conf_proj "Project Configuration".
  @code
  // *********************************************************************
- // ------------ ADC Filtered Configuration (from nz_analog.h) -------------
+ // ---------- ADC Filtered Configuration (from nz_analog.h) ------------
  // *********************************************************************
+ //#define     NZ_ADC_DISABLE                               //Don't manage ADC - ADC is enabled by default
+
  //If following line is included in projdefs.h, 3.3V supply is used for reference. Default is 2.5V external precision reference.
  #define ADC_3V3_VREF                                       //Use internal 3.3V supply as reference
 
@@ -68,6 +70,8 @@
  *********************************************************************/
 #ifndef NZ_ANALOG_H
 #define NZ_ANALOG_H
+
+#if defined(HAS_NZ_ADC)
 
 /**
  * Convert given millivolt value to 10-bit ADC value
@@ -400,4 +404,5 @@ WORD adcConvertChanMvForIndex(BYTE index, BYTE times);
  */
 #define adcGetFilterStages() (ADC_FILTER_STAGES)
 
-#endif
+#endif  //#if defined(HAS_NZ_ADC)
+#endif  //#ifndef NZ_ANALOG_H

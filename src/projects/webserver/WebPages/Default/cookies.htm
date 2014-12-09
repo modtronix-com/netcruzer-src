@@ -1,55 +1,66 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <h1>Cookies</h1>
 
-<p>Cookies are small text strings that are stored in the browser.  These strings 
-are set by the server, and returned as parameters for all future requests until 
-the session ends.  They can be used to store session state information, and are 
+<p>Cookies are small text strings that are stored in the browser.  These strings
+are set by the server, and returned as parameters for all future requests until
+the session ends.  They can be used to store session state information, and are
 valid until the browser is closed.</p>
 
 <div class="examplebox">
 <table align="center">
-<tr><td><b>Name:</b></td><td>~cookiename~</td></tr>
-<tr><td><b>Favorite:</b></td><td>not implemented</td></tr>
+<tr><td><b>Name:</b></td><td>~#gc:name~</td></tr>
 </table>
 </div>
 
-<p>There are numerous uses for cookies.  In this example, the user's name is 
-stored as a cookie.  All future page loads will show this name in the top left 
-corner, as well as in the box above.</p>
+<p>There are numerous uses for cookies.  In this example, the user's name is
+stored as a cookie called "name". All future page loads will show the string assigned
+to this cookie in the top left corner, as well as in the box above.</p>
 
-<form action="cookies.htm" method="get">
 <div class="examplebox">
 <table align="center">
-<tr><td><b>First Name:</b></td><td><input type="text" name="name" size="20" maxlength="16" /></td></tr>
-<tr><td><b>Favorite:</b></td><td>
-<select name="fav">
-<option value="PIC18">PIC18</option>
-<option value="PIC24">PIC24</option>
-<option value="dsPIC">dsPIC</option>
-<option value="PIC32">PIC32</option>
-</select>
-</td></tr>
-<tr><td></td><td><input type="submit" value="Set Cookies" /></td></tr>
+<tr><td><b>First Name:</b></td><td><input id="ckyName" type="text" name="name" size="20" maxlength="16" /></td></tr>
+<tr><td></td><td><input type="button" value="Set Cookie" onclick="setCookie('ckyName')"></input></td></tr>
 </table>
 </div>
-</form>
 
-<p>Cookies are set by storing null-terminated name/value pairs in <code>curHTTP.data</code> 
-and indicating how many cookies are to be set in <code>curHTTP.hasArgs</code>.  They 
+<p>The cookie above is set by calling the JavaScript setCookie() function. It can be viewed by selecting the "View Page
+Source" function of your browser. This function will call the nzcks.htm page in the background, passing it all
+cookies to set as GET parameters. By doing this in the background, the GET parameters are not shown in the browser
+address field.</p>
+
+<p>To display a cookies value on the web page, the "Get Cookie" Tag can be used. For example, to display the value of the
+"name" cookie, the following tag can be placed on the web page:<br>
+&Tilde;#gc:name&Tilde;<br>
+This will be replaced by the web server with the current value of this Cookie, or "NA" if not found.
+</p>
+
+<h2>Details - Advanced</h2>
+<p>Cookies are set by storing null-terminated name/value pairs in <code>curHTTP.data</code>
+and indicating how many cookies are to be set in <code>curHTTP.hasArgs</code>.  They
 can be set in either <code>HTTPExecuteGet</code> or <code>HTTPExecutePost</code>.</p>
 
-<p>Cookies are retrieved in the same manner as GET form arguments.  They are stored 
-in <code>curHTTP.data</code> and can be located using the <code>HTTPGetArg</code> 
-functions.  Since they are stored in the same array as GET arguments, the total 
-length of cookies and variable arguments cannot exceed the 255 byte buffer limit.</p>
+<p>Cookies are retrieved in the same manner as GET form arguments.  They are stored
+in <code>curHTTP.data</code> and can be located using the <code>HTTPGetArg</code>
+functions.  Since they are stored in the same array as GET arguments, the total
+length of cookies and variable arguments cannot exceed the byte buffer limit, as
+set by the HTTP_MAX_DATA_LEN define (default 255 bytes).</p>
 
 </div>
 
 <script type="text/javascript">
-<!--
-document.getElementById('hello').innerHTML = "~hellomsg~";
--->
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+
+/** Set given cookies*/
+function setCookie(c1) {
+  var arr = {};
+  arr[$("#"+c1).attr("name")] = $("#"+c1).val();
+   
+  //POST updated varChan to server
+  $.get( "nzcks.htm",arr);
+}
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

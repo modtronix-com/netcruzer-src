@@ -47,6 +47,8 @@
  // *********************************************************************
  // --------------- nz_pwm Configuration (from nz_pwm.h) ----------------
  // *********************************************************************
+ //#define    NZ_PWM_DISABLE                  //Don't manage PWM - PWM is enabled by default
+
  //Set default frequencies for PWM 1 to 9. Some predefined values are PWM_FREQ_1600HZ, PWM_FREQ_16KHZ, PWM_FREQ_80KHZ and PWM_FREQ_160KHZ
  //If using custom value, ensure it is a multiple of 100. This ensures pwmxSetPercent() functions works efficiently.
  #define PWM1_FREQ       PWM_FREQ_16KHZ     //PWM frequency is 16kHz
@@ -85,6 +87,8 @@
  *********************************************************************/
 #ifndef _NZDEFAULT_PWM_H_
 #define _NZDEFAULT_PWM_H_
+
+#if defined(HAS_NZ_PWM)
 
 #if (defined(__PIC24F__)) && defined(__C30__)	// Microchip C30 compiler
     #include "PPS.h"
@@ -645,4 +649,5 @@ void pwmSetDutyCycle(BYTE chan, WORD dc);
 //#define pwmSetPercent(chan, percent)  {if((chan>0)&&(chan<10)) {regs_oc_[chan-1].OCxR = ((((PWM2_FREQ+1)/100) * percent)==0) ? 0 : ((((PWM2_FREQ+1)/100) * percent)-1);}}
 //void pwmSetPercent(BYTE ch, WORD p);
 
+#endif  //#if defined(HAS_NZ_PWM)
 #endif

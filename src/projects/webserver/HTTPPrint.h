@@ -53,6 +53,9 @@ extern BYTE curHTTPID;
 
 void HTTPPrint(DWORD callbackID);
 void HTTPPrint_(void);
+void HTTPPrint_builddate(void);
+void HTTPPrint_led(WORD);
+void HTTPPrint_lcdtext(void);
 void HTTPPrint_uploadedmd5(void);
 void HTTPPrint_read_comm(WORD);
 void HTTPPrint_write_comm(WORD);
@@ -73,64 +76,76 @@ void HTTPPrint(DWORD callbackID)
 {
 	switch(callbackID)
 	{
-        case 0x0000000b:
+        case 0x00000000:
 			HTTPPrint_();
 			break;
-        case 0x0000000c:
+        case 0x00000001:
+			HTTPPrint_builddate();
+			break;
+        case 0x00000002:
+			HTTPPrint_led(7);
+			break;
+        case 0x00000003:
+			HTTPPrint_led(8);
+			break;
+        case 0x00000004:
+			HTTPPrint_lcdtext();
+			break;
+        case 0x00000005:
 			HTTPPrint_uploadedmd5();
 			break;
-        case 0x0000000e:
+        case 0x00000006:
 			HTTPPrint_read_comm(0);
 			break;
-        case 0x0000000f:
+        case 0x00000007:
 			HTTPPrint_read_comm(1);
 			break;
-        case 0x00000010:
+        case 0x00000008:
 			HTTPPrint_read_comm(2);
 			break;
-        case 0x00000011:
+        case 0x00000009:
 			HTTPPrint_write_comm(0);
 			break;
-        case 0x00000012:
+        case 0x0000000a:
 			HTTPPrint_write_comm(1);
 			break;
-        case 0x00000013:
+        case 0x0000000b:
 			HTTPPrint_write_comm(2);
 			break;
-        case 0x00000014:
+        case 0x0000000c:
 			HTTPPrint_status_fail();
 			break;
-        case 0x00000015:
+        case 0x0000000d:
 			HTTPPrint_config_mac();
 			break;
-        case 0x00000016:
+        case 0x0000000e:
 			HTTPPrint_config_hostname();
 			break;
-        case 0x00000017:
+        case 0x0000000f:
 			HTTPPrint_config_dhcpchecked();
 			break;
-        case 0x00000018:
+        case 0x00000010:
 			HTTPPrint_config_ip();
 			break;
-        case 0x00000019:
+        case 0x00000011:
 			HTTPPrint_config_gw();
 			break;
-        case 0x0000001a:
+        case 0x00000012:
 			HTTPPrint_config_subnet();
 			break;
-        case 0x0000001b:
+        case 0x00000013:
 			HTTPPrint_config_dns1();
 			break;
-        case 0x0000001c:
+        case 0x00000014:
 			HTTPPrint_config_dns2();
 			break;
-        case 0x0000001d:
+        case 0x00000015:
 			HTTPPrint_reboot();
 			break;
-        case 0x0000001e:
+        case 0x00000016:
 			HTTPPrint_rebootaddr();
 			break;
-        case 0x0000001f:
+        case 0x00000017:
 			HTTPPrint_status_ok();
 			break;
 		default:

@@ -30,10 +30,11 @@
 #define THIS_IS_NZ_ANALOG_C
 #define USE_AND_OR
 
-#include <string.h>
-
 #include "HardwareProfile.h"
 
+#if defined(HAS_NZ_ADC)
+
+#include <string.h>
 #include "nz_analog.h"
 
 //Global variables
@@ -703,3 +704,5 @@ void adcStop(void) {
 
 
 }
+
+#endif  //#if defined(HAS_NZ_ADC)

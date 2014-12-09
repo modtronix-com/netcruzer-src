@@ -30,10 +30,11 @@
 #define THIS_IS_NZ_RTC_C
 
 #include "HardwareProfile.h"
+
+#if defined(HAS_NZ_RTC)
+
 #include "nz_rtc.h"
 #include "nz_serI2C.h"
-
-#if (NZ_RTC_ENABLED == 1)
 
 //Add debugging to this file. The DEBUG_CONF_DHT22 macro sets debugging to desired level, and is configured in "Debug Configuration" section of projdefs.h file
 #if !defined(DEBUG_CONF_RTC)
@@ -632,4 +633,4 @@ BYTE bin2bcd (BYTE val) {
     return (((val / 10) << 4) | (val % 10));
 }
 
-#endif  //#if defined(NZ_RTC_ENABLED)
+#endif  //#if defined(HAS_NZ_RTC)

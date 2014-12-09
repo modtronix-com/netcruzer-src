@@ -17,9 +17,8 @@
 // *********************************************************************
 // ------------ RTC Configuration (from nz_rtc.h) -------------
 // *********************************************************************
-//Enable the RTC module
-#define NZ_RTC_ENABLED                          (0) //[-DEFAULT-] Enable RTC
-#define NZ_RTC_UNLOCK                           (1) //[-DEFAULT-] Unlock RTC during initialization
+//#define     NZ_RTC_ENABLE                         //[-DEFAULT-] RTC is disabled by default
+#define     NZ_RTC_UNLOCK                       (1) //[-DEFAULT-] Unlock RTC during initialization
  @endcode
  *
  * 
@@ -30,7 +29,7 @@
  * - Add nz_rtc.c to the MPLAB project, this is the main RTC driver file.
  * - The following additional files are required by nz_rtc.c, and must be added to the project:
  *   nz_circularBufferPwr2.c, nz_helpers.c, nz_netcruzer.c and nz_serI2C.c
- * - Add "#define NZ_RTC_ENABLED (1)" to projdefs.h file.
+ * - Add "#define NZ_RTC_ENABLE (1)" to projdefs.h file.
  * - In projdefs.h, do any RTC, I2C or other configuration required. This is done by copying the
  *   configuration section from the *.h files to projdefs.h. Nothing required, defaults will work!
  * - <b>All DONE!</b> Can now use RTC functions defined in nz_rtc.h! Some examples:
@@ -63,18 +62,14 @@
 #ifndef NZ_RTC_H
 #define NZ_RTC_H
 
+#if defined(HAS_NZ_RTC)
+
 #include "nz_tick.h"
 
 ////////// Defines //////////////////////////////
-#if !defined (NZ_RTC_ENABLED)
-#define NZ_RTC_ENABLED                          (0)
-#endif
-
 #ifndef __INLINE_FUNCTION__
 #define __INLINE_FUNCTION__ extern inline __attribute__((always_inline))
 #endif
-
-#if (NZ_RTC_ENABLED == 1)
 
 typedef struct __attribute__((__packed__)) {
     BYTE hour;  //The current time in Hours ( 0 to 23 )
@@ -511,5 +506,5 @@ BYTE __INLINE_FUNCTION__ rtcSetRAM2(BYTE val) {
     return rtcSetReg(0x13, val);   //Set user ram 2 = address 0x13
 }
 
-#endif  //#if defined(NZ_RTC_ENABLED)
+#endif  //#if defined(HAS_NZ_RTC)
 #endif  //#ifndef NZ_RTC_H

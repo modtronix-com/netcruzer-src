@@ -105,6 +105,7 @@
 #ifndef NZ_DEBOUNCE_H
 #define NZ_DEBOUNCE_H
 
+#if defined(NZ_DEBOUNCE_ENABLED)
 
 //Check for gaps
 #if defined(DEBOUNCE_GET_PORT8) && (!defined(DEBOUNCE_GET_PORT1)||!defined(DEBOUNCE_GET_PORT2)||!defined(DEBOUNCE_GET_PORT3)||!defined(DEBOUNCE_GET_PORT4)||!defined(DEBOUNCE_GET_PORT5)||!defined(DEBOUNCE_GET_PORT6)||!defined(DEBOUNCE_GET_PORT7))
@@ -150,11 +151,10 @@
 #define DEBOUNCE_PORTS  0
 #endif
 
-#if (DEBOUNCE_PORTS > 0) && !defined(NZ_DEBOUNCE_ENABLE)
-#define NZ_DEBOUNCE_ENABLE
-#endif
+//#if (DEBOUNCE_PORTS > 0) && !defined(NZ_DEBOUNCE_ENABLED)
+//#define NZ_DEBOUNCE_ENABLED
+//#endif
 
-#if defined(NZ_DEBOUNCE_ENABLE)
 
 // Defines //////////////////////////////////////
 #define DEBOUNCE_SERVICE_TIME   20  //Debounce serice time in MS
@@ -193,6 +193,6 @@ BYTE debounceGetLatchedPorts();
  */
 BYTE debounceGetLatchedPort(BYTE port);
 
-#endif  //#if defined(NZ_DEBOUNCE_ENABLE)
+#endif  //#if defined(NZ_DEBOUNCE_ENABLED)
 
 #endif

@@ -31,7 +31,7 @@
 
 #include "HardwareProfile.h"
 
-#if defined(XBRD_PT66DIN6_REV1)
+#if defined(XBRD_PT66DIN6)
 
 #include "nz_pt66din6.h"
 
@@ -60,4 +60,4 @@ void pt66din6_Init() {
 void pt66din6_Service() {
 }
 
-#endif  //#if defined(XBRD_PT66DIN6_REV1)
+#endif  //#if defined(XBRD_PT66DIN6)

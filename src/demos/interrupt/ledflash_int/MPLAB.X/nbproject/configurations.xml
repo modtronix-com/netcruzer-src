@@ -40,6 +40,7 @@
           <itemPath>../../../../netcruzer/lib/brd_sbc66zl-r1.h</itemPath>
         </logicalFolder>
         <itemPath>../../../../netcruzer/lib/nz_netcruzer.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_tick.h</itemPath>
       </logicalFolder>
       <itemPath>../HardwareProfile.h</itemPath>
       <itemPath>../projdefs.h</itemPath>
@@ -64,6 +65,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>../../../../netcruzer/lib</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="SBC66EC_R1" type="2">
@@ -171,7 +175,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -369,7 +373,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -565,7 +569,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -761,7 +765,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -957,7 +961,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

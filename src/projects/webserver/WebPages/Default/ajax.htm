@@ -1,4 +1,4 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <h1>AJAX using jQuery</h1>
@@ -21,9 +21,9 @@ and Analog Input 1.</p>
 </div>
 
 <script type="text/javascript">
-<!--
-document.getElementById('hello').innerHTML = "~hellomsg~";
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
 dataForAjaxHtm();
--->
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

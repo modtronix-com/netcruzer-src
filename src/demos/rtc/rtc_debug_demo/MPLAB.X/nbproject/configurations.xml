@@ -92,6 +92,7 @@
         <itemPath>../../../../netcruzer/lib/nz_serDataPorts.c</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_rtc.c</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_serI2C.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_ioPorts.c</itemPath>
       </logicalFolder>
       <logicalFolder name="usb" displayName="usb" projectFiles="true">
         <itemPath>../usb_descriptors.c</itemPath>
@@ -110,6 +111,7 @@
   <sourceRootList>
     <Elem>..</Elem>
     <Elem>../../../../netcruzer/lib</Elem>
+    <Elem>../../../../netcruzer/drivers</Elem>
     <Elem>../../../../netcruzer/libxc16</Elem>
     <Elem>../../../../system</Elem>
     <Elem>../../../../codedoc</Elem>
@@ -233,7 +235,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -523,7 +525,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

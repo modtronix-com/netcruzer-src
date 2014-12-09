@@ -1,9 +1,9 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <h1>SNMP Community Configuration</h1>
 <p>Read/Write Community String configuration for SNMPv2c Agent.</p>
-<div class="result fail" style="display:~snmp_en~">
+<div class="result fail" id="noSNMP" style="display:none;">
 STACK_USE_SNMP_SERVER is undefined.  SNMP is unavailable.
 </div>
 
@@ -38,5 +38,15 @@ extra fields blank to disable them.</p>
 </form>
 </div>
 
+<script type="text/javascript">
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+
+var gsk1 = 0x~#gsk1~;
+if ((gsk1 & (STK1_SNMPV3_SERVER | STK1_SNMP_SERVER))==0)  //SMNP & SMNPV3 disabled
+  $("#noSNMP").show();
+
 </script>
-~inc:footer.inc~
+
+~#gf:footer.inc~

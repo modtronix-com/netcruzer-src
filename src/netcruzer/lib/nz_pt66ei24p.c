@@ -31,7 +31,7 @@
 
 #include "HardwareProfile.h"
 
-#if defined(XBRD_PT66EI_REV2)
+#if defined(XBRD_PT66EI24P)
 
 #include "nz_pt66ei24p.h"
 
@@ -106,4 +106,4 @@ void pt66ei24p_WriteLeds(BYTE value) {
     LATCH_RCLK = 0;
 }
 
-#endif //#if defined(XBRD_PT66EI_REV2)
+#endif //#if defined(XBRD_PT66EI24P)

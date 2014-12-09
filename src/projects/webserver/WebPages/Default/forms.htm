@@ -1,43 +1,92 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
-<h1>Form Processing</h1>
+<h1>Commands and Form Processing</h1>
+<p>Your application will likely need to accept data from the user. This is done by using commands.
+Commands are used to control, configure and monitor the target board. All commands follow the syntax of name=value.
+The following commands are available:
+<ul>
+  <li><b>Pre-Defined Commands:</b> There are many pre-defined commands, <a target="_blank" href="http://www.netcruzer.com/project-webserver-cmd">as
+	listed here</a>.</li>
+	<li><b>User Commands:</b> Adding additional user commands is very easy, and is done by implementing the <b>processCmd() callback function</b> in code.
+	See the processCmd() function in the main.c file of the Webserver source code(contained in
+	the <a target="_blank" href="http://www.netcruzer.com/nzdownload"> Netcruzer Download</a>) for examples.</li>
+</ul>
+Commands can be sent to the target board via the following methods (note last two methods are NOT implemented yet!):
+<ul>
+  <li><b>Web pages and HTTP:</b> Command are sent, and data requested via the HTTP GET and POST commands. Various HTML elements,
+	like button, check boxes, radio buttons and more can be used!</li>
+  <li><b>USB:</b> Commands are sent, and data requested via USB HID messages. The free Netcruzer USB Terminal app can be used.
+	For details, see <a target="_blank" href="http://www.netcruzer.com/usbterminal">netcruzer.com/usbterminal</a>. Full source code for the Netcruzer USB
+	Terminal is also available, and can be modified if required.</li>
+  <li style="color: #AAA"><b>UDP or TCP:</b> Commands are sent, and data requested via the Network - Not available yet, in future version!</li>
+  <li style="color: #AAA"><b>Serial ports:</b> This enables commands via different protocols, like RS-232, RS-485, TTL Serial port and
+	others. - Not available yet, in future version!</li>
+</ul>
+For example, to set port 32 (old port name Y2), the following methods can be used:
+<ul>
+  <li>Send the following HTTP GET command from a web page: http://10.1.0.1/?o32=1</li>
+  <li>Add a button to a web page that uses HTTP POST to send the following command: o32=1</li>
+  <li style="color: #AAA">Send the following UDP message to the UDP Command Port: o32=1 - Not available yet, in future version!</li>
+</ul>
+In this example the name part of the command is "o32", and the value part is "1".
+</p>
 
-<p>Your application will likely need to accept data from the user.  Forms allow
-you to do just that.  Forms can be submitted in one of two methods (<i>GET</i> and 
-<i>POST</i>), and this server supports both.</p>
-
-<h6></h6>
-
-<p>The <b>GET</b> method appends the data to the end of the URI.  You'll see this 
-data following the question mark (?) in your browser's address bar.  For Microchip's 
-embedded server, this data is limited to around 80 bytes.  However, this sort of 
-submission is generally easier to process. Data sent via GET is automatically 
-decoded, and stored in the array <code>curHTTP.data</code>.  Your application will
-handle the data in the <code>HTTPExecuteGet</code> callback.  The functions 
-<code>HTTPGetArg</code> and <code>HTTPGetROMArg</code> provide an easy 
-method to retrieve submitted values for processing.</p>
-
-<p>As an example, this GET form controls several LEDs on the demo board:</p>
-
+<h2>HTTP GET using Forms on a web page</h2>
+<p>Forms in a web page provide a way for sending commands. Forms can be submitted in one of two methods, (<i>GET</i> or
+<i>POST</i>). The <b>GET</b> method appends the data to the end of the URL. You'll see this data following the question
+mark (?) in your browser's address bar. By default, this data is limited to around 250 bytes.</p>
+<p>As an example, the following button will set port Port 6(X6) of the target board. It sends the "ox6=1" command. This 
+<form name="s7" action="forms.htm" method="GET">
+<input type="hidden" name="ox6" value="1">
+<input type="submit" value="Set Port 6(X6)">
+</form>
+<!-- Alternative method, <button> might not be supported in all browsers
+<form method="GET" action="forms.htm">
+<button name="ox6" value="1">Set Port 6(X6)</button>
+</form>
+-->
+</p>
+<p>To process custom commands, the processCmd() callback function has to be implemented. See the "User Commands" section above for details.
+As an example, this GET form controls LED 1 to 4 on the DB66DEV1 demo board:</p>
 <form method="get" action="forms.htm">
 <div class="examplebox">
-<b>4:</b> <select name="led4"><option value="1" ~ledSelected(4,TRUE)~>On</option><option value="0" ~ledSelected(4,FALSE)~>Off</option></select>&nbsp; 
-<b>3:</b> <select name="led3"><option value="1" ~ledSelected(3,TRUE)~>On</option><option value="0" ~ledSelected(3,FALSE)~>Off</option></select>&nbsp; 
-<b>2:</b> <select name="led2"><option value="1" ~ledSelected(2,TRUE)~>On</option><option value="0" ~ledSelected(2,FALSE)~>Off</option></select>&nbsp; 
-<b>1:</b> <select name="led1"><option value="1" ~ledSelected(1,TRUE)~>On</option><option value="0" ~ledSelected(1,FALSE)~>Off</option></select>&nbsp; 
-<br /><input type="submit" value="Save" style="margin-top:5px;">
+<b>1:</b> <select name="xled1"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>2:</b> <select name="xled2"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>3:</b> <select name="xled3"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<b>4:</b> <select name="xled4"><option value="1">On</option><option value="0">Off</option></select>&nbsp; 
+<br /><input type="submit" value="Submit" style="margin-top:5px;">
 </div>
 </form>
+<p>A command is sent (appended to address after '?' character) for each LED. The commands are xled1, xled2, xled3 and xled4.
+This is the 'name' part of the command. The 'value' part will be 1 or 0. These commands are processed in the processCmd()
+callback function. For example, the following code will process the "xled2" command:
+  <div  class="codebox">
+if (memcmp(&name[0], "xled2, 5)==0) {
+    //Received "xled2=0" command
+    if(value[0]=='0')
+        //.... Turn LED off
+    //Received "xled2=1" command
+    else if(value[0]=='1')
+        //.... Turn LED on
+}
+  </div>
+</p>
+<p>As described above, the processCmd() callback is used to process received commands. This is the new, simple method
+used in the Netcruzer Webserver. In addition, the following method can be used to process commands received via HTTP GET.
+This is the old and more complicated method described in the Microchip TCP/IP Stack documentation.
+Data sent via GET is automatically decoded, and stored in the array <code>curHTTP.data</code>. Your application will
+handle the data in the <code>HTTPExecuteGet</code> callback. The functions <code>HTTPGetArg</code> and
+<code>HTTPGetROMArg</code> provide an easy method to retrieve submitted values for processing.
+This method is described in detail in the Microchip TCP/IP documentation, available for
+download <a target="_blank" href="http://www.netcruzer.com/project-webserver">here</a>.</p>
 
-<p class="exercise"><b>Exercise:</b> Modify this form to support LED 5.</p>
-
-<h6></h6>
-
-<p>The <b>POST</b> method submits the data after the request headers are 
+<h2>HTTP POST using Forms on a web page</h2>
+<p>Forms in a web page provide a way for sending commands. Forms can be submitted in one of two methods, (<i>GET</i> or
+<i>POST</i>). The <b>POST</b> method submits the data after the request headers are 
 sent.  This allows the data to be virtually unlimited in length, as long as your 
-application can process it in chunks.  However, your application must manage 
-the receipt of data, so it is generally more complicated.</p>
+application can process it in chunks. When using this method, the requested data <b>is NOT</b> visible in your browser's
+address bar, as is the case when using HTTP GET method.</p>
 
 <p>As an example, this POST form sets the text shown on the LCD display:</p>
 
@@ -47,11 +96,36 @@ the receipt of data, so it is generally more complicated.</p>
 </div>
 </form>
 
+<h2>Sending command in the background via JavaScript</h2>
+<p>Sending commands via Forms as described above causes the web page to reload. To send command without a page
+  reload, the JavaScript cmdSend() function can be used. This function is defined in the main.js file included with the
+  default web pages. As an example, the following buttons will set port Port 6(X6) to 0 or 1.
+  The first buttons sends the command "ox6=0", and the second button "ox6=1".<br>
+<button onclick="cmdSend('ox6=0')">Send ox6=0 Command</button>
+<button onclick="cmdSend(['ox6',1])" style="margin-left: 20px;">Send ox6=1 Command</button>
+
+<br>The source code for the two buttons above is:
+  <div  class="codebox">
+  &lt;button onclick="cmdSend('ox6=0')"&gt;Send ox6=0 Command&lt;/button&gt;
+  &lt;button onclick="cmdSend('ox6=1')"&gt;Send ox6=1 Command&lt;/button&gt;
+  </div>
+
 </div>
 
 <script type="text/javascript">
-<!--
-document.getElementById('hello').innerHTML = "~hellomsg~";
--->
+var msg = "~#gc:name~";
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+  
+var led1 = "~#xled1~";
+var led2 = "~#xled2~";
+var led3 = "~#xled3~";
+var led4 = "~#xled4~";
+//Set value 1 or 0 for led1 to led4 select boxes. Use "xled1" to "xled4" User Tags, they are replaced with 1 or 0 by app.
+$('[name=xled1]').val(led1); //Select option with value = 'xled1' tag
+$('[name=xled2]').val(led2);
+$('[name=xled3]').val(led3);
+$('[name=xled4]').val(led4);
+
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

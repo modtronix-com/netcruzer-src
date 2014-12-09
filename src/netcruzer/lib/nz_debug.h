@@ -27,9 +27,9 @@
 // *********************************************************************
 // --------------- Debug Configuration (nz_debug.h) --------------------
 // *********************************************************************
-#define DEBUG_USE_USBHID
-//#define DEBUG_USE_USBCDC
-//#define DEBUG_USE_UART1
+#define NZ_USBHID_DEBUG_ENABLE
+//#define NZ_USBCDC_DEBUG_ENABLE
+//#define NZ_UART1_DEBUG_ENABLE
 
 //Size of Debug TX buffer, MUST BE power of 2 value! Increase size of this buffer if debug information
 //is getting lost. This can be the case if the application writes debug information to the debug buffer
@@ -276,13 +276,13 @@ typedef union __attribute__((aligned(2), packed)) {
 extern DEBUG_ERROR_FLAGS debugErrorFlags;
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug Initialization.
  *
  * IMPORTANT!<br>
  * Only call after module that debug uses has been initialized! For example, if debugging
- * is done via USB HID (DEBUG_USE_USBHID has been defined), than only call this function
+ * is done via USB HID (NZ_USBHID_DEBUG_ENABLE has been defined), then only call this function
  * after the USB HID port has been initialized.
  *
  */
@@ -292,7 +292,7 @@ void debugInit(void);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Call once all system initialization is done. Normally just before main system loop.
  */
@@ -302,7 +302,7 @@ void debugAllInitDone(void);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine
  */
@@ -312,7 +312,7 @@ void debugService(void);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Write a single character to the debug port. If no more space in debug port
  * buffer, function returns without doing anything.
@@ -325,7 +325,7 @@ void debugPutChar(CHAR c);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Write BYTE in decimal format to the debug output. For example, debugPutByte(100) will
  * write the string "100" to the debug output.
@@ -339,7 +339,7 @@ void debugPutByte(BYTE b);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Write WORD in decimal format to the debug output. For example, debugPutWord(100) will
  * write the string "100" to the debug output.
@@ -353,7 +353,7 @@ void debugPutWord(WORD w);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Adds given number of bytes to debug port. If no more space in debug port
  * buffer, function returns without doing anything.
@@ -367,7 +367,7 @@ void debugPutArray(const BYTE* pArr, WORD size);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Send given NULL terminated string to debug port. If no more space in debug port
  * buffer, function returns without doing anything.
@@ -380,7 +380,7 @@ void debugPutString(const char * str);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Write the given BYTE as a 2-character "ASCII Formatted Hex" string to the debug output.
  * If no more space in debug port buffer, function returns without doing anything.
@@ -392,7 +392,7 @@ void debugPutHexByte(BYTE b);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Write the given WORD as a 4-character "ASCII Formatted Hex" string to the debug output.
  * If no more space in debug port buffer, function returns without doing anything.
@@ -405,7 +405,7 @@ void debugPutHexWord(WORD w);
 
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Writes a line in hex encoded (ASCII) format to debug port. For example:
  * 00000080: 00 12 3A 99 E0 88 30 4B 00 12 3A 99 E0 88 30 4B
@@ -420,7 +420,7 @@ void debugPutHexLine(DWORD adr, BYTE* buf, BYTE len);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Wait for given bytes to become available in debug Transmit buffer.
  * @param required Number of bytes to wait for to become available
@@ -431,7 +431,7 @@ void debugWaitForSpace(BYTE required);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Wait till all pending bytes in the debug transmit buffer has been sent.
  */
@@ -441,7 +441,7 @@ void debugWaitTillAllSent(void);
 #endif
 
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Tests if all pending bytes in the debug transmit buffer has been sent.
  * @return Returns TRUE if all pending data has been sent, else FALSE

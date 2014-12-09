@@ -69,31 +69,38 @@
 //Hardware Specific Defines for any add-on boards. To include one of these file with the project, add
 //the BRD_XX define in the MPLAB project (macros), or in the HardwareProfile.h file (before nz_board.h include)
 #if defined(XBRD_PT66DIN6_R1)
-    #define XBRD_PT66DIN6_REV1
+    #define HAS_IMOD
+    #define XBRD_PT66DIN6
     #include "nz_pt66din6.h"        //Board define for PT66DIN6 board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_PT66ECI_R1)
-    #define XBRD_PT66ECI_REV1
+    #define HAS_IMOD
+    #define XBRD_PT66ECI
     #include "nz_pt66eci.h"         //Board define for PT66ECI prototype board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_PT66EI_10P_R1)
-    #define XBRD_PT66EI_REV1
+    #define HAS_IMOD
+    #define XBRD_PT66EI10P
     #include "nz_pt66ei10p.h"       //Board define for PT66EI prototype board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_PT66EI_10P_R2)
-    #define XBRD_PT66EI_REV2
+    #define HAS_IMOD
+    #define XBRD_PT66EI10P
     #include "nz_pt66ei10p.h"       //Board define for PT66EI prototype board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_PT66EI_24P_R1)
-    #define XBRD_PT66EI_REV1
+    #define HAS_IMOD
+    #define XBRD_PT66EI24P
     #include "nz_pt66ei24p.h"       //Board define for PT66EI prototype board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_PT66EI_24P_R2)
-    #define XBRD_PT66EI_REV2
+    #define HAS_IMOD
+    #define XBRD_PT66EI24P
     #include "nz_pt66ei24p.h"       //Board define for PT66EI prototype board
     #include "nz_imod.h"            //This expansion board has iMod ports
 #elif defined(XBRD_DB66DEV1_R1)
-    #define XBRD_DB66DEV1_REV1
+    #define HAS_IMOD
+    #define XBRD_DB66DEV1
     #include "nz_db66dev1.h"        //Board define for DB66DEV1 development board
 #endif
 

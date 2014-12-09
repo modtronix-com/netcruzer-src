@@ -47,7 +47,7 @@
 ////////// Defines //////////////////////////////
 enum SERPORT_INDEX_ENUM {
     SERPORT_INDEX_FIRST = -1,
-    #if defined(HAS_SERPORT_DEBUG)
+    #if defined(HAS_NZ_DEBUGGING)
     SERPORT_INDEX_DEBUG,
     #endif
     #if defined(HAS_SERPORT_UART1)
@@ -142,7 +142,7 @@ SERPORT     serportDummy;
 
 //Following are all "Serial Data Port" (SERPORT structures)
 //!!! IMPORTANT !!! Must have same order as "Serial Data Port" defined in SER_AVAIL_0TO15 and SER_AVAIL_16TO31
-#if defined(HAS_SERPORT_DEBUG)
+#if defined(HAS_NZ_DEBUGGING)
     //Create TX and RX buffers
     #if !defined(SERPORT_DONT_CREATE_TXRX_BUFS)
     BYTE bufTxDebug[DEBUG_TXBUF_SIZE];
@@ -392,7 +392,7 @@ void serTask(void) {
     inTaskArr[offset] = inTaskArr[offset] | mask;
 
     switch(smSerTask) {
-        #if defined(HAS_SERPORT_DEBUG)
+        #if defined(HAS_NZ_DEBUGGING)
         case SERPORT_INDEX_DEBUG:
             SERPORT_DEBUG_TASK();
             break;
@@ -547,7 +547,7 @@ void serDefaultInit(void) {
 
     /////////////////////////////////////////////////
     //Initialize all defined SERPORT pointers in nzGlobals.
-    #if defined(HAS_SERPORT_DEBUG)
+    #if defined(HAS_NZ_DEBUGGING)
         nzGlobals.serDebug = (SERPORT*)&serports.debug;
     #endif
     #if defined(HAS_SERPORT_UART1)
@@ -639,7 +639,7 @@ void serDefaultInit(void) {
 
     /////////////////////////////////////////////////
     //Initialize all defined SERPORT pointers in nzGlobals
-    #if defined(HAS_SERPORT_DEBUG)
+    #if defined(HAS_NZ_DEBUGGING)
         serports.debug.flagVal = (SERPORT_STAT_ENABLED | SERPORT_TYPE_SOFTWARE);
         //Create TX and RX buffers, initialize with defaults
         #if !defined(SERPORT_DONT_CREATE_TXRX_BUFS)

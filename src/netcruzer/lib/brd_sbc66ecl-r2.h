@@ -36,6 +36,7 @@
 #ifndef SBC66ECL_R2_H
 #define SBC66ECL_R2_H
 
+#if defined(BRD_SBC66ECL_R2)
 
 /**
  * Set configuration fuses to default values. If this is done in app, define CONFIGURATION_FUSES_SET
@@ -1562,4 +1563,5 @@
  */
 #define GET_UCPORT_CONFIG_OFFSET(ucPortVal) (offsetof(CFG_STRUCT, ucPort) + ((offsetof(CFG_BLOCK_UC66_PORT, ucPortVal)/sizeof(UCPORT_CONFIG)) * sizeof(UCPORT_CONFIG)) )
 
+#endif  //#if defined(BRD_SBC66ECL_R2)
 #endif

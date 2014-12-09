@@ -16,6 +16,10 @@
         <itemPath>../../webserver/Configs/TCPIP_SBC66EC-R1.h</itemPath>
         <itemPath>../../webserver/Configs/TCPIP_SBC66ECL-R2.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3" displayName="Drivers" projectFiles="true">
+        <itemPath>../../../netcruzer/drivers/nz_ow2482.h</itemPath>
+        <itemPath>../../../netcruzer/drivers/nz_sensDht.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="Modtronix" displayName="Netcruzer" projectFiles="true">
         <logicalFolder name="f1" displayName="Boards" projectFiles="true">
           <itemPath>../../../netcruzer/lib/brd_sbc66ec-r2.h</itemPath>
@@ -48,7 +52,6 @@
         <itemPath>../../../netcruzer/lib/nz_appConfig.h</itemPath>
         <itemPath>../../../netcruzer/lib/nz_xflashDefsSbc66.h</itemPath>
         <itemPath>../../../netcruzer/lib/nz_lcd2s.h</itemPath>
-        <itemPath>../../../netcruzer/lib/nz_ow2482.h</itemPath>
         <itemPath>../../../netcruzer/lib/nz_serDataPorts.h</itemPath>
         <itemPath>../../../netcruzer/lib/nz_serUSB.h</itemPath>
         <itemPath>../../../netcruzer/lib/nz_rtc.h</itemPath>
@@ -133,7 +136,6 @@
       <itemPath>../../webserver/interrupt.h</itemPath>
       <itemPath>../../webserver/appConfig.h</itemPath>
       <itemPath>../../webserver/HTTPPrint.h</itemPath>
-      <itemPath>../CustomFiles/projdefs.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LibraryFiles"
                    displayName="Library Files"
@@ -156,6 +158,14 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="CustomFiles" projectFiles="true">
+        <itemPath>../CustomFiles/TCPIP_custom.h</itemPath>
+        <itemPath>../CustomFiles/TCPIP_custom_SBC66EC-R2.h</itemPath>
+        <itemPath>../CustomFiles/TCPIP_custom_SBC66ECL-R2.h</itemPath>
+        <itemPath>../CustomFiles/appConfig_custom.h</itemPath>
+        <itemPath>../CustomFiles/main.c</itemPath>
+        <itemPath>../CustomFiles/projdefs.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="Examples" displayName="Demos" projectFiles="true">
         <logicalFolder name="f3" displayName="Microchip_Demos" projectFiles="true">
           <itemPath>../../webserver/SMTPDemo.c</itemPath>
@@ -163,6 +173,10 @@
           <itemPath>../../webserver/demos/GenericTCPClient.c</itemPath>
           <itemPath>../../webserver/demos/PingDemo.c</itemPath>
         </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Drivers" projectFiles="true">
+        <itemPath>../../../netcruzer/drivers/nz_ow2482.c</itemPath>
+        <itemPath>../../../netcruzer/drivers/nz_sensDht.c</itemPath>
       </logicalFolder>
       <logicalFolder name="Modtronix" displayName="Netcruzer" projectFiles="true">
         <logicalFolder name="f1" displayName="Boards" projectFiles="true">
@@ -194,12 +208,11 @@
         <itemPath>../../../netcruzer/lib/nz_ioPorts.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_appConfigXEE.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_lcd2s.c</itemPath>
-        <itemPath>../../../netcruzer/lib/nz_ow2482.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_serDataPorts.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_tick.c</itemPath>
-        <itemPath>../../../netcruzer/lib/nz_sensDht.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_rtc.c</itemPath>
         <itemPath>../../../netcruzer/lib/nz_serUart.c</itemPath>
+        <itemPath>../../../netcruzer/lib/nz_debugDefault.c</itemPath>
       </logicalFolder>
       <logicalFolder name="TCPIP Stack" displayName="TCPIP Stack" projectFiles="true">
         <itemPath>../../../microchip/TCPIP Stack/ARCFOUR.c</itemPath>
@@ -260,7 +273,6 @@
       <itemPath>../../webserver/spiFlashWinbond.c</itemPath>
       <itemPath>../../webserver/mainApp.c</itemPath>
       <itemPath>../../webserver/appConfig.c</itemPath>
-      <itemPath>../CustomFiles/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -275,6 +287,7 @@
   <sourceRootList>
     <Elem>..</Elem>
     <Elem>../../../netcruzer/lib</Elem>
+    <Elem>../../../netcruzer/drivers</Elem>
     <Elem>../../../system</Elem>
     <Elem>../../../codedoc</Elem>
     <Elem>../../../netcruzer/rtos</Elem>
@@ -322,7 +335,7 @@
         </C30Global>
       </item>
       <item path="../../../netcruzer/lib/nz_circularBufferStd.c"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -333,7 +346,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_db66dev1.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_db66dev1.c" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -343,7 +356,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_db66dev1.h" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_db66dev1.h" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -353,7 +366,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_sensDht.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_imod.c" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -363,7 +376,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_imod.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_imod.h" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -373,7 +386,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_imod.h" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66din6.c" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -383,7 +396,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_ow2482.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66din6.h" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -393,7 +406,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_pt66din6.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66eci.c" ex="false" overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -403,7 +416,9 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_pt66din6.h" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66ei10p.c"
+            ex="false"
+            overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -413,7 +428,9 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_pt66eci.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66ei10p.h"
+            ex="false"
+            overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -423,7 +440,9 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_pt66ei10p.c" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66ei24p.c"
+            ex="false"
+            overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -433,27 +452,9 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="../../../netcruzer/lib/nz_pt66ei10p.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="../../../netcruzer/lib/nz_pt66ei24p.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="../../../netcruzer/lib/nz_pt66ei24p.h" ex="true" overriding="false">
+      <item path="../../../netcruzer/lib/nz_pt66ei24p.h"
+            ex="false"
+            overriding="false">
         <C30>
         </C30>
         <C30-AS>
@@ -630,7 +631,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../netcruzer/lib;../../../netcruzer/rtos;../../../microchip/Include;../Configs;../../webserver"/>
+                  value="..;../../../netcruzer/lib;../../../netcruzer/drivers;../../../netcruzer/rtos;../../../microchip/Include;../Configs;../../webserver"/>
         <property key="isolate-each-function" value="true"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

@@ -798,5 +798,4 @@ WORD __INLINE_FUNCTION__ tick32Get_8us_noDisi(void) {
 #endif	//#if (NZSYS_TICK_TMR2AND3_UTICK==1)
 }
 
-
 #endif  //end of #define _NZDEFAULT_TICK_H_

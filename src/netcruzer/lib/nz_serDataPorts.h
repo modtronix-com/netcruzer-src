@@ -266,7 +266,7 @@ typedef struct __attribute__((__packed__)) _SERPORT
 
 
 typedef struct SERPORTS_ {
-#if defined(HAS_SERPORT_DEBUG)
+#if defined(HAS_NZ_DEBUGGING)
     SERPORT    debug;
 #endif
 
@@ -650,7 +650,7 @@ typedef struct __attribute__((__packed__))
 // "Serial Data Port" includes and Macros
 /////////////////////////////////////////////////
 
-#if defined(HAS_SERPORT_DEBUG)
+#if defined(HAS_NZ_DEBUGGING)
     #define SERPORT_DEBUG_INIT() debugInit()
     #define SERPORT_DEBUG_TASK() debugService()
 #else

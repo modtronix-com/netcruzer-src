@@ -30,9 +30,9 @@
 // *********************************************************************
 // --------------- Debug Configuration (nz_debug.h) --------------------
 // *********************************************************************
-#define DEBUG_USE_USBHID
-//#define DEBUG_USE_USBCDC
-//#define DEBUG_USE_UART1
+#define NZ_USBHID_DEBUG_ENABLE
+//#define NZ_USBCDC_DEBUG_ENABLE
+//#define NZ_UART1_DEBUG_ENABLE
 
 //Size of Debug TX buffer, MUST BE power of 2 value! Increase size of this buffer if debug information
 //is getting lost. This can be the case if the application writes debug information to the debug buffer
@@ -76,12 +76,13 @@
 // *********************************************************************
 // ------------ DHT22 Configuration (from nz_sensDht.h) -------------
 // *********************************************************************
-#define SENS_DHT_TIMEOUT                      ( 200 )     // Timeout 100ms
-//#define SENS_DHT_STARTUP_READ_DELAY         ( 2000 )    // Initial read delay 2 seconds (2000ms)
+#define SENS_DHT_BLOCK_ENABLE                               // Enable
+#define SENS_DHT_TIMEOUT                      ( 200 )       // Timeout 100ms
+//#define SENS_DHT_STARTUP_READ_DELAY         ( 2000 )      // Initial read delay 2 seconds (2000ms)
 //#define SENS_DHT_AUTO_READ_PERIOD           ( 2100 )    // Automatically read every 2100 seconds, set to 0 to disable auto read!
 //#define SENS_DHT_PIN_ARRAY_SIZE             ( 256 )     // Size of Pin Array read buffer, must be 4,8,16,32,64,128 or 256. Use 256 for optimum speed!
 //#define SENS_DHT_TYPE                       ( 2 )       // Sensor Type, 1=DHT11, 2=DHT22
-//#define SENS_DHT_NUMBER_OF_SENSORS          ( 2 )       // Number of Sensors
+//#define SENS_DHT_NUMBER_OF_SENSORS          ( 2 )       // Number of Sensors, set to 0 to disable DHT Sensor module
  
 
  // *********************************************************************
@@ -94,7 +95,7 @@
 // *********************************************************************
 // -------------- USB Configuration (nz_serUSB.h) -----------------
 // *********************************************************************
-#define HAS_SERPORT_USB_HID
+#define NZ_USBHID_ENABLE
 
 //If set to 1, the system LED is controlled by the nz_serUSB module
 #define USB_CONTROLS_SYSLED         0

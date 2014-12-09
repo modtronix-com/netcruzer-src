@@ -31,17 +31,55 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="netcruzer" projectFiles="true">
-        <logicalFolder name="f1" displayName="boards" projectFiles="true">
-          <itemPath>../../../../netcruzer/lib/nz_board.h</itemPath>
-          <itemPath>../../../../netcruzer/lib/brd_sbc66ecl-r2.h</itemPath>
-          <itemPath>../../../../netcruzer/lib/brd_sbc66ec-r1.h</itemPath>
-          <itemPath>../../../../netcruzer/lib/brd_sbc66ec-r2.h</itemPath>
-          <itemPath>../../../../netcruzer/lib/brd_sbc66ual-r1.h</itemPath>
-          <itemPath>../../../../netcruzer/lib/brd_sbc66zl-r1.h</itemPath>
-        </logicalFolder>
         <itemPath>../../../../netcruzer/lib/nz_netcruzer.h</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_tickCx.h</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_tick.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc32ul-r1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_analog.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_appConfig.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_board_defaults.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_circularBuffer.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_circularBufferPwr2.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_circularBufferStd.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_command.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_db66dev1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_debounce.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_debug.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_din24i-r1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_genericTypeDefs.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_helpers.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_helpersCx.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_im2bl.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_im4mos.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_imod.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_in6bt.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_interrupt.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_ioPortDefs.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_ioPorts.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_lcd2s.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_menuFsm.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66din6.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66eci.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66ei10p.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66ei24p.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pwm.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_rtc.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serDataPorts.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serI2C.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serUSB.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serUart.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_usbHidDefs.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_xEeprom.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_xFlash.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_xRam.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_xflashDefsSbc66.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/simio.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc66ec-r1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc66ec-r2.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc66ecl-r2.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc66ual-r1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/brd_sbc66zl-r1.h</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_board.h</itemPath>
       </logicalFolder>
       <itemPath>../HardwareProfile.h</itemPath>
       <itemPath>../projdefs.h</itemPath>
@@ -57,6 +95,33 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="netcruzer" projectFiles="true">
         <itemPath>../../../../netcruzer/lib/nz_netcruzer.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_tickCx.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_tick.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66din6.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_appConfigXEE.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_analog.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_circularBufferPwr2.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_circularBufferStd.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_db66dev1.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_debounce.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_debugDefault.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_helpers.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_im2bl.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_im4mos.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_imod.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_in6bt.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_ioPorts.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_lcd2s.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_menuFsm.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66eci.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66ei10p.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pt66ei24p.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_pwm.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_rtc.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serDataPorts.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serI2C.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serUSB.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_serUart.c</itemPath>
       </logicalFolder>
       <itemPath>../main.c</itemPath>
     </logicalFolder>
@@ -68,6 +133,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../../../../netcruzer/lib</Elem>
+    <Elem>../../../../netcruzer/drivers</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -102,7 +168,7 @@
         <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -114,7 +180,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ecl-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -126,7 +192,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ual-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -138,7 +204,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66zl-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -176,7 +242,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -368,7 +434,7 @@
         <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -380,7 +446,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ecl-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -392,7 +458,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ual-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -404,7 +470,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66zl-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -442,7 +508,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../netcruzer/userlib;../../../../microchip/Include"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../netcruzer/userlib;../../../../microchip/Include"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -633,7 +699,7 @@
         <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -645,7 +711,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -657,7 +723,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ual-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -669,7 +735,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66zl-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -707,7 +773,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -896,7 +962,7 @@
         <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -908,7 +974,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -920,7 +986,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ecl-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -932,7 +998,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66zl-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -970,7 +1036,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -1159,7 +1225,7 @@
         <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -1171,7 +1237,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ec-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -1183,7 +1249,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ecl-r2.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -1195,7 +1261,7 @@
         </C30Global>
       </item>
       <item path="../../../../netcruzer/lib/brd_sbc66ual-r1.h"
-            ex="true"
+            ex="false"
             overriding="false">
         <C30>
         </C30>
@@ -1233,7 +1299,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

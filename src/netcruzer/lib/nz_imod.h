@@ -45,7 +45,7 @@
 #ifndef IMOD_H
 #define IMOD_H
 
-
+#if defined(HAS_IMOD)
 
 /////////////////////////////////////////////////
 // im2BL
@@ -527,5 +527,7 @@ void ERROR_passed_invalid_port_to_function___imod_ConfDirPin2(void);
 BOOL imod_GetPin3(BYTE port);
 
 BOOL imod_GetPin5(BYTE port);
+
+#endif  //#if defined(HAS_IMOD)
 
 #endif

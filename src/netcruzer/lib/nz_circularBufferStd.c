@@ -31,12 +31,9 @@
 
 #include "HardwareProfile.h"
 
-#include "nz_circularBufferStd.h"
-//#include "nz_circularBuffer.h"
-#if !defined(CIRBUF_USE_CIRCULAR_BUFFER_STD)
-    #error "Configured to use wrong Circular Buffer! Ensure only 1 nz_circularBufferXxx.c file is included with project. Also ensure only one CIRBUF_USE_XXX macro is defined (projdefs.h), and it matches circular buffer *.c file included with project!"
-#endif
+#if defined(CIRBUF_USE_CIRCULAR_BUFFER_STD)
 
+#include "nz_circularBufferStd.h"
 #include "nz_helpers.h"
 #include "nz_helpersCx.h"
 #include "nz_interrupt.h"
@@ -74,7 +71,7 @@ void cbufInitDefault(CIRBUF* pBuf, BYTE* bufArray, WORD size)
 {
     //Check if size is power of 2 -AND- equal to or larger than 8
     //Report error if not 8,16,32,64,128,512,1024,2048,4096,8192,16384....
-    #if defined(DEBUGGING_ENABLED)
+    #if defined(HAS_NZ_DEBUGGING)
     if ( size > 16384) {
         debugErrorFlags.bits.bCirbufSizeError = 1;
         size = 256;     //Set size to default value
@@ -110,7 +107,7 @@ void cbufInit(CIRBUF* pBuf, BYTE* bufArray, WORD size, BYTE typeFormat)
     //Default initialization
     cbufInitDefault(pBuf, bufArray, size);
     
-    #if defined(DEBUGGING_ENABLED)
+    #if defined(HAS_NZ_DEBUGGING)
         //Packets NOT supported
         #if defined(CIRBUF_DISABLE_PACKETS)
         if ( (typeFormat & 0x03) != 0) {
@@ -2660,3 +2657,5 @@ void cbufRemovePacket(CIRBUF* pBuf) {
 }
 
 #endif  //#if !defined(CIRBUF_DISABLE_PACKETS)
+
+#endif  //#if defined(CIRBUF_USE_CIRCULAR_BUFFER_STD)

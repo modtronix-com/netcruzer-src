@@ -29,7 +29,7 @@
 #define     UART_LISTENERS          (4)             //[-DEFAULT-]
 
 //---- Enable UART1 as a "Serial Data Port" ----
-#define     HAS_SERPORT_UART1
+#define     NZ_UART1_ENABLE
 #define     USER_CONFIGURES_UART1   (0)             //[-DEFAULT-]
 
 //UART1 Interrupt priority, a value from 0 to 7. 0 will disable interrupt, 7 is highest priority.
@@ -50,7 +50,7 @@
 #define     UART1_TIMEOUT           (200)           //[-DEFAULT-]
 
 //---- Enable UART2 as a "Serial Data Port" ----
-#define     HAS_SERPORT_UART2
+#define     NZ_UART2_ENABLE
 #define     USER_CONFIGURES_UART1   (0)             //[-DEFAULT-]
 
 //UART2 Interrupt priority, a value from 0 to 7. 0 will disable interrupt, 7 is highest priority.
@@ -71,7 +71,7 @@
  *   to the projdefs.h file.
  * - In this "Configuration" section, enable required UART ports. For example to enable UART 1, ensure following is uncommented:
  @code
- #define HAS_SERPORT_UART1
+ #define NZ_UART1_ENABLE
  @endcode
  * - In this "Configuration" section, change any default values if required (if default
  *   values should be used, define is not required in projdefs.h).
@@ -127,8 +127,9 @@
 #ifndef NZ_SERUART_H
 #define NZ_SERUART_H
 
-#include "nz_circularBuffer.h"
+#if defined(HAS_SERPORT_UART)
 
+#include "nz_circularBuffer.h"
 
 ////////// Default Defines //////////////////////
 
@@ -633,4 +634,5 @@ BYTE serUart1WriteString(const char* str);
 
 #endif  //#if defined(HAS_SERPORT_UART1)
 
+#endif  //#if defined(HAS_SERPORT_UART)
 #endif  //#ifndef NZ_SERUART_H

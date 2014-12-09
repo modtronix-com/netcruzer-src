@@ -416,7 +416,7 @@ WORD processTag(BYTE* tag, WORD ref, BYTE* dest, BYTE user) {
 }
 
 
-#if defined(DEBUGGING_ENABLED) && (HAS_DEMO_DEBUG_HANDLER == 1)
+#if defined(HAS_NZ_DEBUGGING) && (HAS_DEMO_DEBUG_HANDLER == 1)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

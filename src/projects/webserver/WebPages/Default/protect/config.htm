@@ -1,4 +1,4 @@
-~inc:header.inc~
+~#gf:header.inc~
 <div id="content">
 
 <h1>Board Configuration</h1>
@@ -34,10 +34,47 @@ connectivity.  Recovery options will be provided on the next page.</p>
 <div><input type="submit" class="sm" value="Save Config" /></div>
 </fieldset>
 </form>
+
+
+
+<form method="post" action="/protect/config.htm" name="config">
+<fieldset>
+<div><label>MAC Address:</label>
+<input type="text" id="cMac" name="mac" value="" /></div>
+<div><label>Host Name:</label>
+<input type="text" id="cHost" name="host" value="" /></div>
+<div>&nbsp;</div>
+<div>
+<input type="checkbox" class="sm" name="dhcp" value="1" onclick="newConfigIPBoxes()" ~config_dhcpchecked~ /> Enable DHCP</div>
+<div><label>IP Address:</label>
+<td><input type="text" id="cIp" name="ip" value="" /></div>
+<div><label>Gateway:</label>
+<td><input type="text" id="cGw" name="gw" value="" /></div>
+<div><label>Subnet Mask:</label>
+<td><input type="text" id="cSn" name="sub" value="" /></div>
+<div><label>Primary DNS:</label>
+<td><input type="text" id="cDns" name="dns1" value="" /></div>
+<div><label>Secondary DNS:</label>
+<input type="text" id="cDns2" name="dns2" value="" /></div>
+<div><input type="submit" class="sm" value="Save Config" /></div>
+</fieldset>
+</form>
+
+
+
 </div>
 
 <script language="javascript">
-<!--
+var msg = "~#gc:name~";
+
+if (msg != "NA")
+  $('#hello').html("Welcome, "+msg+"!");
+
+configIPBoxes();
+
+var mac = ~#k4001~;
+var host = ~#kF1C1~;
+  
 function configIPBoxes() {
 	e = document.forms.config;
 	st = e.dhcp.checked;
@@ -48,8 +85,6 @@ function configIPBoxes() {
 	e.dns2.disabled = st;
 }
 
-configIPBoxes();
-document.getElementById('hello').innerHTML = "~hellomsg~";
-//-->
+
 </script>
-~inc:footer.inc~
+~#gf:footer.inc~

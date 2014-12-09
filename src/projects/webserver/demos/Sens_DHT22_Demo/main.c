@@ -38,6 +38,8 @@
  *********************************************************************/
 #define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
 
+#if defined(SENS_DHT22_DEMO1)
+
 //Netcruzer include files
 #include "HardwareProfile.h"
 #include "main.h"
@@ -110,7 +112,7 @@ int main(void) {
 	nzFbrCreate(2, TRUE, sensDht_fbrTask, &fbrTcbDHT22);
 
     //DHT22 Initialization. First sensor is given with sensDht_init(). Use sensDht_addSensor() to add additional sensors.
-    sensDht_init(36, 3000);		//Initialize DHT22, using port 36 (old port name Y6), startup delay 3 seconds
+    sensDht_init(36, 3000, IOPORT_ID_NA, 0);    //Initialize DHT22, using port 36 (old port name Y6), startup delay 3 seconds
 
     //Configure the interrupt on change for DHT22 on port 36 (old port name Y6)!
     //IMPORTANT!!! Use equal or higher priority than is used for System Tick = 4 by default.
@@ -261,3 +263,5 @@ WORD processTag(BYTE* tag, WORD ref, BYTE* dest, BYTE user) {
 
     return ref;
 }
+
+#endif  //#if defined(SENS_DHT22_DEMO1)

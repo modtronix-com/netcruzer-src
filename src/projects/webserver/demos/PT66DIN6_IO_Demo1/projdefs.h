@@ -6,6 +6,7 @@
 #ifndef _PROJDEFS_H_
 #define _PROJDEFS_H_
 
+#if defined(PT66DIN6_IO_DEMO1)
 
 //Ensure this define is uncommented for release build
 //#define RELEASE_BUILD
@@ -18,8 +19,13 @@
 #define     NZSYS_DONT_MANAGE_MAINLOOP      //Don't create the mainLoop() function
 #define     mainLoop mainAppTask            //Use mainAppTask for main loop
 
+#define     NZ_APP_CONFIG_XEE_ENABLED       //Enable NZ_APP_CONFIG_XEE
+
 #define     NZSYS_CALL_INITIALIZE_BOARD     //The initializeBoard() function will be called during Netcruzer initialization
 #define     NZSYS_CALL_APPCONF_FUNCTIONS    //The cfgInit() and appConfInit() function will be called during Netcruzer initialization
+
+#define     NZSYS_DISABLE_DEFAULT_DEBUG     //Disable the "nz_debugDefault.c" file. We use our own file myDebug.c
+#define     NZSYS_DISABLE_DEFAULT_SERUSB    //Disable the "nz_serUSB.c" file
 
 //Default size of RAM User Memory. Default is 256, set to 0 to disable all "User Memory" functions
 #define     USER_RAM_SIZE                       ( 256 )
@@ -87,6 +93,7 @@
 // ------------ Debounce Configuration (from nz_debounce.h) -------------
 // *********************************************************************
 //Define functions for reading each port's value.
+#define NZ_DEBOUNCE_ENABLED
 #define DEBOUNCE_GET_PORT1()    imod1_ReadButton1()
 #define DEBOUNCE_GET_PORT2()    imod1_ReadButton2()
 #define DEBOUNCE_PORT_IMOD1_BUTTON1 1
@@ -97,8 +104,8 @@
 // *********************************************************************
 // --------------- Debug Configuration (nz_debug.h) --------------------
 // *********************************************************************
-#define DEBUG_USE_USBHID
-//#define DEBUG_USE_UART1
+#define NZ_USBHID_DEBUG_ENABLE
+//#define NZ_UART1_DEBUG_ENABLE
 
 //Size of Debug TX buffer, MUST BE power of 2 value! Increase size of this buffer if debug information
 //is getting lost. This can be the case if the application writes debug information to the debug buffer
@@ -181,7 +188,7 @@
 // *********************************************************************
 // --------------- I2C Configuration (from nz_serI2C.h) ----------------
 // *********************************************************************
-#define HAS_SERPORT_I2C1
+#define NZ_I2C1_ENABLE
 
 
 // *******************************************************
@@ -203,7 +210,7 @@
 // *********************************************************************
 // ------------ RTC Configuration (from nz_rtc.h) -------------
 // *********************************************************************
-#define NZ_RTC_ENABLED                          (1) //Enable RTC
+#define NZ_RTC_ENABLE                               //Enable the RTC
 #define NZ_RTC_UNLOCK                           (1) //Unlock RTC during initialization
 
 
@@ -219,8 +226,8 @@
 // *********************************************************************
 // -------------- USB stack hardware selection options -----------------
 // *********************************************************************
-//#define HAS_SERPORT_USB_CDC
-#define HAS_SERPORT_USB_HID
+//#define NZ_USBCDC_ENABLE
+#define NZ_USBHID_ENABLE
 
-
+#endif  //#if defined(PT66DIN6_IO_DEMO1)
 #endif  //_PROJDEFS_H_

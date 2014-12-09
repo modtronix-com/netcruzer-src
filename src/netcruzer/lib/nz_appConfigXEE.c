@@ -37,6 +37,9 @@
 #define THIS_IS_NZ_APPCONFIG_C
 
 #include "HardwareProfile.h"
+
+#if defined(NZ_APP_CONFIG_XEE_ENABLED)
+
 #include "nz_appConfig.h"
 
 #include "nz_xEeprom.h"
@@ -889,3 +892,5 @@ void cfgInvalidateXeeprom(void)
     xeeWrite(0);
     xeeEndWrite();
 }
+
+#endif  //#if defined(NZ_APP_CONFIG_XEE_ENABLED)

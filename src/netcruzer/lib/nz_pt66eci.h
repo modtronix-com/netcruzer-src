@@ -103,7 +103,7 @@
 #ifndef PT66ECI_R1_H
 #define PT66ECI_R1_H
 
-
+#if defined(XBRD_PT66ECI)
 
 // *********************************************************************
 // ------------------------- iMod Port 1 Defines -----------------------
@@ -218,5 +218,6 @@
 #define imod1_ConfPulldownPin7(val) (PULLDOWN_IMOD1_P7 = val)
 #endif
 
+#endif  //#if defined(XBRD_PT66ECI)
 
 #endif

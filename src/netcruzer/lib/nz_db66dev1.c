@@ -31,7 +31,7 @@
 
 #include "HardwareProfile.h"
 
-#if defined(XBRD_DB66DEV1_REV1)
+#if defined(XBRD_DB66DEV1)
 
 #include "nz_db66dev1.h"
 
@@ -293,4 +293,4 @@ void db66dev1_Service() {
     */
 }
 
-#endif  //#if defined(XBRD_DB66DEV1_REV1)
+#endif  //#if defined(XBRD_DB66DEV1)

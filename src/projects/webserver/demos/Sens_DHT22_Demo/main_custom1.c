@@ -37,6 +37,8 @@
  *********************************************************************/
 #define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
 
+#if defined(SENS_DHT22_DEMO1)
+
 //Netcruzer include files
 #include "HardwareProfile.h"
 #include "main.h"
@@ -244,3 +246,5 @@ void processIO(void) {
 		#endif
     }
 }
+
+#endif  //#if defined(SENS_DHT22_DEMO1)

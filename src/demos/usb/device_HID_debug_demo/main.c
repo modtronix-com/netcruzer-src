@@ -9,7 +9,7 @@
  * http://www.netcruzer.com/usbterminal/
  *
  * This demo does not implement any USB code in the main.c file, and instructs the system to do it all. This is
- * done by including the "HAS_SERPORT_USB_HID" define in the projdefs.h file.
+ * done by including the "NZ_USBHID_ENABLE" define in the projdefs.h file.
  *
  * <b>Details:</b><br>
  * The "Netcruzer Library" contains two circular buffer implementations. Any one can be used for this project.
@@ -68,7 +68,7 @@ int main(void) {
     }
 }
 
-#if defined(DEBUGGING_ENABLED)
+#if defined(HAS_NZ_DEBUGGING)
 /**
  * Debug service routine. This function is required when debugging is enabled. It is
  * called from the system! We have to process any received debug message.

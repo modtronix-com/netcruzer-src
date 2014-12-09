@@ -36,6 +36,8 @@
  *********************************************************************/
 #define THIS_IS_MAIN_FILE   //Uniquely identifies this as the file with the main application entry function main()
 
+#if defined(DB66DEV1_DEMO1)
+
 //Netcruzer include files
 #include "HardwareProfile.h"
 #include "main.h"
@@ -300,3 +302,5 @@ WORD processTag(BYTE* tag, WORD ref, BYTE* dest, BYTE user) {
 
     return ref;
 }
+
+#endif  //#if defined(DB66DEV1_DEMO1)

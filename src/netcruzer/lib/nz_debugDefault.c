@@ -31,6 +31,8 @@
 
 #include "HardwareProfile.h"
 
+#if defined(HAS_NZ_DEBUGGING) && !defined(NZSYS_DISABLE_DEFAULT_DEBUG)
+
 #include "nz_debug.h"
 #include "nz_circularBuffer.h"
 #include "nz_helpers.h"
@@ -339,7 +341,7 @@ void debugPutString(const char * str)
  */
 void debugWaitForSpace(BYTE required) {
     //If USB is used for Debugging, call usbTask() if TX buffer is full.
-    #if defined(DEBUG_USE_USBHID) || defined(DEBUG_USE_USBCDC)
+    #if defined(HAS_USBHID_DEBUGGING) || defined(HAS_USBCDC_DEBUGGING)
 
 	//If not Configured, we do NOT wait!
 	if(serUSBIsSuspended()) return;
@@ -355,7 +357,7 @@ void debugWaitForSpace(BYTE required) {
  */
 void debugWaitTillAllSent(void) {
     //If USB is used for Debugging, call usbTask() if TX buffer is full.
-    #if defined(DEBUG_USE_USBHID) || defined(DEBUG_USE_USBCDC)
+    #if defined(HAS_USBHID_DEBUGGING) || defined(HAS_USBCDC_DEBUGGING)
 
 	//If not Configured, we do NOT wait!
 	if(serUSBIsSuspended()) return;
@@ -372,8 +374,10 @@ void debugWaitTillAllSent(void) {
  */
 BOOL debugIsTxBufEmpty(void) {
     //If USB is used for Debugging, call usbTask() if TX buffer is full.
-    #if defined(DEBUG_USE_USBHID) || defined(DEBUG_USE_USBCDC)
+    #if defined(HAS_USBHID_DEBUGGING) || defined(HAS_USBCDC_DEBUGGING)
 
     return cbufIsEmpty(CIRBUF_TX_DEBUG);
     #endif
 }
+
+#endif  //#if defined(HAS_NZ_DEBUGGING) && !defined(NZSYS_DISABLE_DEFAULT_DEBUG)

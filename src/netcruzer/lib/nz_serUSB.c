@@ -31,6 +31,8 @@
 
 #include "HardwareProfile.h"
 
+#if (defined(HAS_SERPORT_USB_CDC) || defined(HAS_SERPORT_USB_HID)) && !defined(NZSYS_DISABLE_DEFAULT_SERUSB)
+
 #include "nz_usbHidDefs.h"
 #include "nz_serUSB.h"
 #include "nz_circularBuffer.h"
@@ -265,7 +267,7 @@ void serUSBTask(void) {
             {
                 //USB HID is used for debugging! Data received with CMDUSB_DEBUG_MESSAGE command is not added
                 //to CIRBUF_RX_USB, but to debug receive buffer!
-                #if defined(DEBUG_USE_USBHID)
+                #if defined(HAS_USBHID_DEBUGGING)
                 //Debug message. Add the received debug message to the debug buffer. Is handled by "debug.c".
                 case CMDUSB_DEBUG_MESSAGE:
                     //Debug messages are always NULL terminated strings. This means PacketFromPC.Size = string lenght + 1 (for NULL)
@@ -340,7 +342,7 @@ void serUSBTask(void) {
     {
         WORD sizeData;
 
-        #if defined(DEBUG_USE_USBHID)
+        #if defined(HAS_USBHID_DEBUGGING)
         //Check if there is any debub message to send. Debug messages are always sent as streams!
         //Even if CIRBUF_TX_DEBUG is configured as a "Packet Buffer", we always use it in stream
         //mode, and send everything that is available in buffer. All messages are NULL terminated
@@ -412,7 +414,7 @@ void serUSBTask(void) {
 
             USBInHandle = HIDTxPacket(HID_EP,(BYTE*)&PacketToPC.Contents[0],64);
         }
-        #if defined(DEBUG_USE_USBHID)
+        #if defined(HAS_USBHID_DEBUGGING)
         }
         #endif
     }       //if(!HIDTxHandleBusy(USBInHandle))
@@ -912,3 +914,5 @@ BOOL USER_USB_CALLBACK_EVENT_HANDLER(int event, void *pdata, WORD size) {
     }
     return TRUE;
 }
+
+#endif  //#if (defined(HAS_SERPORT_USB_CDC) || defined(HAS_SERPORT_USB_HID)) && !defined(NZSYS_DISABLE_DEFAULT_SERUSB)

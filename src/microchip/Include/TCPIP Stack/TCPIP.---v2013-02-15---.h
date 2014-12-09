@@ -133,7 +133,7 @@
 		#undef STACK_USE_HTTP_APP_RECONFIG
 	#endif
 	#if defined(STACK_USE_HTTP_EMAIL_DEMO)
-		#if !defined(STACK_USE_SMTP_CLIENT)
+		#if !defined(STACK_USE_SMTP_CLIENT) && defined(ENABLE_SMTP_DEMO)
 			#error HTTP E-mail Demo requires SMTP_CLIENT and HTTP2
 		#endif
 	#endif

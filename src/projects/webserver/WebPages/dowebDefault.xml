@@ -13,7 +13,7 @@
     <!-- set global properties for this build - ARE DEFINED IN build.properties -->
     <!-- <property name="dest.server" value="http://mchpboard/mpfsupload"/> -->
     
-    <property name="webpage.name" value="DefaultNZ"/>
+    <property name="webpage.name" value="Default"/>
     
   
     <!-- what files to include and exclude from the prj/pic projects dir -->

@@ -48,7 +48,6 @@
         <itemPath>../../../../netcruzer/lib/nz_imod.h</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_serI2C.h</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_circularBufferPwr2.h</itemPath>
-        <itemPath>../../../../netcruzer/lib/nz_ow2482.h</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_serDataPorts.h</itemPath>
       </logicalFolder>
       <logicalFolder name="usb" displayName="usb" projectFiles="true">
@@ -61,6 +60,7 @@
         <itemPath>../../../../microchip/Include/USB/usb_hal.h</itemPath>
         <itemPath>../../../../microchip/Include/USB/usb_hal_pic24.h</itemPath>
       </logicalFolder>
+      <itemPath>../../../../netcruzer/drivers/nz_ow2482.h</itemPath>
       <itemPath>../HardwareProfile.h</itemPath>
       <itemPath>../usb_config.h</itemPath>
       <itemPath>../projdefs.h</itemPath>
@@ -89,8 +89,9 @@
         <itemPath>../../../../netcruzer/lib/nz_circularBufferPwr2.c</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_helpers.c</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_serI2C.c</itemPath>
-        <itemPath>../../../../netcruzer/lib/nz_ow2482.c</itemPath>
         <itemPath>../../../../netcruzer/lib/nz_serDataPorts.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_rtc.c</itemPath>
+        <itemPath>../../../../netcruzer/lib/nz_ioPorts.c</itemPath>
       </logicalFolder>
       <logicalFolder name="usb" displayName="usb" projectFiles="true">
         <itemPath>../usb_descriptors.c</itemPath>
@@ -98,6 +99,7 @@
         <itemPath>../../../../microchip/USB/HID Device Driver/usb_function_hid.c</itemPath>
         <itemPath>../../../../microchip/USB/usb_hal_pic24.c</itemPath>
       </logicalFolder>
+      <itemPath>../../../../netcruzer/drivers/nz_ow2482.c</itemPath>
       <itemPath>../main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -109,6 +111,7 @@
   <sourceRootList>
     <Elem>..</Elem>
     <Elem>../../../../netcruzer/lib</Elem>
+    <Elem>../../../../netcruzer/drivers</Elem>
     <Elem>../../../../netcruzer/libxc16</Elem>
     <Elem>../../../../system</Elem>
     <Elem>../../../../codedoc</Elem>
@@ -220,7 +223,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -499,7 +502,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -789,7 +792,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -1053,7 +1056,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="..;../../../../netcruzer/lib;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
+                  value="..;../../../../netcruzer/lib;../../../../netcruzer/drivers;../../../../netcruzer/rtos;../../../../microchip/Include;../../../../netcruzer/userlib"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
