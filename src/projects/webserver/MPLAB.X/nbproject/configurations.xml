@@ -339,23 +339,33 @@
         <logicalFolder name="snmp" displayName="snmp" projectFiles="true">
           <itemPath>../WebPages/Default/snmp/snmpconfig.htm</itemPath>
         </logicalFolder>
+        <itemPath>../WebPages/Default/ajax.htm</itemPath>
         <itemPath>../WebPages/Default/auth.htm</itemPath>
+        <itemPath>../WebPages/Default/cmd.htm</itemPath>
+        <itemPath>../WebPages/Default/cmds.htm</itemPath>
         <itemPath>../WebPages/Default/cookies.htm</itemPath>
+        <itemPath>../WebPages/Default/data.xml</itemPath>
         <itemPath>../WebPages/Default/dynvars.htm</itemPath>
         <itemPath>../WebPages/Default/footer.inc</itemPath>
         <itemPath>../WebPages/Default/forms.htm</itemPath>
+        <itemPath>../WebPages/Default/formsTest.htm</itemPath>
+        <itemPath>../WebPages/Default/hdr1.inc</itemPath>
+        <itemPath>../WebPages/Default/hdr2.inc</itemPath>
         <itemPath>../WebPages/Default/header.inc</itemPath>
         <itemPath>../WebPages/Default/index.htm</itemPath>
-        <itemPath>../WebPages/Default/leds.cgi</itemPath>
+        <itemPath>../WebPages/Default/jquery.js</itemPath>
+        <itemPath>../WebPages/Default/main.js</itemPath>
         <itemPath>../WebPages/Default/mchp.css</itemPath>
         <itemPath>../WebPages/Default/mchp.gif</itemPath>
         <itemPath>../WebPages/Default/mchp.js</itemPath>
+        <itemPath>../WebPages/Default/nzcks.htm</itemPath>
+        <itemPath>../WebPages/Default/power.xml</itemPath>
+        <itemPath>../WebPages/Default/sen_dht.htm</itemPath>
+        <itemPath>../WebPages/Default/sensor.xml</itemPath>
         <itemPath>../WebPages/Default/snmp.bib</itemPath>
         <itemPath>../WebPages/Default/status.xml</itemPath>
+        <itemPath>../WebPages/Default/tags.htm</itemPath>
         <itemPath>../WebPages/Default/upload.htm</itemPath>
-        <itemPath>../WebPages/Default/ajax.htm</itemPath>
-        <itemPath>../WebPages/Default/data.xml</itemPath>
-        <itemPath>../WebPages/Default/main.js</itemPath>
         <itemPath>../WebPages/Default/uploadfile.htm</itemPath>
         <itemPath>../WebPages/Default/uploadfirm.htm</itemPath>
       </logicalFolder>
