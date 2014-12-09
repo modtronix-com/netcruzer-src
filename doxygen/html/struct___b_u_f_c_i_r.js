@@ -1,0 +1,25 @@
+var struct___b_u_f_c_i_r =
+[
+    [ "bErrorFull", "struct___b_u_f_c_i_r.html#a7b9595698339a797ba9b21e711c64cf0", null ],
+    [ "bPacket", "struct___b_u_f_c_i_r.html#a2a9c7798983bc39318330da5ea04f94a", null ],
+    [ "bPacketLarge", "struct___b_u_f_c_i_r.html#a54b6b0fd1a1573f2583fdd73a2e3098b", null ],
+    [ "bSizePower2", "struct___b_u_f_c_i_r.html#a76de7ddebaf690a8f399df908435f61f", null ],
+    [ "buf", "struct___b_u_f_c_i_r.html#ae66138fc86eaea06172a148921e85b18", null ],
+    [ "fill", "struct___b_u_f_c_i_r.html#a853bde4025812260d4c9e367238a32f6", null ],
+    [ "fill14_15", "struct___b_u_f_c_i_r.html#a24ce28e5ced595fdceab95f02130ed4c", null ],
+    [ "fill6_7", "struct___b_u_f_c_i_r.html#ac48bb173e14df19a60f664525f6f3fc6", null ],
+    [ "fill8_11", "struct___b_u_f_c_i_r.html#aa30bcd905117109f60496305c64ffcb7", null ],
+    [ "flagBits", "struct___b_u_f_c_i_r.html#a36e1e801a47bd3bcf9d25394be061951", null ],
+    [ "flagBytes", "struct___b_u_f_c_i_r.html#a9c702926e9917926d5de4755d727dee3", null ],
+    [ "flagTF", "struct___b_u_f_c_i_r.html#aa80db0fe8602e1b9b6cb09cd48b8bc48", null ],
+    [ "flagTypFor", "struct___b_u_f_c_i_r.html#aa5ef5b866fa8ffd9ccde0d01352fe9fc", null ],
+    [ "flagVal", "struct___b_u_f_c_i_r.html#a9c45764e80adf250e04cd0e9ecd8d5b4", null ],
+    [ "format", "struct___b_u_f_c_i_r.html#a6fea735e1b12f87689267ca76a7f4037", null ],
+    [ "get", "struct___b_u_f_c_i_r.html#addded793ed1705119ef1506551e29644", null ],
+    [ "HB", "struct___b_u_f_c_i_r.html#a5a27b50a15cb01af9899b59caa13ec00", null ],
+    [ "LB", "struct___b_u_f_c_i_r.html#a623052b197820c89704b02311fdca816", null ],
+    [ "maxOffset", "struct___b_u_f_c_i_r.html#ac15c710c8ebed37e5b22edc3a3f4439a", null ],
+    [ "put", "struct___b_u_f_c_i_r.html#a3473f62a57aefe7f710f3444dc55ce06", null ],
+    [ "type", "struct___b_u_f_c_i_r.html#a4bfea42429249a1f65204f0c0f34704a", null ],
+    [ "typeFormat", "struct___b_u_f_c_i_r.html#a4fed2709b90087bd40ee9c5bb273b31f", null ]
+];
