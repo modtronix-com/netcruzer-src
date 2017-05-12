@@ -77,7 +77,7 @@ void RenewDhcp(void);
 #endif
 
 extern BOOL GetAppPowerSaveMode(void);
-extern void ReenablePowerSaveMode(void);
+extern void ReenablePowerSaveMode(void);
 
 #if defined(DERIVE_KEY_FROM_PASSPHRASE_IN_HOST)
 extern tPassphraseReady g_WpsPassphrase;

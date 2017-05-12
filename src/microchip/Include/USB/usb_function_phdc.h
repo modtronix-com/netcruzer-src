@@ -157,7 +157,7 @@ extern volatile FAR unsigned char phdc_data_tx[PHDC_DATA_IN_EP_SIZE];
 /* callback function pointer structure for Application to handle events */
 typedef void(* USB_PHDC_CB)(UINT8, void *);
 
-extern volatile BYTE CtrlTrfData[USB_EP0_BUFF_SIZE];
+extern volatile BYTE CtrlTrfData[USB_EP0_BUFF_SIZE];
 
 /** E X T E R N S ************************************************************/
 typedef struct PHDC_RX_ENDPOINT_STRUCT
