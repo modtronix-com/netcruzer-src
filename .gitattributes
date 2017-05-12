@@ -2,7 +2,7 @@
 * text=auto
 
 # Do not perform any LF normalization
-* -text
+# * -text
 
 # Declare files that will always have CRLF line endings on checkout.
 *.asm  text eol=lf
