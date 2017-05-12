@@ -1,23 +1,26 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+#* text=auto
 
 # Do not perform any LF normalization
 # * -text
 
+# Use LF for all text files
+* text eol=lf
+
 # Declare files that will always have CRLF line endings on checkout.
-*.asm  text eol=lf
-*.c    text eol=lf
-*.cpp  text eol=lf
-*.doc  text eol=lf
-*.h    text eol=lf
-*.htm  text eol=lf
-*.html text eol=lf
-*.inc  text eol=lf
-*.js   text eol=lf
-*.md   text eol=lf
-*.properties text eol=lf
-*.txt  text eol=lf
-*.xml  text eol=lf
+#*.asm  text eol=lf
+#*.c    text eol=lf
+#*.cpp  text eol=lf
+#*.doc  text eol=lf
+#*.h    text eol=lf
+#*.htm  text eol=lf
+#*.html text eol=lf
+#*.inc  text eol=lf
+#*.js   text eol=lf
+#*.md   text eol=lf
+#*.properties text eol=lf
+#*.txt  text eol=lf
+#*.xml  text eol=lf
 
 # Custom for Visual Studio
 *.cs     diff=csharp
