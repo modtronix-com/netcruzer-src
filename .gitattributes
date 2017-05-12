@@ -1,11 +1,8 @@
 # Auto detect text files and perform LF normalization
 #* text=auto
 
-# Do not perform any LF normalization
-# * -text
-
-# Use LF for all text files
-* text eol=lf
+# Do not perform any line ending normalization
+* text=false
 
 # Declare files that will always have CRLF line endings on checkout.
 #*.asm  text eol=lf
